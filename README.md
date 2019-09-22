@@ -1,1 +1,2 @@
 # FreshmanInfomationAnalysSystem
+陈泯全已经加入
