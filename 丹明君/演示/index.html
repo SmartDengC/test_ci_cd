@@ -19,9 +19,6 @@
                     url: "thistest",
                     type: "get",
                     success: function (data) {
-                        function Shows(date){
-                            
-                        }
                         var obj = eval(data);
                         var tbody = $('<tbody></tbody>');
                         $(obj).each(
@@ -30,14 +27,6 @@
                                 var _data = Object.keys(val)
                                 console.log(val.BMDW);
                                 var tr = $('<tr></tr>');
-                                
-                                    for(var i=0;i<_data.length;i++)
-                                    {
-                                        tr.append( 
-                                            '<td>' + _data[i] + '</td>'
-                                        );
-                                    }
-                               
                                 tr.append('<td>' + val.BMDW + '</td>' + '<td>' + val.HKKH + '</td>' + '<td>' + val.KSZT + '<td>' + val.KSLSCZBZ + '</td>'
                                     + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>'
                                     + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>'
