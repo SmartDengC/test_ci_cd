@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="./Bootstrap/css/bootstrap.css" />
+    <script src="./jQuery 1.x.js"></script>
+    <script src="./bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="./Bootstrap/js/bootstrap.js"></script>
+    <script>
+        $(function () {
+            var _click = document.getElementById("_table");
+            _click.onclick = function () {
+                $.ajax({
+                    url: "./JSON.json",
+                    type: "get",
+                    success: function (data) {
+                        function Shows(date){
+                            
+                        }
+                        var obj = eval(data);
+                        var tbody = $('<tbody></tbody>');
+                        $(obj).each(
+                            function (index) {
+                                var val = obj[index];
+                                var _data = Object.keys(val)
+                                console.log(val.BMDW);
+                                var tr = $('<tr></tr>');
+                                
+                                    for(var i=0;i<_data.length;i++)
+                                    {
+                                        tr.append( 
+                                            '<td>' + _data[i] + '</td>'
+                                        );
+                                    }
+                               
+                                tr.append('<td>' + val.BMDW + '</td>' + '<td>' + val.HKKH + '</td>' + '<td>' + val.KSZT + '<td>' + val.KSLSCZBZ + '</td>'
+                                    + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>'
+                                    + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>'
+                                    + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>'
+                                    + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>'
+                                    + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>'
+                                    + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>'
+                                    + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>'
+                                    + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>'
+                                    + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>'
+                                    + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>'
+                                    + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>'
+                                    + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>'
+                                    + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>' + '<td>' + val.name + '</td>'
+                                );
+                                tbody.append(tr);
+                            });
+                        $('#myTable tbody').replaceWith(tbody);
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <table id="myTable" cellpadding="1" cellspacing="0" class="table table-striped">
+        <thead>
+            <tr>
+                <th>KSH</th>
+                <th>ZKZH</th>
+                <th>XM</th>
+                <th>XBDM</th>
+                <th>CSNY</th>
+                <th>ZZMMDM</th>
+                <th>MZDM</th>
+                <th>KSLBDM</th>
+                <th>BYLBDM</th>
+                <th>ZXDM</th>
+                <th>ZXMC</th>
+                <th>WYYZDM</th>
+                <th>HKDJ</th>
+                <th>BMDW</th>
+                <th>KSTZ</th>
+                <th>XTDW</th>
+                <th>DQDM</th>
+                <th>SFZH</th>
+                <th>JTDZ</th>
+                <th>YZBM</th>
+                <th>LXDH</th>
+                <th>HKKH</th>
+                <th>KSTC</th>
+                <th>KSJLHCF</th>
+                <th>WYKS</th>
+                <th>ZSYJ</th>
+                <th>KSLXDM</th>
+                <th>SJR</th>
+                <th>YSJZDM</th>
+                <th>WYTL</th>
+                <th>PCDM</th>
+                <th>KLDM</th>
+                <th>TDDW</th>
+                <th>JHXZ</th>
+                <th>CJ</th>
+                <th>TZCJ</th>
+                <th>TDCJ</th>
+                <th>ZGF</th>
+                <th>YXDRCJ</th>
+                <th>ZYYTJZCJ</th>
+                <th>ZYYTFJCJ</th>
+                <th>TDZY</th>
+                <th>DQTDDW</th>
+                <th>YTZY</th>
+                <th>LQZY</th>
+                <th>TDYYDM</th>
+                <th>WYTL</th>
+                <th>PCDM</th>
+                <th>KLDM</th>
+                <th>TDDW</th>
+                <th>JHXZ</th>
+                <th>CJ</th>
+                <th>TZCJ</th>
+                <th>TDCJ</th>
+                <th>ZGF</th>
+                <th>YXDRCJ</th>
+                <th>ZYYTJZCJ</th>
+                <th>ZYYTFJCJ</th>
+                <th>TDZY</th>
+                <th>DQTDDW</th>
+                <th>YTZY</th>
+                <th>LQZY</th>
+                <th>TDYYDM</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <button id="_table">点击显示</button>
+</body>
+
+</html>
