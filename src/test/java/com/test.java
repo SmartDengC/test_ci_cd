@@ -1,25 +1,44 @@
-package com; /**
- * @title: com.test
- * @projectName ssm
- * @description: TODO
- * @author msi
- * @date 2019/9/2214:33
- */
+package com;
 
-/**
- * @program: ssm
- *
- * @description: com.test
- *
- * @author: Mr.Wang
- *
- * @create: 2019-09-22 14:33
- **/
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pojo.Student;
+
+import java.io.File;
+import java.io.IOException;
+
 public class test {
-    //com.test
-    public test(){
-        System.out.println("这是测试");
+    public static void main(String args[]){
+        test tester = new test();
+        try {
+            Student student = new Student();
+            student.setAge(10);
+            student.setName("Mahesh");
+            tester.writeJSON(student);
 
+            Student student1 = tester.readJSON();
+            System.out.println(student1);
+
+        } catch (JsonParseException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    private void writeJSON(Student student) throws JsonGenerationException, JsonMappingException, IOException{
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(new File("student.json"), student);
+    }
+
+    private Student readJSON() throws JsonParseException, JsonMappingException, IOException{
+        ObjectMapper mapper = new ObjectMapper();
+        Student student = mapper.readValue(new File("student.json"), Student.class);
+        return student;
+    }
 }
+

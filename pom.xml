@@ -23,12 +23,12 @@
 
   <dependencies>
     <!-- 单元测试 -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>com.test</scope>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>junit</groupId>-->
+<!--      <artifactId>junit</artifactId>-->
+<!--      <version>4.11</version>-->
+<!--      <scope>com.test</scope>-->
+<!--    </dependency>-->
     <!-- 第一部分：Spring 配置-->
     <!-- Spring core -->
     <dependency>
@@ -75,7 +75,7 @@
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>spring-com.test</artifactId>
+      <artifactId>spring-test</artifactId>
       <version>${spring.version}</version>
     </dependency>
     <!-- 第二部分：Servlet web -->
@@ -138,7 +138,42 @@
       <artifactId>logback-classic</artifactId>
       <version>1.1.1</version>
     </dependency>
-</dependencies>
+
+    <!-- json -->
+    <dependency>
+      <groupId>net.sf.json-lib</groupId>
+      <artifactId>json-lib</artifactId>
+      <version>0.9</version>
+      <classifier>jdk15</classifier>
+    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>commons-lang</groupId>-->
+<!--      <artifactId>commons-lang</artifactId>-->
+<!--      <version>2.5</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>commons-beanutils</groupId>-->
+<!--      <artifactId>commons-beanutils</artifactId>-->
+<!--      <version>1.8.0</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>commons-collections</groupId>-->
+<!--      <artifactId>commons-collections</artifactId>-->
+<!--      <version>3.2.1</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>commons-logging</groupId>-->
+<!--      <artifactId>commons-logging</artifactId>-->
+<!--      <version>1.1.1</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>net.sf.ezmorph</groupId>-->
+<!--      <artifactId>ezmorph</artifactId>-->
+<!--      <version>1.0.6</version>-->
+<!--    </dependency>-->
+
+
+  </dependencies>
 
   <build>
     <finalName>ssm</finalName>
