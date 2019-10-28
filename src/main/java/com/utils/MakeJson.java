@@ -29,6 +29,14 @@ public class MakeJson {
 //        }
 //    }
 
+    /**
+     *
+     * @param object
+     * @throws JsonGenerationException
+     * @throws JsonMappingException
+     * @throws IOException
+     * parameter 需要一个实体类
+     */
     public void writeJSON(Object object) throws JsonGenerationException, JsonMappingException, IOException{
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(new File("object.json"), object);

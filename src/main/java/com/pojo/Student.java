@@ -1,5 +1,9 @@
 package com.pojo;
 
+import com.utils.MakeJson;
+
+import java.io.IOException;
+
 /**
  * @ClassName Student
  * @Version 1.0
@@ -28,6 +32,15 @@ public class Student {
     @Override
     public String toString(){
         return "Student [ name: "+name+", age: "+ age+ " ]";
+    }
+
+    public static void main(String[] args) throws IOException {
+        Student student = new Student();
+        student.age=19;
+        student.name="吕志伟";
+        MakeJson makeJson = new MakeJson();
+        makeJson.writeJSON(student);
+        System.out.print(makeJson.readJSON());
     }
 }
 

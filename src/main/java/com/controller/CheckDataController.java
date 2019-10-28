@@ -23,18 +23,18 @@ public class CheckDataController {
     @Autowired
     private CheckDataService checkdataservice;
 
-    @RequestMapping("/checkdata")
-    public String checkData(String tablename) throws IOException {
-        return checkdataservice.checkdata(tablename);
+    @RequestMapping("/checkData")
+    public String checkData(String tableName) throws IOException {
+        return checkdataservice.checkData(tableName);
     }
 
-    @RequestMapping("/checkyear")
+    @RequestMapping("/checkYear")
     public String checkYear(String year) throws IOException {
-        return checkdataservice.checkyear(year);
+        return checkdataservice.checkYear(year);
     }
 
-    @RequestMapping("/getdata")
-    public String getData(String tablename){
-        return checkdataservice.getdata(tablename);
+    @RequestMapping("/getData")
+    public String getData(String tableName){
+        return checkdataservice.getData(tableName);
     }
 }

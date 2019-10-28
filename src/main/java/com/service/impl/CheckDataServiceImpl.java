@@ -1,15 +1,14 @@
 package com.service.impl;
 
 import com.dao.CheckDataDao;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.service.CheckDataService;
 
-
-import com.utils.MakeJson;
-import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 
 /**
@@ -27,26 +26,32 @@ public class CheckDataServiceImpl implements CheckDataService {
     private CheckDataDao checkDataDao;
 
     @Override
-    public String checkdata(String tablename) throws IOException {
-        MakeJson makeJson = new MakeJson();
-        makeJson.writeJSON(checkDataDao.checkSRT_U(tablename));
-        return  makeJson.readJSON();
+    public String checkData(String tableName) throws IOException {
+        String result = "";
+        ObjectMapper mapper = new ObjectMapper();
+        HashMap map = new HashMap();
+        map.put("status",checkDataDao.checkSRT_U(tableName));
+        result =  mapper.writeValueAsString(map);
+        return  result;
     }
 
     @Override
-    public String checkyear(String year) throws IOException {
-        MakeJson makeJson = new MakeJson();
-        makeJson.writeJSON(checkDataDao.checkSRT_U(year));
-        makeJson.writeJSON(checkDataDao.checkSRT_ASS(year));
-        makeJson.writeJSON(checkDataDao.checkCN(year));
-        return  makeJson.readJSON();
+    public String checkYear(String year) throws IOException {
+        String result ="";
+        ObjectMapper mapper = new ObjectMapper();
+        HashMap map  = new HashMap();
+        map.put("SRT_U",checkDataDao.checkSRT_U(year));
+        map.put("SRT_ASS",checkDataDao.checkSRT_ASS(year));
+        map.put("CN",checkDataDao.checkCN(year));
+        result = mapper.writeValueAsString(map);
+        return  result;
     }
 
     @Override
-    public String getdata(String tablename) {
-        if ("SRT_U".equals(tablename)) {
+    public String getData(String tableName) {
+        if ("SRT_U".equals(tableName)) {
             return checkDataDao.getSRT_U();
-        } else if ("SRT_ASS".equals(tablename)) {
+        } else if ("SRT_ASS".equals(tableName)) {
             return checkDataDao.getSRT_ASS();
         } else {
             return checkDataDao.getCN();
