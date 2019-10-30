@@ -1,6 +1,7 @@
 package com.service.impl;
 
 import com.dao.CheckDataDao;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.service.CheckDataService;
 
@@ -26,35 +27,37 @@ public class CheckDataServiceImpl implements CheckDataService {
     private CheckDataDao checkDataDao;
 
     @Override
-    public String checkData(String tableName) throws IOException {
+    public String checkYear(String year, int province) throws IOException {
         String result = "";
         ObjectMapper mapper = new ObjectMapper();
         HashMap map = new HashMap();
-        map.put("status",checkDataDao.checkSRT_U(tableName));
-        result =  mapper.writeValueAsString(map);
-        return  result;
-    }
-
-    @Override
-    public String checkYear(String year) throws IOException {
-        String result ="";
-        ObjectMapper mapper = new ObjectMapper();
-        HashMap map  = new HashMap();
-        map.put("SRT_U",checkDataDao.checkSRT_U(year));
-        map.put("SRT_ASS",checkDataDao.checkSRT_ASS(year));
-        map.put("CN",checkDataDao.checkCN(year));
+        map.put("status", checkDataDao.selectT_TDD(year, province));
         result = mapper.writeValueAsString(map);
-        return  result;
+        return result;
     }
 
     @Override
-    public String getData(String tableName) {
-        if ("SRT_U".equals(tableName)) {
-            return checkDataDao.getSRT_U();
-        } else if ("SRT_ASS".equals(tableName)) {
-            return checkDataDao.getSRT_ASS();
-        } else {
-            return checkDataDao.getCN();
-        }
+    public String checkData(String year) throws IOException {
+        String result = "";
+        ObjectMapper mapper = new ObjectMapper();
+        HashMap map = new HashMap();
+        map.put("SRT_U", checkDataDao.selectTD_PTFSX(year));
+        map.put("SRT_ASS", checkDataDao.selectTD_YTFSX(year));
+        map.put("CN", checkDataDao.selectKDD(year));
+        result = mapper.writeValueAsString(map);
+        return result;
     }
+
+    @Override
+    public String getData(String year, String ems) throws JsonProcessingException {
+        String result = "";
+        ObjectMapper mapper = new ObjectMapper();
+        HashMap map = new HashMap();
+        map.put("SRT_U", checkDataDao.requestTD_PTFSX(year));
+        map.put("SRT_ASS", checkDataDao.requestTD_YTFSX(year));
+        map.put("CN", checkDataDao.requestKDD(ems));
+        result = mapper.writeValueAsString(map);
+        return result;
+    }
+
 }

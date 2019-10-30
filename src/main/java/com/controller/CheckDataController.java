@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.service.CheckDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,18 +24,24 @@ public class CheckDataController {
     @Autowired
     private CheckDataService checkdataservice;
 
-    @RequestMapping("/checkData")
-    public String checkData(String tableName) throws IOException {
-        return checkdataservice.checkData(tableName);
+    @RequestMapping("/checkYear")
+    public String checkYear(String year,int province) throws IOException {
+        System.out.print("helloword");
+        return checkdataservice.checkYear(year,province);
     }
 
-    @RequestMapping("/checkYear")
-    public String checkYear(String year) throws IOException {
-        return checkdataservice.checkYear(year);
+    @RequestMapping("/checkData")
+    public String checkData(String year) throws IOException {
+        return checkdataservice.checkData(year);
     }
 
     @RequestMapping("/getData")
-    public String getData(String tableName){
-        return checkdataservice.getData(tableName);
+    public String getData(String year,String ems) throws JsonProcessingException {
+        return checkdataservice.getData(year,ems);
+    }
+    @RequestMapping("test")
+    public String testProvince(String province){
+        System.out.print(province);
+        return null;
     }
 }

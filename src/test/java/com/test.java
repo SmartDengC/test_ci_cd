@@ -5,40 +5,17 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pojo.Student;
+import com.service.impl.DataImportServiceImpl;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 public class test {
-    public static void main(String args[]){
-        test tester = new test();
-        try {
-            Student student = new Student();
-            student.setAge(10);
-            student.setName("Mahesh");
-            tester.writeJSON(student);
-
-            Student student1 = tester.readJSON();
-            System.out.println(student1);
-
-        } catch (JsonParseException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void writeJSON(Student student) throws JsonGenerationException, JsonMappingException, IOException{
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File("student.json"), student);
-    }
-
-    private Student readJSON() throws JsonParseException, JsonMappingException, IOException{
-        ObjectMapper mapper = new ObjectMapper();
-        Student student = mapper.readValue(new File("student.json"), Student.class);
-        return student;
+    public static void main(String args[]) throws FileNotFoundException {
+        File file = new File("C:/Users/Lenovo/Desktop/生源分析系统/生源分析系统原始数据/2015data/四川/11079aa/TD_PCDM.dbf");
+        FileInputStream pcdm = new FileInputStream(file);
+        DataInputStream data = new DataInputStream(pcdm);
+        DataImportServiceImpl a = new DataImportServiceImpl();
+        System.out.print(a.insertTD_PCDM(data,2019,1).get(6).getPCMC());
     }
 }
 

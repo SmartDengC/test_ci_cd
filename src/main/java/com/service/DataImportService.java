@@ -1,6 +1,10 @@
 package com.service;
 
+import com.pojo.*;
+
+import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * @ClassName ImportDataService
@@ -18,7 +22,7 @@ public interface DataImportService {
      * @param province 省份
      * @return 是否插入成功，1代表成功，0代表失败
      */
-    public int insertTD_CJXDM(InputStream TD_CJXDMFile, int year, int province);
+    public List<TD_CJXDM> insertTD_CJXDM(InputStream TD_CJXDMFile, int year, int province);
 
     /**
      * 导入TD_DQDM数据接口函数
@@ -27,7 +31,7 @@ public interface DataImportService {
      * @param province 省份
      * @return 是否插入成功，1代表成功，0代表失败
      */
-    public int insertTD_DQDM(InputStream TD_DQDMFile, int year, int province);
+    public List<TD_DQDM> insertTD_DQDM(InputStream TD_DQDMFile, int year, int province);
 
     /**
      * 导入TD_JHXZDM数据接口函数
@@ -36,7 +40,7 @@ public interface DataImportService {
      * @param province 省份
      * @return 是否插入成功，1代表成功，0代表失败
      */
-    public int insertTD_JHXZDM(InputStream TD_JHXZDMFile, int year, int province);
+    public List<TD_JHXZDM> insertTD_JHXZDM(InputStream TD_JHXZDMFile, int year, int province);
 
     /**
      * 导入TD_KLDM数据接口函数
@@ -45,7 +49,7 @@ public interface DataImportService {
      * @param province 省份
      * @return 是否插入成功，1代表成功，0代表失败
      */
-    public int insertTD_KLDM(InputStream  TD_KLDMFile, int year, int province);
+    public List<TD_KLDM> insertTD_KLDM(InputStream  TD_KLDMFile, int year, int province);
 
     /**
      * 导入TD_KSLBDM数据接口函数
@@ -54,7 +58,7 @@ public interface DataImportService {
      * @param province 省份
      * @return 是否插入成功，1代表成功，0代表失败
      */
-    public int insertTD_KSLBDM(InputStream  TD_KSLBDMFile, int year, int province);
+    public List<TD_KSLBDM> insertTD_KSLBDM(InputStream  TD_KSLBDMFile, int year, int province);
 
     /**
      * 导入TD_KSLXDM数据接口函数
@@ -63,7 +67,7 @@ public interface DataImportService {
      * @param province 省份
      * @return 是否插入成功，1代表成功，0代表失败
      */
-    public int insertTD_KSLXDM(InputStream  TD_KSLXDMFile, int year, int province);
+    public List<TD_KSLXDM>  insertTD_KSLXDM(InputStream  TD_KSLXDMFile, int year, int province);
 
     /**
      * 导入TD_LQFSDM数据接口函数
@@ -72,7 +76,7 @@ public interface DataImportService {
      * @param province 省份
      * @return 是否插入成功，1代表成功，0代表失败
      */
-    public int insertTD_LQFSDM(InputStream  TD_LQFSDMFile, int year, int province);
+    public List<TD_LQFSDM> insertTD_LQFSDM(InputStream  TD_LQFSDMFile, int year, int province);
 
     /**
      * 导入TD_MZDM数据接口函数
@@ -81,7 +85,7 @@ public interface DataImportService {
      * @param province 省份
      * @return 是否插入成功，1代表成功，0代表失败
      */
-    public int insertTD_MZDM(InputStream  TD_MZDMFile, int year, int province);
+    public List<TD_MZDM> insertTD_MZDM(InputStream  TD_MZDMFile, int year, int province);
 
     /**
      * 导入TD_PCDM数据接口函数
@@ -90,5 +94,5 @@ public interface DataImportService {
      * @param province 省份
      * @return 是否插入成功，1代表成功，0代表失败
      */
-    public int insertTD_PCDM(InputStream TD_PCDMFile, int year, int province);
+    public List<TD_PCDM> insertTD_PCDM(InputStream TD_PCDMFile, int year, int province);
 }
