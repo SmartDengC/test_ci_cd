@@ -25,9 +25,18 @@ public class CheckDataController {
     private CheckDataService checkdataservice;
 
     @RequestMapping("/checkYear")
-    public String checkYear(String year,int province) throws IOException {
-        System.out.print("helloword");
-        return checkdataservice.checkYear(year,province);
+    public String checkYear(String year,String  province) throws IOException {
+        System.out.print("hello");
+        int pro = Integer.parseInt(province);
+        String returnStatus = null;
+        try{
+            returnStatus = checkdataservice.checkYear(year,pro);
+        }
+        catch (Exception e){
+            System.out.print(e);
+        }
+
+        return returnStatus;
     }
 
     @RequestMapping("/checkData")
@@ -39,7 +48,7 @@ public class CheckDataController {
     public String getData(String year,String ems) throws JsonProcessingException {
         return checkdataservice.getData(year,ems);
     }
-    @RequestMapping("test")
+    @RequestMapping("/test")
     public String testProvince(String province){
         System.out.print(province);
         return null;

@@ -11,7 +11,7 @@
         select count(NF) from TD_YTFSX where (NF=#{NF})
     </select>
 
-    <select id="sekectTD_PTFSX" resultType="int" parameterType="String">
+    <select id="selectTD_PTFSX" resultType="int" parameterType="String">
         select count(NF) from TD_PTFSX where (NF=#{NF})
     </select>
 

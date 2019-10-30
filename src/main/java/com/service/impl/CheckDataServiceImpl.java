@@ -41,9 +41,29 @@ public class CheckDataServiceImpl implements CheckDataService {
         String result = "";
         ObjectMapper mapper = new ObjectMapper();
         HashMap map = new HashMap();
-        map.put("SRT_U", checkDataDao.selectTD_PTFSX(year));
-        map.put("SRT_ASS", checkDataDao.selectTD_YTFSX(year));
-        map.put("CN", checkDataDao.selectKDD(year));
+            int count = checkDataDao.selectTD_PTFSX(year);
+            if(count == 0){
+                map.put("SRT_U", 0);
+            }
+            else {
+                map.put("SRT_U", 1);
+            }
+
+        int count1 = checkDataDao.selectTD_YTFSX(year);
+        if(count1 == 0){
+            map.put("SRT_ASS", 0);
+        }
+        else {
+            map.put("SRT_ASS", 1);
+        }
+
+        int count2 = checkDataDao.selectKDD(year);
+        if(count2 == 0){
+            map.put("CN", 0);
+        }
+        else {
+            map.put("CN", 1);
+        }
         result = mapper.writeValueAsString(map);
         return result;
     }

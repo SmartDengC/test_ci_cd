@@ -13,22 +13,11 @@
   <component name="ChangeListManager">
     <list default="true" id="60febff7-6d61-4e1d-a814-67464c42bd0f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/com/controller/PaperController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/com/controller/PaperController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/com/dao/PaperDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/com/dao/PaperDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/com/pojo/Paper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/com/pojo/Paper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/com/service/PaperService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/com/service/PaperService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/com/service/impl/PaperServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/com/service/impl/PaperServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/jdbc.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/spring/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/spring/spring-mvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/CheckDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/CheckDataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dao/CheckDataDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dao/CheckDataDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/CheckDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/CheckDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/DataImportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/DataImportService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/service/impl/CheckDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/CheckDataServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/impl/DataImportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/DataImportServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/BasicConfigMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CheckDataMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/spring-mvc.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -270,12 +259,12 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/controller/CheckDataController.java</url>
           <line>28</line>
-          <option name="timeStamp" value="14" />
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/controller/CheckDataController.java</url>
           <line>43</line>
-          <option name="timeStamp" value="15" />
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
