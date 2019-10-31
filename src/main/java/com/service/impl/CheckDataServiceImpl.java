@@ -31,7 +31,12 @@ public class CheckDataServiceImpl implements CheckDataService {
         String result = "";
         ObjectMapper mapper = new ObjectMapper();
         HashMap map = new HashMap();
-        map.put("status", checkDataDao.selectT_TDD(year, province));
+        int count =  checkDataDao.selectT_TDD(year,province);
+        if(count == 0){
+            map.put("status",0);
+        }else {
+            map.put("status", 1);
+        }
         result = mapper.writeValueAsString(map);
         return result;
     }

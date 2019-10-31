@@ -15,6 +15,10 @@
         select count(NF) from TD_PTFSX where (NF=#{NF})
     </select>
 
+    <select id="selectT_TDD" resultType="int">
+        select count(*) from T_TDD where (NF=#{NF,jdbcType=VARCHAR} and SFDM=#{SFDM,jdbcType=INTEGER})
+    </select>
+
 
 
     <insert id="insertKDD" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">

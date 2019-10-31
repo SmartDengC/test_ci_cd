@@ -41,16 +41,13 @@ public class CheckDataController {
 
     @RequestMapping("/checkData")
     public String checkData(String year) throws IOException {
-        return checkdataservice.checkData(year);
+        String status = checkdataservice.checkData(year);
+        return status;
     }
 
     @RequestMapping("/getData")
     public String getData(String year,String ems) throws JsonProcessingException {
-        return checkdataservice.getData(year,ems);
-    }
-    @RequestMapping("/test")
-    public String testProvince(String province){
-        System.out.print(province);
-        return null;
+        String status = checkdataservice.getData(year, ems);
+        return status;
     }
 }
