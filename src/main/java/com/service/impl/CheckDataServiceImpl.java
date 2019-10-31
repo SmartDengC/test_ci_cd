@@ -21,11 +21,22 @@ import java.util.HashMap;
  *
  * @create: 2019-10-20 20:30
  **/
+
 @Service
 public class CheckDataServiceImpl implements CheckDataService {
     @Autowired
     private CheckDataDao checkDataDao;
 
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     *
+     * @Author 吕志伟
+     * @param: year 年份
+     * @param: province 省份
+     * @return
+     */
     @Override
     public String checkYear(String year, int province) throws IOException {
         String result = "";
@@ -41,6 +52,15 @@ public class CheckDataServiceImpl implements CheckDataService {
         return result;
     }
 
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     *
+     * @Author 吕志伟
+     * @param: year 年份
+     * @return
+     */
     @Override
     public String checkData(String year) throws IOException {
         String result = "";
@@ -73,6 +93,16 @@ public class CheckDataServiceImpl implements CheckDataService {
         return result;
     }
 
+    /**
+     * Modification User： 程序修改时由修改人员编写
+     * Modification Date: 程序修改的时间
+     *
+     *
+     * @Author 吕志伟
+     * @param: year
+     * @param: ems
+     * @return json，三张表中的数据
+     */
     @Override
     public String getData(String year, String ems) throws JsonProcessingException {
         String result = "";

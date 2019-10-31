@@ -24,9 +24,19 @@ public class CheckDataController {
     @Autowired
     private CheckDataService checkdataservice;
 
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     *
+     * @Author 吕志伟
+     * @param: year 年份
+     * @param: province 省份
+     * @return 0：说明表中没有符合参数的数据
+     * 1：说明表中有符合参数的数据
+     */
     @RequestMapping("/checkYear")
     public String checkYear(String year,String  province) throws IOException {
-        System.out.print("hello");
         int pro = Integer.parseInt(province);
         String returnStatus = null;
         try{
@@ -39,12 +49,32 @@ public class CheckDataController {
         return returnStatus;
     }
 
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     *
+     * @Author 吕志伟
+     * @param: year 年份
+     * @return 0：该表中无数据
+     * 1：该表中有数据
+     */
     @RequestMapping("/checkData")
     public String checkData(String year) throws IOException {
         String status = checkdataservice.checkData(year);
         return status;
     }
 
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     *
+     * @Author 吕志伟
+     * @param: year 年份
+     * @param: ems 快递单号
+     * @return  三张表中的数据
+     */
     @RequestMapping("/getData")
     public String getData(String year,String ems) throws JsonProcessingException {
         String status = checkdataservice.getData(year, ems);

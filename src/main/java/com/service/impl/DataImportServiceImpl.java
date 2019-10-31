@@ -32,6 +32,17 @@ public class DataImportServiceImpl implements DataImportService {
     @Autowired
     DataImportDao dataImportDao;
 
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     *
+     * @Author 吕志伟
+     * @param: TD_CJXDMFile
+     * @param: year
+     * @param: province
+     * @return
+     */
     @Override
     public List<TD_CJXDM> insertTD_CJXDM(InputStream TD_CJXDMFile, int year, int province) {
         //1，讲数据变成dataframe类型
@@ -63,6 +74,17 @@ public class DataImportServiceImpl implements DataImportService {
         }
     }
 
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     *
+     * @Author 吕志伟
+     * @param: TD_DQDMFile
+     * @param: year
+     * @param: province
+     * @return
+     */
     @Override
     public List<TD_DQDM> insertTD_DQDM(InputStream TD_DQDMFile, int year, int province) {
         //1，讲数据变成dataframe类型
@@ -94,6 +116,17 @@ public class DataImportServiceImpl implements DataImportService {
         }
     }
 
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     *
+     * @Author 吕志伟
+     * @param: TD_JHXZDMFile
+     * @param: year
+     * @param: province
+     * @return
+     */
     @Override
     public List<TD_JHXZDM> insertTD_JHXZDM(InputStream TD_JHXZDMFile, int year, int province) {
         //1，讲数据变成dataframe类型
@@ -125,6 +158,17 @@ public class DataImportServiceImpl implements DataImportService {
         }
     }
 
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     *
+     * @Author 吕志伟
+     * @param: TD_KLDMFile
+     * @param: year
+     * @param: province
+     * @return
+     */
     @Override
     public List<TD_KLDM> insertTD_KLDM(InputStream TD_KLDMFile, int year, int province) {
         //1，讲数据变成dataframe类型
@@ -156,6 +200,17 @@ public class DataImportServiceImpl implements DataImportService {
         }
     }
 
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     *
+     * @Author 吕志伟
+     * @param: TD_KSLBDMFile
+     * @param: year
+     * @param: province
+     * @return
+     */
     @Override
     public List<TD_KSLBDM> insertTD_KSLBDM(InputStream TD_KSLBDMFile, int year, int province) {
         //1，讲数据变成dataframe类型
@@ -187,6 +242,17 @@ public class DataImportServiceImpl implements DataImportService {
         }
     }
 
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     *
+     * @Author 吕志伟
+     * @param: TD_KSLXDMFile
+     * @param: year
+     * @param: province
+     * @return
+     */
     @Override
     public List<TD_KSLXDM> insertTD_KSLXDM(InputStream TD_KSLXDMFile, int year, int province) {
         //1，讲数据变成dataframe类型
@@ -218,6 +284,17 @@ public class DataImportServiceImpl implements DataImportService {
         }
     }
 
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     *
+     * @Author 吕志伟
+     * @param: TD_LQFSDMFile
+     * @param: year
+     * @param: province
+     * @return
+     */
     @Override
     public List<TD_LQFSDM> insertTD_LQFSDM(InputStream TD_LQFSDMFile, int year, int province) {
         //1，讲数据变成dataframe类型
@@ -249,6 +326,17 @@ public class DataImportServiceImpl implements DataImportService {
         }
     }
 
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     *
+     * @Author 吕志伟
+     * @param: TD_MZDMFile
+     * @param: year
+     * @param: province
+     * @return
+     */
     @Override
     public List<TD_MZDM> insertTD_MZDM(InputStream TD_MZDMFile, int year, int province) {
         //1，讲数据变成dataframe类型
@@ -280,6 +368,17 @@ public class DataImportServiceImpl implements DataImportService {
         }
     }
 
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     *
+     * @Author 吕志伟
+     * @param: TD_PCDMFile
+     * @param: year
+     * @param: province
+     * @return
+     */
     @Override
     public List<TD_PCDM> insertTD_PCDM(InputStream TD_PCDMFile, int year, int province) {
         //1，讲数据变成dataframe类型
