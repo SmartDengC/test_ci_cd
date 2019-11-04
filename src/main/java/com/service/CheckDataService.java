@@ -16,37 +16,42 @@ import java.io.IOException;
  **/
 public interface CheckDataService {
    /**
-    * Modification User： 程序修改时由修改人员编写
-    * Modification Date: 程序修改的时间
+    * Modification User： 吕志伟
+    * Modification Date: 2019/11/4
     *
-    *
+    * 检查该年份的T_TDD 表中是否有数据
     * @Author 吕志伟
-    * @param: year
-    * @param: province
-    * @return
+    * @param year 年份
+    * @param province 省份
+    * @return 0：说明表中没有符合参数的数据
+    * 1：说明表中有符合参数的数据
+    * @throws IOException
     */
     public String checkYear(String year,int province) throws IOException;
 
-   /**
-    * Modification User： 程序修改时由修改人员编写
-    * Modification Date: 程序修改的时间
-    *
-    *
-    * @Author 吕志伟
-    * @param: year
-    * @return
-    */
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     * 检查三张表中是否有数据
+     * @Author 吕志伟
+     * @param year 年份
+     * @return 0：该表中无数据
+     * 1：该表中有数据
+     * @throws IOException
+     */
     public String checkData(String year) throws IOException;
 
-  /**
-   * Modification User： 吕志伟
-   * Modification Date: 2019/10/31
-   *
-   *
-   * @Author 吕志伟
-   * @param: year 年份
-   * @param: ems 快递单号
-   * @return
-   */
-    public String getData(String year,String ems) throws JsonProcessingException;
+    /**
+     * Modification User： 吕志伟
+     * Modification Date: 2019/10/31
+     *
+     * 获取三张表中的所有数据
+     * @Author 吕志伟
+     * @param year 年份
+     * @param fileType 文件类型
+     * @return  三张表中的数据
+     * @throws JsonProcessingException
+     */
+    public String getData(String year,String fileType) throws JsonProcessingException;
 }

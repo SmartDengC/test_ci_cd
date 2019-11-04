@@ -19,7 +19,7 @@ import java.io.IOException;
  * @create: 2019-10-20 20:30
  **/
 @Controller
-@RequestMapping("/files")
+@RequestMapping("/basicConfig")
 public class CheckDataController {
     @Autowired
     private CheckDataService checkdataservice;
@@ -28,10 +28,10 @@ public class CheckDataController {
      * Modification User： 吕志伟
      * Modification Date: 2019/10/31
      *
-     *
+     * 检查该年份的T_TDD 表中是否有数据
      * @Author 吕志伟
-     * @param: year 年份
-     * @param: province 省份
+     * @param year 年份
+     * @param province 省份
      * @return 0：说明表中没有符合参数的数据
      * 1：说明表中有符合参数的数据
      */
@@ -53,9 +53,9 @@ public class CheckDataController {
      * Modification User： 吕志伟
      * Modification Date: 2019/10/31
      *
-     *
+     * 检查三张表中是否有数据
      * @Author 吕志伟
-     * @param: year 年份
+     * @param year 年份
      * @return 0：该表中无数据
      * 1：该表中有数据
      */
@@ -69,15 +69,15 @@ public class CheckDataController {
      * Modification User： 吕志伟
      * Modification Date: 2019/10/31
      *
-     *
+     * 获取三张表中的所有数据
      * @Author 吕志伟
-     * @param: year 年份
-     * @param: ems 快递单号
+     * @param year 年份
+     * @param fileType 文件类型
      * @return  三张表中的数据
      */
-    @RequestMapping("/getData")
-    public String getData(String year,String ems) throws JsonProcessingException {
-        String status = checkdataservice.getData(year, ems);
+    @RequestMapping("/seeConfigMessage")
+    public String getData(String year,String fileType) throws JsonProcessingException {
+        String status = checkdataservice.getData(year,fileType);
         return status;
     }
 }

@@ -8,6 +8,7 @@ public class TD_KLDM {
     private int SFDM;
     private String KLDM;
     private String JBKL;
+    private String KLMC;
     private String KSCJBJXH;
 
     public int getID() {
@@ -56,5 +57,13 @@ public class TD_KLDM {
 
     public void setKSCJBJXH(String KSCJBJXH) {
         this.KSCJBJXH = KSCJBJXH;
+    }
+
+    public String getKLMC() {
+        return KLMC;
+    }
+
+    public void setKLMC(String KLMC) {
+        this.KLMC = KLMC;
     }
 }

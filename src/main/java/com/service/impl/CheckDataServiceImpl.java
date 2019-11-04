@@ -31,11 +31,11 @@ public class CheckDataServiceImpl implements CheckDataService {
      * Modification User： 吕志伟
      * Modification Date: 2019/10/31
      *
-     *
+     * 根据参数year来检查T_TDD表中是否有该年份的数据
      * @Author 吕志伟
-     * @param: year 年份
-     * @param: province 省份
-     * @return
+     * @param year 年份
+     * @param province 省份
+     * @return json：0//该年份没有导入过数据  1//该年份已经导入过数据
      */
     @Override
     public String checkYear(String year, int province) throws IOException {
@@ -56,10 +56,10 @@ public class CheckDataServiceImpl implements CheckDataService {
      * Modification User： 吕志伟
      * Modification Date: 2019/10/31
      *
-     *
+     *检查三张表中是否已经导入数据
      * @Author 吕志伟
-     * @param: year 年份
-     * @return
+     * @param year 年份
+     * @return json
      */
     @Override
     public String checkData(String year) throws IOException {
@@ -94,23 +94,38 @@ public class CheckDataServiceImpl implements CheckDataService {
     }
 
     /**
-     * Modification User： 程序修改时由修改人员编写
-     * Modification Date: 程序修改的时间
+     * Modification User： 吕志伟
+     * Modification Date: 2019/11/4
      *
-     *
+     * 查看某一张表的所有数据
      * @Author 吕志伟
-     * @param: year
-     * @param: ems
+     * @param: year 年份
+     * @param: fileType 文件类型
      * @return json，三张表中的数据
      */
     @Override
-    public String getData(String year, String ems) throws JsonProcessingException {
+    public String getData(String year, String fileType) throws JsonProcessingException {
         String result = "";
         ObjectMapper mapper = new ObjectMapper();
         HashMap map = new HashMap();
-        map.put("SRT_U", checkDataDao.requestTD_PTFSX(year));
-        map.put("SRT_ASS", checkDataDao.requestTD_YTFSX(year));
-        map.put("CN", checkDataDao.requestKDD(ems));
+        String srt_u = "SRT_U";
+        String srt_ass = "SRT_ASS";
+        String cn = "CN";
+
+
+        if(srt_u.equals(fileType)) {
+            map.put("SRT_U", checkDataDao.requestTD_PTFSX(year));
+        }
+        else if(srt_ass.equals(fileType)) {
+            map.put("SRT_ASS", checkDataDao.requestTD_YTFSX(year));
+        }
+        else if(cn.equals(fileType)){
+            map.put("CN", checkDataDao.requestKDD(year));
+        }
+        else
+        {
+            map.put("status","传入表名错误");
+        }
         result = mapper.writeValueAsString(map);
         return result;
     }
