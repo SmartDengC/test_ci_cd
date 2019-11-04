@@ -7,7 +7,8 @@ public class TD_LQFSDM {
     private String NF;
     private int SFDM;
     private int LQFSDM;
-    private String JHXZMC;
+   // private String JHXZMC;
+    private String LQFSMC;
 
     public int getID() {
         return ID;
@@ -41,11 +42,19 @@ public class TD_LQFSDM {
         this.LQFSDM = LQFSDM;
     }
 
-    public String getJHXZMC() {
-        return JHXZMC;
+//    public String getJHXZMC() {
+//        return JHXZMC;
+//    }
+//
+//    public void setJHXZMC(String JHXZMC) {
+//        this.JHXZMC = JHXZMC;
+//    }
+
+    public String getLQFSMC() {
+        return LQFSMC;
     }
 
-    public void setJHXZMC(String JHXZMC) {
-        this.JHXZMC = JHXZMC;
+    public void setLQFSMC(String LQFSMC) {
+        this.LQFSMC = LQFSMC;
     }
 }

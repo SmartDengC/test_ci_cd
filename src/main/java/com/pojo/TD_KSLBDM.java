@@ -7,7 +7,8 @@ public class TD_KSLBDM {
     private String NF;
     private int SFDM;
     private int KSLBDM;
-    private String KSLB;
+   // private String KSLB;
+    private  String KSLBMC;
 
     public int getID() {
         return ID;
@@ -41,11 +42,19 @@ public class TD_KSLBDM {
         this.KSLBDM = KSLBDM;
     }
 
-    public String getKSLB() {
-        return KSLB;
+//    public String getKSLB() {
+//        return KSLB;
+//    }
+//
+//    public void setKSLB(String KSLB) {
+//        this.KSLB = KSLB;
+//    }
+
+    public String getKSLBMC() {
+        return KSLBMC;
     }
 
-    public void setKSLB(String KSLB) {
-        this.KSLB = KSLB;
+    public void setKSLBMC(String KSLBMC) {
+        this.KSLBMC = KSLBMC;
     }
 }
