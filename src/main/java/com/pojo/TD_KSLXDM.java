@@ -1,7 +1,5 @@
 package com.pojo;
 
-import java.time.Year;
-
 public class TD_KSLXDM {
     private int ID;
     private String NF;
@@ -47,5 +45,16 @@ public class TD_KSLXDM {
 
     public void setKSLXMC(String KSLXMC) {
         this.KSLXMC = KSLXMC;
+    }
+
+    @Override
+    public String toString() {
+        return "TD_KSLXDM{" +
+                "ID=" + ID +
+                ", NF='" + NF + '\'' +
+                ", SFDM=" + SFDM +
+                ", KSLXDM=" + KSLXDM +
+                ", KSLXMC='" + KSLXMC + '\'' +
+                '}';
     }
 }

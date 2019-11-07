@@ -1,12 +1,10 @@
 package com.pojo;
 
-import java.time.Year;
-
 public class TD_PCDM {
     private int ID;
     private String NF;
     private int SFDM;
-    private String PCDM;
+    private int PCDM;
     private String PCMC;
     private String GBPCDM;
     private String GBCCDM;
@@ -35,11 +33,11 @@ public class TD_PCDM {
         this.SFDM = SFDM;
     }
 
-    public String getPCDM() {
+    public int getPCDM() {
         return PCDM;
     }
 
-    public void setPCDM(String PCDM) {
+    public void setPCDM(int PCDM) {
         this.PCDM = PCDM;
     }
 
@@ -65,5 +63,18 @@ public class TD_PCDM {
 
     public void setGBCCDM(String GBCCDM) {
         this.GBCCDM = GBCCDM;
+    }
+
+    @Override
+    public String toString() {
+        return "TD_PCDM{" +
+                "ID=" + ID +
+                ", NF='" + NF + '\'' +
+                ", SFDM=" + SFDM +
+                ", PCDM=" + PCDM +
+                ", PCMC='" + PCMC + '\'' +
+                ", GBPCDM='" + GBPCDM + '\'' +
+                ", GBCCDM='" + GBCCDM + '\'' +
+                '}';
     }
 }

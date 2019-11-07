@@ -1,14 +1,14 @@
 package com.pojo;
 
-import java.time.Year;
-
-public class TD_ZCDM {
+public class
+TD_ZCDM {
     private int ID;
     private String NF;
-    private String SFDM;
+    private int SFDM;
     private String ZCDM;
     private String ZCMC;
     private int ZGF;
+    private String XDX;
 
     public int getID() {
         return ID;
@@ -26,11 +26,11 @@ public class TD_ZCDM {
         this.NF = NF;
     }
 
-    public String getSFDM() {
+    public int getSFDM() {
         return SFDM;
     }
 
-    public void setSFDM(String SFDM) {
+    public void setSFDM(int SFDM) {
         this.SFDM = SFDM;
     }
 
@@ -58,5 +58,24 @@ public class TD_ZCDM {
         this.ZGF = ZGF;
     }
 
+    public String getXDX() {
+        return XDX;
+    }
 
+    public void setXDX(String XDX) {
+        this.XDX = XDX;
+    }
+
+    @Override
+    public String toString() {
+        return "TD_ZCDM{" +
+                "ID=" + ID +
+                ", NF='" + NF + '\'' +
+                ", SFDM=" + SFDM +
+                ", ZCDM=" + ZCDM +
+                ", ZCMC='" + ZCMC + '\'' +
+                ", ZGF=" + ZGF +
+                ", XDX='" + XDX + '\'' +
+                '}';
+    }
 }

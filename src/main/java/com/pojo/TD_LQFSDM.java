@@ -1,13 +1,10 @@
 package com.pojo;
 
-import java.time.Year;
-
 public class TD_LQFSDM {
     private int ID;
     private String NF;
     private int SFDM;
     private int LQFSDM;
-   // private String JHXZMC;
     private String LQFSMC;
 
     public int getID() {
@@ -42,19 +39,22 @@ public class TD_LQFSDM {
         this.LQFSDM = LQFSDM;
     }
 
-//    public String getJHXZMC() {
-//        return JHXZMC;
-//    }
-//
-//    public void setJHXZMC(String JHXZMC) {
-//        this.JHXZMC = JHXZMC;
-//    }
-
     public String getLQFSMC() {
         return LQFSMC;
     }
 
     public void setLQFSMC(String LQFSMC) {
         this.LQFSMC = LQFSMC;
+    }
+
+    @Override
+    public String toString() {
+        return "TD_LQFSDM{" +
+                "ID=" + ID +
+                ", NF='" + NF + '\'' +
+                ", SFDM=" + SFDM +
+                ", LQFSDM=" + LQFSDM +
+                ", LQFSMC='" + LQFSMC + '\'' +
+                '}';
     }
 }

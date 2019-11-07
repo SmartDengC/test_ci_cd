@@ -101,5 +101,20 @@ public class TD_XSFS {
         this.ZSCJ = ZSCJ;
     }
 
-
+    @Override
+    public String toString() {
+        return "TD_XSFS{" +
+                "ID=" + ID +
+                ", YWCJ=" + YWCJ +
+                ", SXCJ=" + SXCJ +
+                ", WYCJ=" + WYCJ +
+                ", ZHCJ=" + ZHCJ +
+                ", CJ=" + CJ +
+                ", ZYCJ=" + ZYCJ +
+                ", TZCJ=" + TZCJ +
+                ", ZGF=" + ZGF +
+                ", TDCJ=" + TDCJ +
+                ", ZSCJ=" + ZSCJ +
+                '}';
+    }
 }

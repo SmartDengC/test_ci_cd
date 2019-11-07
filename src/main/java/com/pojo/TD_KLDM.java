@@ -1,14 +1,12 @@
 package com.pojo;
 
-import java.time.Year;
-
 public class TD_KLDM {
     private int ID;
     private String NF;
     private int SFDM;
     private int KLDM;
-    private String JBKL;
     private String KLMC;
+    private String JBKL;
     private String KSCJBJXH;
 
     public int getID() {
@@ -65,5 +63,18 @@ public class TD_KLDM {
 
     public void setKLMC(String KLMC) {
         this.KLMC = KLMC;
+    }
+
+    @Override
+    public String toString() {
+        return "TD_KLDM{" +
+                "ID=" + ID +
+                ", NF='" + NF + '\'' +
+                ", SFDM=" + SFDM +
+                ", KLDM=" + KLDM +
+                ", KLMC=" + KLMC +
+                ", JBKL='" + JBKL + '\'' +
+                ", KSCJBJXH='" + KSCJBJXH + '\'' +
+                '}';
     }
 }

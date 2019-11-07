@@ -1,7 +1,5 @@
 package com.pojo;
 
-import java.time.Year;
-
 public class TD_DQDM {
     private int ID;
     private String NF;
@@ -47,5 +45,16 @@ public class TD_DQDM {
 
     public void setDQMC(String DQMC) {
         this.DQMC = DQMC;
+    }
+
+    @Override
+    public String toString() {
+        return "TD_DQDM{" +
+                "ID=" + ID +
+                ", NF='" + NF + '\'' +
+                ", SFDM=" + SFDM +
+                ", DQDM=" + DQDM +
+                ", DQMC='" + DQMC + '\'' +
+                '}';
     }
 }

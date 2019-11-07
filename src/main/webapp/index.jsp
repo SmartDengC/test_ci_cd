@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<<%@ page language="java" contentType="text/html; charset=UTF-8"
+          pageEncoding="UTF-8" %>
 <%
     pageContext.setAttribute("path", request.getContextPath());
 %>
@@ -13,7 +13,6 @@
             color: black;
             font-size: 18px;
         }
-
         h3 {
             width: 180px;
             height: 38px;
@@ -41,5 +40,21 @@
 <h3>
     <a href="${path}/paper/allPaper">点击进入管理页面</a>
 </h3>
+<form action="/FreshmanInfomationAnalysSystem/dataImport/read" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right">文件域：</label>
+            <div class="col-sm-9">
+                <input type="file"  name="dbfs" multiple="multiple"/>
+            </div>
+            <br>
+            年：<input type="text" name="year", value="2019">
+            省<input type="text" name="province", value="22">
+
+            <input type="submit" value="点击上传">
+        </div>
+    </div>
+</form>
+
 </body>
 </html>

@@ -1,7 +1,5 @@
 package com.pojo;
 
-import java.time.Year;
-
 public class TD_WYYZDM {
     private int ID;
     private String NF;
@@ -49,5 +47,14 @@ public class TD_WYYZDM {
         this.WYYZMC = WYYZMC;
     }
 
-
+    @Override
+    public String toString() {
+        return "TD_WYYZDM{" +
+                "ID=" + ID +
+                ", NF='" + NF + '\'' +
+                ", SFDM=" + SFDM +
+                ", WYYZDM=" + WYYZDM +
+                ", WYYZMC='" + WYYZMC + '\'' +
+                '}';
+    }
 }

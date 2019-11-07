@@ -1,17 +1,15 @@
 package com.pojo;
 
-import java.time.Year;
-
 public class TD_QBJHK {
     private int ID;
-    private String MNF;
+    private String NF;
     private int SFDM;
     private String KLDM;
     private String PCDM;
     private String JHXZ;
     private String TDDW;
-    private int ZYDH;
-    private int ZYDM;
+    private String ZYDH;
+    private String ZYDM;
     private String ZYMC;
     private String ZYLB;
     private String TJSXBZ;
@@ -34,12 +32,12 @@ public class TD_QBJHK {
         this.ID = ID;
     }
 
-    public String getMNF() {
-        return MNF;
+    public String getNF() {
+        return NF;
     }
 
-    public void setMNF(String MNF) {
-        this.MNF = MNF;
+    public void setNF(String NF) {
+        this.NF = NF;
     }
 
     public int getSFDM() {
@@ -82,19 +80,19 @@ public class TD_QBJHK {
         this.TDDW = TDDW;
     }
 
-    public int getZYDH() {
+    public String getZYDH() {
         return ZYDH;
     }
 
-    public void setZYDH(int ZYDH) {
+    public void setZYDH(String ZYDH) {
         this.ZYDH = ZYDH;
     }
 
-    public int getZYDM() {
+    public String getZYDM() {
         return ZYDM;
     }
 
-    public void setZYDM(int ZYDM) {
+    public void setZYDM(String ZYDM) {
         this.ZYDM = ZYDM;
     }
 
@@ -202,5 +200,31 @@ public class TD_QBJHK {
         this.CSMBH = CSMBH;
     }
 
-
+    @Override
+    public String toString() {
+        return "TD_QBJHK{" +
+                "ID=" + ID +
+                ", NF='" + NF + '\'' +
+                ", SFDM=" + SFDM +
+                ", KLDM='" + KLDM + '\'' +
+                ", PCDM='" + PCDM + '\'' +
+                ", JHXZ='" + JHXZ + '\'' +
+                ", TDDW='" + TDDW + '\'' +
+                ", ZYDH=" + ZYDH +
+                ", ZYDM=" + ZYDM +
+                ", ZYMC='" + ZYMC + '\'' +
+                ", ZYLB='" + ZYLB + '\'' +
+                ", TJSXBZ='" + TJSXBZ + '\'' +
+                ", XZNX='" + XZNX + '\'' +
+                ", JHRS='" + JHRS + '\'' +
+                ", JHZXS='" + JHZXS + '\'' +
+                ", SFSF='" + SFSF + '\'' +
+                ", YTCES='" + YTCES + '\'' +
+                ", YXXH='" + YXXH + '\'' +
+                ", YXXCKM='" + YXXCKM + '\'' +
+                ", JZXCKM='" + JZXCKM + '\'' +
+                ", CZYHM='" + CZYHM + '\'' +
+                ", CSMBH='" + CSMBH + '\'' +
+                '}';
+    }
 }
