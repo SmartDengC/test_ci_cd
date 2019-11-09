@@ -1,6 +1,4 @@
-package com.service.impl;
-
-/**
+package com.service.impl;/**
  * @title: DataImportServiceImpl
  * @projectName FreshmanInfomationAnalysSystem
  * @description: TODO
@@ -62,351 +60,351 @@ public class DataImportServiceImpl implements DataImportService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public int importData (HashMap<String,InputStream> dbfMap, int year, int province) throws Exception{
-        /**
-         * 先处理特殊的T_TDD与TD_XSFS表
-         */
-        DataFrame T_TDDDataFrame = DbfPip.open(dbfMap.get("T_TDD"));
-        //找到T_TDD表中表示特定分数的字段，并将这个字段映射到分数表的字段上
-        DataFrame TD_CJXDMdataFrame = DbfPip.open(dbfMap.get("TD_CJXDM"));
-        HashMap<String ,String> colmnMap = new HashMap<String, String>();
-        if(TD_CJXDMdataFrame.isEmpty()|| T_TDDDataFrame.isEmpty())
-        {
-            System.out.println("提取成绩对照表：TD_CJXDMFile，出错！表是空的！");
-            return 0;
-        }
-        else
-        {
-            for(int i = 0; i <TD_CJXDMdataFrame.length() ; i++)
+            /**
+             * 先处理特殊的T_TDD与TD_XSFS表
+             */
+            DataFrame T_TDDDataFrame = DbfPip.open(dbfMap.get("T_TDD"));
+            //找到T_TDD表中表示特定分数的字段，并将这个字段映射到分数表的字段上
+            DataFrame TD_CJXDMdataFrame = DbfPip.open(dbfMap.get("TD_CJXDM"));
+            HashMap<String ,String> colmnMap = new HashMap<String, String>();
+            if(TD_CJXDMdataFrame.isEmpty()|| T_TDDDataFrame.isEmpty())
             {
-                String CJXDM = null;
-                String CJXMC = null;
-                if(TD_CJXDMdataFrame.get(i,"CJXDM")!=null && TD_CJXDMdataFrame.get(i,"CJXMC")!=null){
-                    CJXDM="GKCJX"+TD_CJXDMdataFrame.get(i,"CJXDM").toString().replaceAll(" ","");
-                    CJXMC=TD_CJXDMdataFrame.get(i,"CJXMC").toString().replaceAll(" ","");
-
-                }
-                switch (CJXMC){
-                    case "语文":
-                        colmnMap.put("YWCJ",CJXDM);
-                        break;
-                    case "数学":
-                        colmnMap.put("SXCJ",CJXDM);
-                        break;
-                    case "外语":
-                        colmnMap.put("WYCJ",CJXDM);
-                        break;
-                    case "综合":
-                        colmnMap.put("ZHCJ",CJXDM);
-                    default:
-                        break;
-                }
-                if(colmnMap.size()==4){
-                    break;
-                }
+                System.out.println("提取成绩对照表：TD_CJXDMFile，出错！表是空的！");
+                return 0;
             }
-        }
-        if(colmnMap.size() != 4){
-            System.out.println("提取成绩对照表：TD_CJXDMFile，出错！配置多了或少了字段映射！");
-            return 0;
-        }
-        /**
-         * 提取XSFS的信息并将它变成List<obj>
-         * 将学生分数信息保存到数据库,添加年份，省份等代码
-         */
-        List<TD_XSFS> td_xsfsList =new ArrayList<TD_XSFS>();
+            else
+            {
+                for(int i = 0; i <TD_CJXDMdataFrame.length() ; i++)
+                {
+                    String CJXDM = null;
+                    String CJXMC = null;
+                    if(TD_CJXDMdataFrame.get(i,"CJXDM")!=null && TD_CJXDMdataFrame.get(i,"CJXMC")!=null){
+                        CJXDM="GKCJX"+TD_CJXDMdataFrame.get(i,"CJXDM").toString().replaceAll(" ","");
+                        CJXMC=TD_CJXDMdataFrame.get(i,"CJXMC").toString().replaceAll(" ","");
 
-        //配置忽略的字段
-        Set<String> TD_XSFSTableXxcludeSet =new  HashSet<String>();
-        TD_XSFSTableXxcludeSet.add("ID");
-        /**
-         * 处理T_TDDDataFrame中的数据：
-         * 1、将性别代码变成中文
-         * 2、添加年份、省份代码
-         * 3、将分数全部变成整数
-         */
-        List<Integer> yearList = new ArrayList<Integer>();
-        List<Integer> provinceList = new ArrayList<Integer>();
-        List<Integer> ZYCJList = new ArrayList<Integer>();
-        List<Integer> ZSCJList = new ArrayList<Integer>();
-        T_TDDDataFrame.rename("XBDM","XB");
-        for (int i = 0; i <T_TDDDataFrame.length() ; i++) {
-            //处理性别数据
-            if(T_TDDDataFrame.get(i,"XB")!=null){
-                String gender = T_TDDDataFrame.get(i,"XB").toString();
-                if(gender !=null && gender !=""){
-                    if(gender.equals("1"))
-                    {
-                        T_TDDDataFrame.set(i,"XB","男");
                     }
-                    else
-                    {
-                        T_TDDDataFrame.set(i,"XB","女");
+                    switch (CJXMC){
+                        case "语文":
+                            colmnMap.put("YWCJ",CJXDM);
+                            break;
+                        case "数学":
+                            colmnMap.put("SXCJ",CJXDM);
+                            break;
+                        case "外语":
+                            colmnMap.put("WYCJ",CJXDM);
+                            break;
+                        case "综合":
+                            colmnMap.put("ZHCJ",CJXDM);
+                        default:
+                            break;
                     }
+                    if(colmnMap.size()==4){
+                        break;
+                    }
+                }
+                }
+            if(colmnMap.size() != 4){
+                System.out.println("提取成绩对照表：TD_CJXDMFile，出错！配置多了或少了字段映射！");
+                return 0;
+            }
+            /**
+             * 提取XSFS的信息并将它变成List<obj>
+              * 将学生分数信息保存到数据库,添加年份，省份等代码
+              */
+            List<TD_XSFS> td_xsfsList =new ArrayList<TD_XSFS>();
+
+            //配置忽略的字段
+            Set<String> TD_XSFSTableXxcludeSet =new  HashSet<String>();
+            TD_XSFSTableXxcludeSet.add("ID");
+            /**
+             * 处理T_TDDDataFrame中的数据：
+             * 1、将性别代码变成中文
+             * 2、添加年份、省份代码
+             * 3、将分数全部变成整数
+             */
+            List<Integer> yearList = new ArrayList<Integer>();
+            List<Integer> provinceList = new ArrayList<Integer>();
+            List<Integer> ZYCJList = new ArrayList<Integer>();
+            List<Integer> ZSCJList = new ArrayList<Integer>();
+            T_TDDDataFrame.rename("XBDM","XB");
+            for (int i = 0; i <T_TDDDataFrame.length() ; i++) {
+                //处理性别数据
+                if(T_TDDDataFrame.get(i,"XB")!=null){
+                    String gender = T_TDDDataFrame.get(i,"XB").toString();
+                    if(gender !=null && gender !=""){
+                        if(gender.equals("1"))
+                        {
+                            T_TDDDataFrame.set(i,"XB","男");
+                        }
+                        else
+                        {
+                            T_TDDDataFrame.set(i,"XB","女");
+                        }
                 }else {
-                    T_TDDDataFrame.set(i,"XB"," ");
+                        T_TDDDataFrame.set(i,"XB"," ");
+                    }
                 }
-            }
-            //添加年份、省份
-            yearList.add(year);
-            provinceList.add(province);
-            //处理分数
-            Object scoreObject=null;
-            int score =0;
-            ZYCJList.add(0);
-            ZSCJList.add(0);
-            /**
-             * 这里对映射集合中的分数去除小数点,并将空值置零
-             */
-            for( String item : colmnMap.keySet()){
-                scoreObject = T_TDDDataFrame.get(i,colmnMap.get(item));
-                if(scoreObject!=null && !scoreObject.toString().equals("")){
+                //添加年份、省份
+                yearList.add(year);
+                provinceList.add(province);
+                //处理分数
+                Object scoreObject=null;
+                int score =0;
+                ZYCJList.add(0);
+                ZSCJList.add(0);
+                /**
+                 * 这里对映射集合中的分数去除小数点,并将空值置零
+                 */
+                for( String item : colmnMap.keySet()){
+                    scoreObject = T_TDDDataFrame.get(i,colmnMap.get(item));
+                    if(scoreObject!=null && !scoreObject.toString().equals("")){
+                        score = Integer.parseInt(scoreObject.toString().substring(0,scoreObject.toString().indexOf(".")));
+                    }
+                    else{
+                        score=0;
+                    }
+                    T_TDDDataFrame.set(i,colmnMap.get(item),score);
+                }
+                /**
+                 * 这里对通用分数去小数点：
+                 * JC TZCJ ZGF TDCJ
+                 */
+                scoreObject = T_TDDDataFrame.get(i,"CJ");
+                if(scoreObject!=null &&!scoreObject.toString().equals("")){
+                        score = Integer.parseInt(scoreObject.toString().substring(0,scoreObject.toString().indexOf(".")));
+                        T_TDDDataFrame.set(i,"CJ",score);
+                    }else{
+                        T_TDDDataFrame.set(i,"CJ",0);
+                }
+                scoreObject = T_TDDDataFrame.get(i,"TZCJ");
+                if(scoreObject!=null &&!scoreObject.toString().equals("")){
                     score = Integer.parseInt(scoreObject.toString().substring(0,scoreObject.toString().indexOf(".")));
+                    T_TDDDataFrame.set(i,"TZCJ",score);
+                }else{
+                    T_TDDDataFrame.set(i,"TZCJ",0);
                 }
-                else{
-                    score=0;
+                scoreObject = T_TDDDataFrame.get(i,"ZGF");
+                if(scoreObject!=null &&!scoreObject.toString().equals("")){
+                    score = Integer.parseInt(scoreObject.toString().substring(0,scoreObject.toString().indexOf(".")));
+                    T_TDDDataFrame.set(i,"ZGF",score);
+                }else{
+                    T_TDDDataFrame.set(i,"ZGF",0);
                 }
-                T_TDDDataFrame.set(i,colmnMap.get(item),score);
+                scoreObject = T_TDDDataFrame.get(i,"TDCJ");
+                if(scoreObject!=null &&!scoreObject.toString().equals("")){
+                    score = Integer.parseInt(scoreObject.toString().substring(0,scoreObject.toString().indexOf(".")));
+                    T_TDDDataFrame.set(i,"TDCJ",score);
+                }else{
+                    T_TDDDataFrame.set(i,"TDCJ",0);
+                }
+
             }
+            //T_TDDDataFrame中添上数据
+            T_TDDDataFrame.add("NF",yearList);
+            T_TDDDataFrame.add("SFDM",provinceList);
+            T_TDDDataFrame.add("ZSCJ",ZSCJList);
+            T_TDDDataFrame.add("ZYCJ",ZYCJList);
+
+            Class clazz = new TD_XSFS().getClass();
             /**
-             * 这里对通用分数去小数点：
-             * JC TZCJ ZGF TDCJ
+             * 获得TD_XSFX实体集合
              */
-            scoreObject = T_TDDDataFrame.get(i,"CJ");
-            if(scoreObject!=null &&!scoreObject.toString().equals("")){
-                score = Integer.parseInt(scoreObject.toString().substring(0,scoreObject.toString().indexOf(".")));
-                T_TDDDataFrame.set(i,"CJ",score);
-            }else{
-                T_TDDDataFrame.set(i,"CJ",0);
+            td_xsfsList = DataFrameUtils.fillListByMap(T_TDDDataFrame,clazz,TD_XSFSTableXxcludeSet,colmnMap);
+            int insertTd_xsfsDataResult =0;
+            //在这执行插入数据库功能，并获得主键值
+            if(td_xsfsList != null){
+                insertTd_xsfsDataResult = dataImportDao.insertTD_XSFS(td_xsfsList);
             }
-            scoreObject = T_TDDDataFrame.get(i,"TZCJ");
-            if(scoreObject!=null &&!scoreObject.toString().equals("")){
-                score = Integer.parseInt(scoreObject.toString().substring(0,scoreObject.toString().indexOf(".")));
-                T_TDDDataFrame.set(i,"TZCJ",score);
-            }else{
-                T_TDDDataFrame.set(i,"TZCJ",0);
+            else {
+                System.out.println("将T_TDDDataFrame的数据转换到TD_XSFS实体出错！");
+                return 0;
             }
-            scoreObject = T_TDDDataFrame.get(i,"ZGF");
-            if(scoreObject!=null &&!scoreObject.toString().equals("")){
-                score = Integer.parseInt(scoreObject.toString().substring(0,scoreObject.toString().indexOf(".")));
-                T_TDDDataFrame.set(i,"ZGF",score);
-            }else{
-                T_TDDDataFrame.set(i,"ZGF",0);
+            if (insertTd_xsfsDataResult==0)
+            {
+                System.out.println("导入TD_XSFS出错！");
+                throw new Exception();
             }
-            scoreObject = T_TDDDataFrame.get(i,"TDCJ");
-            if(scoreObject!=null &&!scoreObject.toString().equals("")){
-                score = Integer.parseInt(scoreObject.toString().substring(0,scoreObject.toString().indexOf(".")));
-                T_TDDDataFrame.set(i,"TDCJ",score);
-            }else{
-                T_TDDDataFrame.set(i,"TDCJ",0);
-            }
-
-        }
-        //T_TDDDataFrame中添上数据
-        T_TDDDataFrame.add("NF",yearList);
-        T_TDDDataFrame.add("SFDM",provinceList);
-        T_TDDDataFrame.add("ZSCJ",ZSCJList);
-        T_TDDDataFrame.add("ZYCJ",ZYCJList);
-
-        Class clazz = new TD_XSFS().getClass();
-        /**
-         * 获得TD_XSFX实体集合
-         */
-        td_xsfsList = DataFrameUtils.fillListByMap(T_TDDDataFrame,clazz,TD_XSFSTableXxcludeSet,colmnMap);
-        int insertTd_xsfsDataResult =0;
-        //在这执行插入数据库功能，并获得主键值
-        if(td_xsfsList != null){
-            insertTd_xsfsDataResult = dataImportDao.insertTD_XSFS(td_xsfsList);
-        }
-        else {
-            System.out.println("将T_TDDDataFrame的数据转换到TD_XSFS实体出错！");
-            return 0;
-        }
-        if (insertTd_xsfsDataResult==0)
-        {
-            System.out.println("导入TD_XSFS出错！");
-            throw new Exception();
-        }
 
         /**
          * 提取td_xsfsList实体集中的主键并写入到T_TDDDataFrame中
          */
         List<String>  TD_XSFSTableId = new ArrayList<String>();
-        for(TD_XSFS td_xsfsItem: td_xsfsList){
-            TD_XSFSTableId.add(String.valueOf(td_xsfsItem.getID()));
-        }
-        T_TDDDataFrame.add("FS_ID",TD_XSFSTableId);
+            for(TD_XSFS td_xsfsItem: td_xsfsList){
+                TD_XSFSTableId.add(String.valueOf(td_xsfsItem.getID()));
+            }
+            T_TDDDataFrame.add("FS_ID",TD_XSFSTableId);
 
-        // T_TDD转换成List
-        clazz = new T_TDD().getClass();
-        Set<String> excludeSet =new  HashSet<String>();
-        excludeSet.add("ID");
-        /**
-         * KSLXDM 原数据float->数据库为int
-         * ZYDH5 为空情况，引申出：所有非String类型为空情况怎么处理
-         *
-         */
-        List<T_TDD> t_tdds = DataFrameUtils.fillListByDefault(T_TDDDataFrame,clazz,excludeSet);
-        //这里调用Dao,写入数据
-        if(dataImportDao.insertT_TDD(t_tdds)==0){
-            System.out.println("导入TD_TDD出错！");
-            throw new Exception();
-        }
-        dbfMap.remove("T_TDD");
-        dbfMap.remove("TD_CJXDM");
-        /**
-         * 调用各个mapper.写入数据，如果发生任何错误，全部回滚,回滚后就应该结束函数
-         */
-        HashMap<String,List<Object>> entityMap =new HashMap<String, List<Object>>();
-        for (String key : dbfMap.keySet()){
-            switch (key){
-                case "T_QBJHK": {
-                    List<TD_QBJHK> td_qbjhkList =  this.importT_QBJHKTable(dbfMap.get("T_QBJHK"),year,province);
-                    //这里需要判断null
-                    if (td_qbjhkList==null){
-                        System.out.println("导入T_QBJHK出错！");
-                        throw new Exception();
-                    }else if(td_qbjhkList.size()!=0){
-                        dataImportDao.insertTD_QBJHK(td_qbjhkList);
+            // T_TDD转换成List
+            clazz = new T_TDD().getClass();
+            Set<String> excludeSet =new  HashSet<String>();
+            excludeSet.add("ID");
+            /**
+             * KSLXDM 原数据float->数据库为int
+             * ZYDH5 为空情况，引申出：所有非String类型为空情况怎么处理
+             *
+             */
+            List<T_TDD> t_tdds = DataFrameUtils.fillListByDefault(T_TDDDataFrame,clazz,excludeSet);
+            //这里调用Dao,写入数据
+            if(dataImportDao.insertT_TDD(t_tdds)==0){
+                System.out.println("导入TD_TDD出错！");
+                throw new Exception();
+            }
+            dbfMap.remove("T_TDD");
+            dbfMap.remove("TD_CJXDM");
+            /**
+             * 调用各个mapper.写入数据，如果发生任何错误，全部回滚,回滚后就应该结束函数
+             */
+            HashMap<String,List<Object>> entityMap =new HashMap<String, List<Object>>();
+            for (String key : dbfMap.keySet()){
+                switch (key){
+                    case "T_QBJHK": {
+                        List<TD_QBJHK> td_qbjhkList =  this.importT_QBJHKTable(dbfMap.get("T_QBJHK"),year,province);
+                        //这里需要判断null
+                        if (td_qbjhkList==null){
+                            System.out.println("导入T_QBJHK出错！");
+                            throw new Exception();
+                        }else if(td_qbjhkList.size()!=0){
+                            dataImportDao.insertTD_QBJHK(td_qbjhkList);
+                        }
+                        break;
                     }
-                    break;
-                }
-                case"TD_BYLBDM":{
-                    List<TD_BYLBDM> td_bylbdmList =this.importTD_BYLBDMTable(dbfMap.get("TD_BYLBDM"),year,province);
-                    if(td_bylbdmList==null){
-                        System.out.println("导入TD_BYLBDM出错！");
-                        throw new Exception();
-                    }else if(td_bylbdmList.size()!=0){
-                        dataImportDao.insertTD_BYLBDM(td_bylbdmList);
+                    case"TD_BYLBDM":{
+                         List<TD_BYLBDM> td_bylbdmList =this.importTD_BYLBDMTable(dbfMap.get("TD_BYLBDM"),year,province);
+                        if(td_bylbdmList==null){
+                            System.out.println("导入TD_BYLBDM出错！");
+                            throw new Exception();
+                        }else if(td_bylbdmList.size()!=0){
+                            dataImportDao.insertTD_BYLBDM(td_bylbdmList);
+                        }
+                        break;
                     }
-                    break;
-                }
-                case "TD_DQDM":{
-                    List<TD_DQDM> td_dqdmList =this.insertTD_DQDM(dbfMap.get("TD_DQDM"),year,province);
-                    if(td_dqdmList==null){
-                        System.out.println("导入TD_DQDM出错！");
-                        throw new Exception();
-                    }else if(td_dqdmList.size()!=0){
-                        dataImportDao.insertTD_DQDM(td_dqdmList);
+                    case "TD_DQDM":{
+                        List<TD_DQDM> td_dqdmList =this.insertTD_DQDM(dbfMap.get("TD_DQDM"),year,province);
+                        if(td_dqdmList==null){
+                            System.out.println("导入TD_DQDM出错！");
+                            throw new Exception();
+                        }else if(td_dqdmList.size()!=0){
+                            dataImportDao.insertTD_DQDM(td_dqdmList);
+                        }
+                        break;
                     }
-                    break;
-                }
-                case "TD_JHXZDM":{
-                    List<TD_JHXZDM> td_jhxzdmList =this.insertTD_JHXZDM(dbfMap.get("TD_JHXZDM"),year,province);
-                    if(td_jhxzdmList==null){
-                        System.out.println("导入TD_JHXZDM出错！");
-                        throw new Exception();
-                    }else if(td_jhxzdmList.size()!=0){
-                        dataImportDao.insertTD_JHXZDM(td_jhxzdmList);
+                    case "TD_JHXZDM":{
+                        List<TD_JHXZDM> td_jhxzdmList =this.insertTD_JHXZDM(dbfMap.get("TD_JHXZDM"),year,province);
+                        if(td_jhxzdmList==null){
+                            System.out.println("导入TD_JHXZDM出错！");
+                            throw new Exception();
+                        }else if(td_jhxzdmList.size()!=0){
+                            dataImportDao.insertTD_JHXZDM(td_jhxzdmList);
+                        }
+                        break;
                     }
-                    break;
-                }
-                case "TD_KLDM":{
-                    List<TD_KLDM> td_kldmList =this.insertTD_KLDM(dbfMap.get("TD_KLDM"),year,province);
-                    if(td_kldmList==null){
-                        System.out.println("导入TD_KLDM出错！");
-                        throw new Exception();
-                    }else if(td_kldmList.size()!=0){
-                        dataImportDao.insertTD_KLDM(td_kldmList);
+                    case "TD_KLDM":{
+                        List<TD_KLDM> td_kldmList =this.insertTD_KLDM(dbfMap.get("TD_KLDM"),year,province);
+                        if(td_kldmList==null){
+                            System.out.println("导入TD_KLDM出错！");
+                            throw new Exception();
+                        }else if(td_kldmList.size()!=0){
+                            dataImportDao.insertTD_KLDM(td_kldmList);
+                        }
+                        break;
                     }
-                    break;
-                }
-                case "TD_KSLBDM":{
-                    List<TD_KSLBDM> td_kslbdmList =this.insertTD_KSLBDM(dbfMap.get("TD_KSLBDM"),year,province);
-                    if(td_kslbdmList==null){
-                        System.out.println("导入TD_KSLBDM出错！");
-                        throw new Exception();
-                    }else if(td_kslbdmList.size()!=0){
-                        dataImportDao.insertTD_KSLBDM(td_kslbdmList);
+                    case "TD_KSLBDM":{
+                        List<TD_KSLBDM> td_kslbdmList =this.insertTD_KSLBDM(dbfMap.get("TD_KSLBDM"),year,province);
+                        if(td_kslbdmList==null){
+                            System.out.println("导入TD_KSLBDM出错！");
+                            throw new Exception();
+                        }else if(td_kslbdmList.size()!=0){
+                            dataImportDao.insertTD_KSLBDM(td_kslbdmList);
+                        }
+                        break;
                     }
-                    break;
-                }
-                case "TD_KSLXDM":{
-                    List<TD_KSLXDM> td_kslxdmList =this.insertTD_KSLXDM(dbfMap.get("TD_KSLXDM"),year,province);
-                    if(td_kslxdmList==null){
-                        System.out.println("导入TD_KSLXDM出错！");
-                        throw new Exception();
-                    }else if(td_kslxdmList.size()!=0){
-                        dataImportDao.insertTD_KSLXDM(td_kslxdmList);
+                    case "TD_KSLXDM":{
+                        List<TD_KSLXDM> td_kslxdmList =this.insertTD_KSLXDM(dbfMap.get("TD_KSLXDM"),year,province);
+                        if(td_kslxdmList==null){
+                            System.out.println("导入TD_KSLXDM出错！");
+                            throw new Exception();
+                        }else if(td_kslxdmList.size()!=0){
+                            dataImportDao.insertTD_KSLXDM(td_kslxdmList);
+                        }
+                        break;
                     }
-                    break;
-                }
-                case "TD_LQFSDM":{
-                    List<TD_LQFSDM> td_lqfsdmList =this.insertTD_LQFSDM(dbfMap.get("TD_LQFSDM"),year,province);
-                    if(td_lqfsdmList==null){
-                        System.out.println("导入TD_LQFSDM出错！");
-                        throw new Exception();
-                    }else if(td_lqfsdmList.size()!=0){
-                        dataImportDao.insertTD_LQFSDM(td_lqfsdmList);
+                    case "TD_LQFSDM":{
+                        List<TD_LQFSDM> td_lqfsdmList =this.insertTD_LQFSDM(dbfMap.get("TD_LQFSDM"),year,province);
+                        if(td_lqfsdmList==null){
+                            System.out.println("导入TD_LQFSDM出错！");
+                            throw new Exception();
+                        }else if(td_lqfsdmList.size()!=0){
+                            dataImportDao.insertTD_LQFSDM(td_lqfsdmList);
+                        }
+                        break;
                     }
-                    break;
-                }
-                case "TD_MZDM":{
-                    List<TD_MZDM> td_mzdmList =this.insertTD_MZDM(dbfMap.get("TD_MZDM"),year,province);
-                    if(td_mzdmList==null){
-                        System.out.println("导入TD_MZDM出错！");
-                        throw new Exception();
-                    }else if(td_mzdmList.size()!=0){
-                        dataImportDao.insertTD_MZDM(td_mzdmList);
+                    case "TD_MZDM":{
+                        List<TD_MZDM> td_mzdmList =this.insertTD_MZDM(dbfMap.get("TD_MZDM"),year,province);
+                        if(td_mzdmList==null){
+                            System.out.println("导入TD_MZDM出错！");
+                            throw new Exception();
+                        }else if(td_mzdmList.size()!=0){
+                            dataImportDao.insertTD_MZDM(td_mzdmList);
+                        }
+                        break;
                     }
-                    break;
-                }
-                case "TD_PCDM":{
-                    List<TD_PCDM> td_pcdmList =this.insertTD_PCDM(dbfMap.get("TD_PCDM"),year,province);
-                    if(td_pcdmList==null){
-                        System.out.println("导入TD_PCDM出错！");
-                        throw new Exception();
-                    }else if(td_pcdmList.size()!=0){
-                        dataImportDao.insertTD_PCDM(td_pcdmList);
+                    case "TD_PCDM":{
+                        List<TD_PCDM> td_pcdmList =this.insertTD_PCDM(dbfMap.get("TD_PCDM"),year,province);
+                        if(td_pcdmList==null){
+                            System.out.println("导入TD_PCDM出错！");
+                            throw new Exception();
+                        }else if(td_pcdmList.size()!=0){
+                            dataImportDao.insertTD_PCDM(td_pcdmList);
+                        }
+                        break;
                     }
-                    break;
-                }
-                case "TD_WYYZDM":{
-                    List<TD_WYYZDM> td_wyyzdmList =this.importTD_WYYZDMTable(dbfMap.get("TD_WYYZDM"),year,province);
-                    if(td_wyyzdmList==null){
-                        System.out.println("导入TD_WYYZDM出错！");
-                        throw new Exception();
-                    }else if(td_wyyzdmList.size()!=0){
-                        dataImportDao.insertTD_WYYZDM(td_wyyzdmList);
+                    case "TD_WYYZDM":{
+                        List<TD_WYYZDM> td_wyyzdmList =this.importTD_WYYZDMTable(dbfMap.get("TD_WYYZDM"),year,province);
+                        if(td_wyyzdmList==null){
+                            System.out.println("导入TD_WYYZDM出错！");
+                            throw new Exception();
+                        }else if(td_wyyzdmList.size()!=0){
+                            dataImportDao.insertTD_WYYZDM(td_wyyzdmList);
+                        }
+                        break;
                     }
-                    break;
-                }
-                case "TD_ZCDM":{
-                    List<TD_ZCDM> td_zcdmList =this.importTD_ZCDMTable(dbfMap.get("TD_ZCDM"),year,province);
-                    if(td_zcdmList==null){
-                        System.out.println("导入TD_ZCDM出错！");
-                        throw new Exception();
-                    }else {
-                        dataImportDao.insertTD_ZCDM(td_zcdmList);
+                    case "TD_ZCDM":{
+                        List<TD_ZCDM> td_zcdmList =this.importTD_ZCDMTable(dbfMap.get("TD_ZCDM"),year,province);
+                        if(td_zcdmList==null){
+                            System.out.println("导入TD_ZCDM出错！");
+                            throw new Exception();
+                        }else {
+                            dataImportDao.insertTD_ZCDM(td_zcdmList);
+                        }
+                        break;
                     }
-                    break;
-                }
-                case "TD_ZYTZDM":{
-                    List<TD_ZYTZDM> td_zytzdmList =this.importTD_ZYTZDMTable(dbfMap.get("TD_ZYTZDM"),year,province);
-                    if(td_zytzdmList==null){
-                        System.out.println("导入TD_ZYTZDM出错！");
-                        throw new Exception();
-                    }else if(td_zytzdmList.size()!=0){
-                        dataImportDao.insertTD_ZYTZDM(td_zytzdmList);
+                    case "TD_ZYTZDM":{
+                        List<TD_ZYTZDM> td_zytzdmList =this.importTD_ZYTZDMTable(dbfMap.get("TD_ZYTZDM"),year,province);
+                        if(td_zytzdmList==null){
+                            System.out.println("导入TD_ZYTZDM出错！");
+                            throw new Exception();
+                        }else if(td_zytzdmList.size()!=0){
+                            dataImportDao.insertTD_ZYTZDM(td_zytzdmList);
+                        }
+                        break;
                     }
-                    break;
-                }
-                case "TD_ZZMMDM":{
-                    List<TD_ZZMMDM> td_zzmmdmList =this.importTD_ZZMMDMTable(dbfMap.get("TD_ZZMMDM"),year,province);
-                    if(td_zzmmdmList==null){
-                        System.out.println("导入TD_ZZMMDM出错！");
-                        throw new Exception();
-                    }else if (td_zzmmdmList.size()!=0){
-                        dataImportDao.insertTD_ZZMMDM(td_zzmmdmList);
+                    case "TD_ZZMMDM":{
+                        List<TD_ZZMMDM> td_zzmmdmList =this.importTD_ZZMMDMTable(dbfMap.get("TD_ZZMMDM"),year,province);
+                        if(td_zzmmdmList==null){
+                            System.out.println("导入TD_ZZMMDM出错！");
+                            throw new Exception();
+                        }else if (td_zzmmdmList.size()!=0){
+                            dataImportDao.insertTD_ZZMMDM(td_zzmmdmList);
+                        }
+                        break;
                     }
-                    break;
-                }
-                default:{
-                    System.out.println("出现未知出错！");
-                    throw new Exception();
+                    default:{
+                        System.out.println("出现未知出错！");
+                        throw new Exception();
+                    }
                 }
             }
-        }
-        return 1;
+            return 1;
     }
     /**陈泯全
      * 将InputStream数据类型的TD_QBJHK表变成实体List
@@ -435,10 +433,10 @@ public class DataImportServiceImpl implements DataImportService {
         dataFrame.add("SFDM",provinceList);
         //转换成List
         Class clazz = new TD_QBJHK().getClass();
-        Set<String> excludeSet =new  HashSet<String>();
-        excludeSet.add("ID");
-        td_qbjhksList = DataFrameUtils.fillListByDefault(dataFrame,clazz,excludeSet);
-        if (td_qbjhksList==null){
+            Set<String> excludeSet =new  HashSet<String>();
+            excludeSet.add("ID");
+            td_qbjhksList = DataFrameUtils.fillListByDefault(dataFrame,clazz,excludeSet);
+            if (td_qbjhksList==null){
             return null;
         }
         else {
@@ -1043,11 +1041,11 @@ public class DataImportServiceImpl implements DataImportService {
         // 根据这两个条件进行查表，返回值使用map存储，这里只写了一个，其他的类似。
         int  count = dataImportDao.selectT_TDD(year, proDm);
         if (count >= 1){
-            map.put("T_TDD", 1);
+            map.put("tableStatus", 1);
             result = mapper.writeValueAsString(map);
             return result;
         }
-        map.put("T_TDD", 0);
+        map.put("tableStatus", 0);
         result = mapper.writeValueAsString(map);
         return result;
     }

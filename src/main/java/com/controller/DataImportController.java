@@ -1,5 +1,4 @@
-package com.controller;
-/**
+package com.controller;/**
  * @title: dataImport
  * @projectName FreshmanInfomationAnalysSystem
  * @description: TODO
@@ -73,37 +72,37 @@ public class DataImportController {
     @ResponseBody
     @RequestMapping("/read")
     public String dataImport(String year,String province, MultipartFile [] dbfs) {
-        //1，年份检测、省份安全检查，省份代码是要查询数据库吗？
-        //新的省份处理方式,是否这里要请数据库检测省份代码存不存在？
-        if(year==null || Integer.parseInt(year)<minYear || Integer.parseInt(year)> maxYear ||
-                province == null ){
-            return "{\"status\":\"0\"}";
-        }
-        HashMap<String,InputStream> dbfMap = new HashMap<String, InputStream>();
-        //2，dbf文件数量与文件名检测  测试是关闭严格数量检测 dbfNumber
-        if(dbfs == null || dbfs.length != dbfNumber ){
-            return "{\"status\":\"0\"}";
-        }
-        else{
-            //将dbf文件的名字与其对应的InputStream封装到dbfMap里
-            for(MultipartFile dbfFile:dbfs){
-                String originalFilename = dbfFile.getOriginalFilename();
-                String subName = originalFilename.substring(0,originalFilename.indexOf("."));
-                //判断是否为空，名字是否为指定的名字
-                if(dbfFile.isEmpty() || !DBF_NAME_SET.contains(subName)){
-                    return "{\"status\":\"0\"}";
-                }
-                else{
-                    try {
-                        dbfMap.put(subName,dbfFile.getInputStream());
-                    } catch (IOException e) {
-                        e.printStackTrace();
+            //1，年份检测、省份安全检查，省份代码是要查询数据库吗？
+            //新的省份处理方式,是否这里要请数据库检测省份代码存不存在？
+            if(year==null || Integer.parseInt(year)<minYear || Integer.parseInt(year)> maxYear ||
+                    province == null ){
+                return "{\"status\":\"0\"}";
+            }
+            HashMap<String,InputStream> dbfMap = new HashMap<String, InputStream>();
+            //2，dbf文件数量与文件名检测  测试是关闭严格数量检测 dbfNumber
+            if(dbfs == null || dbfs.length != dbfNumber ){
+                return "{\"status\":\"0\"}";
+            }
+            else{
+                //将dbf文件的名字与其对应的InputStream封装到dbfMap里
+                for(MultipartFile dbfFile:dbfs){
+                    String originalFilename = dbfFile.getOriginalFilename();
+                    String subName = originalFilename.substring(0,originalFilename.indexOf("."));
+                    //判断是否为空，名字是否为指定的名字
+                    if(dbfFile.isEmpty() || !DBF_NAME_SET.contains(subName)){
                         return "{\"status\":\"0\"}";
+                    }
+                    else{
+                        try {
+                            dbfMap.put(subName,dbfFile.getInputStream());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            return "{\"status\":\"0\"}";
+                        }
                     }
                 }
             }
-        }
-        //3调用service函数，写入数据
+            //3调用service函数，写入数据
         int importResoult = 0;
         try {
             importResoult = dataImportService.importData(dbfMap,Integer.parseInt(year),Integer.parseInt(province));
@@ -111,11 +110,11 @@ public class DataImportController {
             e.printStackTrace();
         }
         if(importResoult==1){
-            return "{\"status\":\"1\"}";
-        }
-        else {
-            return "{\"status\":\"0\"}";
-        }
+                return "{\"status\":\"1\"}";
+            }
+            else {
+                return "{\"status\":\"0\"}";
+            }
     }
     /**
      * Modification User: 邓聪
