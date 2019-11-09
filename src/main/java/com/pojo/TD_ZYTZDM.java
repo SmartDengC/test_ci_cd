@@ -9,14 +9,14 @@ package com.pojo;
  * Modification Date： 程序修改时间
  */
 public class TD_ZYTZDM {
-    private int ZYTZDM;
+    private String ZYTZDM;
     private String ZYTZMC;
 
-    public int getZYTZDM() {
+    public String getZYTZDM() {
         return ZYTZDM;
     }
 
-    public void setZYTZDM(int ZYTZDM) {
+    public void setZYTZDM(String ZYTZDM) {
         this.ZYTZDM = ZYTZDM;
     }
 

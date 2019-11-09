@@ -8,18 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a999be16-2aab-468e-82d0-66aead19e5de" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/CheckDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/BasicConfigController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/DataImportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/DataImportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dao/CheckDataDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dao/BasicConfigDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_DQDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_DQDM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_KLDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_KLDM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_PCDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_PCDM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/CheckDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/BasicConfigservice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/impl/CheckDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/BasicConfigserviceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/impl/DataImportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/DataImportServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CheckDataMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CheckDataMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_ZYTZDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_ZYTZDM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/test.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +71,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.Tomcat8">
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.test" />
+      <module name="FreshmanInfomationAnalysSystem" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tomcat8" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.41" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/FreshmanInfomationAnalysSystem_war/" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -140,6 +137,11 @@
         </option>
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -159,16 +161,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/controller/BasicConfigController.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
