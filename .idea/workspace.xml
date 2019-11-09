@@ -2,20 +2,42 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="FreshmanInfomationAnalysSystem:war" />
+      <artifact name="FreshmanInfomationAnalysSystem" />
+      <artifact name="FreshmanInfomationAnalysSystem" />
+      <artifact name="FreshmanInfomationAnalysSystem" />
+      <artifact name="FreshmanInfomationAnalysSystem" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a999be16-2aab-468e-82d0-66aead19e5de" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_ZYTZDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_ZYTZDM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/BasicConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/BasicConfigController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="FreshmanInfomationAnalysSystem" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/controller/BasicConfigController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="117" column="28" lean-forward="true" selection-start-line="117" selection-start-column="28" selection-end-line="117" selection-end-column="28" />
+              <folding>
+                <element signature="method#getData#0;class#BasicConfigController#0" />
+                <element signature="method#uploadFile#0;class#BasicConfigController#0" />
+                <element signature="method#reUploadFile#0;class#BasicConfigController#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -26,6 +48,37 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/utils/datautils/toList.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-dao.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/com/test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pojo/TD_KSLBDM.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pojo/TD_LQFSDM.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pojo/TD_ZCDM.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pojo/T_TDD.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utils/datadriverutils/DbfPip.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utils/datautils/DataFrameUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pojo/TD_QBJHK.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utils/GetDefaultInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/service/DataImportService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dao/DataImportDao.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/DataImportMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pojo/TD_KLDM.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pojo/TD_DQDM.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pojo/TD_PCDM.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/controller/DataImportController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-mvc.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pojo/TD_ZYTZDM.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/service/impl/DataImportServiceImpl.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/controller/BasicConfigController.java" />
+      </list>
+    </option>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -41,9 +94,92 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="285" />
+    <option name="y" value="-10" />
+    <option name="width" value="1225" />
+    <option name="height" value="1085" />
+  </component>
   <component name="ProjectId" id="1TJZzYoFq2MVOpyJBIV6CU64QWu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="FreshmanInfomationAnalysSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FreshmanInfomationAnalysSystem" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FreshmanInfomationAnalysSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FreshmanInfomationAnalysSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FreshmanInfomationAnalysSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FreshmanInfomationAnalysSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FreshmanInfomationAnalysSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FreshmanInfomationAnalysSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FreshmanInfomationAnalysSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FreshmanInfomationAnalysSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FreshmanInfomationAnalysSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FreshmanInfomationAnalysSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FreshmanInfomationAnalysSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FreshmanInfomationAnalysSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FreshmanInfomationAnalysSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FreshmanInfomationAnalysSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FreshmanInfomationAnalysSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FreshmanInfomationAnalysSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
@@ -71,26 +207,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat8">
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.test" />
-      <module name="FreshmanInfomationAnalysSystem" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Tomcat8" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.41" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/FreshmanInfomationAnalysSystem_war/" />
+  <component name="RunManager">
+    <configuration name="Tomcat 8.0.531" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.531" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="FreshmanInfomationAnalysSystem:war">
+        <artifact name="FreshmanInfomationAnalysSystem">
           <settings>
-            <option name="CONTEXT_PATH" value="/FreshmanInfomationAnalysSystem_war" />
+            <option name="CONTEXT_PATH" value="/FreshmanInfomationAnalysSystem" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Unnamed_FreshmanInfomationAnalysSystem" />
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_FreshmanInfomationAnalysSystem_5" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -98,8 +226,23 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="53644" />
+        <option name="DEBUG_PORT" value="55282" />
       </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
@@ -133,18 +276,97 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="FreshmanInfomationAnalysSystem:war" />
+          <artifact name="FreshmanInfomationAnalysSystem" />
+          <artifact name="FreshmanInfomationAnalysSystem" />
+          <artifact name="FreshmanInfomationAnalysSystem" />
+          <artifact name="FreshmanInfomationAnalysSystem" />
         </option>
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.test" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a999be16-2aab-468e-82d0-66aead19e5de" name="Default Changelist" comment="" />
+      <created>1569140268596</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1569140268596</updated>
+      <workItem from="1569140269849" duration="3352000" />
+      <workItem from="1569205836598" duration="1476000" />
+      <workItem from="1571196543808" duration="1668000" />
+      <workItem from="1571418692294" duration="1918000" />
+      <workItem from="1571420622953" duration="666000" />
+      <workItem from="1571995429816" duration="1441000" />
+      <workItem from="1572006377337" duration="2539000" />
+      <workItem from="1572008991031" duration="419000" />
+      <workItem from="1572090600901" duration="12794000" />
+      <workItem from="1572155976027" duration="2856000" />
+      <workItem from="1572262677140" duration="6646000" />
+      <workItem from="1572681263837" duration="85000" />
+      <workItem from="1572685286868" duration="7705000" />
+      <workItem from="1572693437982" duration="9390000" />
+      <workItem from="1572827904662" duration="253000" />
+      <workItem from="1572831209519" duration="15384000" />
+      <workItem from="1572848811022" duration="1404000" />
+      <workItem from="1572858508347" duration="2073000" />
+      <workItem from="1572871932124" duration="2210000" />
+      <workItem from="1572933993596" duration="1943000" />
+      <workItem from="1572964015217" duration="1338000" />
+      <workItem from="1573007717073" duration="5514000" />
+      <workItem from="1573264662380" duration="541000" />
+      <workItem from="1573265809741" duration="8933000" />
+      <workItem from="1573281389408" duration="957000" />
+      <workItem from="1573291503136" duration="1142000" />
+      <workItem from="1573292648503" duration="26000" />
+      <workItem from="1573292696788" duration="1080000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="778000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49514562" visible="true" weight="0.26675603" />
+      <window_info id="Structure" order="1" sideWeight="0.5048544" side_tool="true" weight="0.24262735" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" sideWeight="0.5048544" side_tool="true" weight="0.24262735" />
+      <window_info id="Web" order="7" sideWeight="0.5048544" side_tool="true" weight="0.24262735" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49932975" weight="0.28045326" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
+      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3286119" />
+      <window_info anchor="bottom" id="Spring" order="8" weight="0.54815865" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3286119" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50067025" side_tool="true" weight="0.7082153" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.27478755" />
+      <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.3286119" />
+      <window_info anchor="bottom" id="Database Changes" order="14" />
+      <window_info anchor="bottom" id="Version Control" order="15" weight="0.3286119" />
+      <window_info anchor="right" id="Remote Host" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -155,11 +377,57 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/controller/DataImportController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="46" lean-forward="true" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getTableStatus#0;class#DataImportController#0" />
+            <element signature="method#getProvincesStatus#0;class#DataImportController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/controller/BasicConfigController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="117" column="28" lean-forward="true" selection-start-line="117" selection-start-column="28" selection-end-line="117" selection-end-column="28" />
+          <folding>
+            <element signature="method#getData#0;class#BasicConfigController#0" />
+            <element signature="method#uploadFile#0;class#BasicConfigController#0" />
+            <element signature="method#reUploadFile#0;class#BasicConfigController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

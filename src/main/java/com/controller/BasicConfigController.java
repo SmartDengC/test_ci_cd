@@ -38,6 +38,7 @@ public class BasicConfigController {
      * @return 0：说明表中没有符合参数的数据
      * 1：说明表中有符合参数的数据
      */
+    @ResponseBody
     @RequestMapping("/checkYear")
     public String checkYear(String year,String  province) throws IOException {
         int pro = Integer.parseInt(province);
@@ -62,6 +63,7 @@ public class BasicConfigController {
      * @return 0：该表中无数据
      * 1：该表中有数据
      */
+    @ResponseBody
     @RequestMapping("/checkData")
     public String checkData(String year) throws IOException {
         String status = basicConfigservice.checkData(year);
@@ -78,6 +80,7 @@ public class BasicConfigController {
      * @param fileType 文件类型
      * @return  三张表中的数据
      */
+    @ResponseBody
     @RequestMapping("/seeConfigMessage")
     public String getData(String year,String fileType) throws JsonProcessingException {
         String status = basicConfigservice.getData(year,fileType);
@@ -96,7 +99,7 @@ public class BasicConfigController {
      * @return 上传文件是否成功 1表示都成功,00表示其他失败情况，01表示文件上传失败，02表示数据库添加失败，03表示数据库删除失败
      * @throws Exception
      */
-
+    @ResponseBody
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     public String uploadFile(String year, MultipartFile file, String fileType) throws Exception {
         int beginYear = 2010;
@@ -123,10 +126,9 @@ public class BasicConfigController {
      * @return 重新上传文件是否成功 1表示都成功,00表示其他失败情况，01表示文件上传失败，02表示数据库添加失败，03表示数据库删除失败
      * @throws Exception
      */
-
+    @ResponseBody
     @RequestMapping("/reUploadFile")
-    public @ResponseBody
-    String reUploadFile(String year, MultipartFile file, String fileType) throws Exception {
+    public String reUploadFile(String year, MultipartFile file, String fileType) throws Exception {
         int beginYear = 2010;
         int endYear = 2019;
         String status = "";
