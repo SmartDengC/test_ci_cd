@@ -1036,16 +1036,6 @@ public class DataImportServiceImpl implements DataImportService {
         province = GetDefaultInfo.getCurProvince(province);
         ObjectMapper mapper = new ObjectMapper();
         HashMap map = new HashMap();
-        String result = "";
-        int proDm = Integer.parseInt(province);
-        // 根据这两个条件进行查表，返回值使用map存储，这里只写了一个，其他的类似。
-        int  count = dataImportDao.selectT_TDD(year, proDm);
-        if (count >= 1){
-            map.put("tableStatus", 1);
-            result = mapper.writeValueAsString(map);
-            return result;
-        }
-        map.put("tableStatus", 0);
         List<String> tableName=new ArrayList<>();
         tableName.add("T_TDD");
         tableName.add("TD_CJXDM");
@@ -1062,8 +1052,18 @@ public class DataImportServiceImpl implements DataImportService {
         tableName.add("TD_ZCDM");
         tableName.add("TD_ZYTZDM");
         tableName.add("TD_ZZMMDM");
-        tableName.add("TD_QBJHK");
+        tableName.add("T_QBJHK");
         map.put("tableName",tableName);
+        String result = "";
+        int proDm = Integer.parseInt(province);
+        // 根据这两个条件进行查表，返回值使用map存储，这里只写了一个，其他的类似。
+        int  count = dataImportDao.selectT_TDD(year, proDm);
+        if (count >= 1){
+            map.put("tableStatus", 1);
+            result = mapper.writeValueAsString(map);
+            return result;
+        }
+        map.put("tableStatus", 0);
         result = mapper.writeValueAsString(map);
         return result;
     }

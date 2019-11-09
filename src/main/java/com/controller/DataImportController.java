@@ -140,7 +140,25 @@ public class DataImportController {
             String status = dataImportService.getTableStatus(year, province);
             return status;
         }
-        map.put("tableStatus", 0);
+        map.put("tableStatus", -1);
+        List<String> tableName=new ArrayList<>();
+        tableName.add("T_TDD");
+        tableName.add("TD_CJXDM");
+        tableName.add("TD_BYLBDM");
+        tableName.add("TD_DQDM");
+        tableName.add("TD_JHXZDM");
+        tableName.add("TD_KLDM");
+        tableName.add("TD_KSLBDM");
+        tableName.add("TD_KSLXDM");
+        tableName.add("TD_LQFSDM");
+        tableName.add("TD_MZDM");
+        tableName.add("TD_PCDM");
+        tableName.add("TD_WYYZDM");
+        tableName.add("TD_ZCDM");
+        tableName.add("TD_ZYTZDM");
+        tableName.add("TD_ZZMMDM");
+        tableName.add("T_QBJHK");
+        map.put("tableName",tableName);
         result = mapper.writeValueAsString(map);
         return  result;
     }
