@@ -1,95 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AnalysisUIOptions">
-    <option name="AUTOSCROLL_TO_SOURCE" value="true" />
-    <option name="SPLITTER_PROPORTION" value="0.39275765" />
-    <option name="GROUP_BY_SEVERITY" value="true" />
-  </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="FreshmanInfomationAnalysSystem:war" />
-      <artifact name="FreshmanInfomationAnalysSystem:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
-    <list default="true" id="60febff7-6d61-4e1d-a814-67464c42bd0f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/FreshmanInfomationAnalysSystem.xml" beforeDir="false" />
+    <list default="true" id="a999be16-2aab-468e-82d0-66aead19e5de" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/com/controller/PaperController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/com/dao/PaperDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/com/pojo/Paper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/com/service/PaperService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/com/service/impl/PaperServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/jdbc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/log4j.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/mapper/PaperMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/mybatis-config.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/spring/spring-dao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/spring/spring-mvc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/classes/spring/spring-service.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/jsp/addPaper.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/jsp/allPaper.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/jsp/updatePaper.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/c3p0-0.9.5.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/jackson-annotations-2.9.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/jackson-core-2.9.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/jackson-databind-2.9.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/jstl-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/logback-classic-1.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/logback-core-1.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/mchange-commons-java-0.2.11.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/mybatis-3.4.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/mybatis-spring-1.3.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/mysql-connector-java-5.1.38.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/slf4j-api-1.7.6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/spring-aop-5.0.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/spring-beans-5.0.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/spring-context-5.0.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/spring-context-support-5.0.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/spring-core-5.0.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/spring-expression-5.0.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/spring-jcl-5.0.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/spring-jdbc-5.0.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/spring-tx-5.0.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/spring-web-5.0.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/spring-webmvc-5.0.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/lib/standard-1.1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/FreshmanInfomationAnalysSystem/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dao/DataImportDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dao/DataImportDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/CheckDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/BasicConfigController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/DataImportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/DataImportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dao/CheckDataDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dao/BasicConfigDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_DQDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_DQDM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_JHXZDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_JHXZDM.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_KLDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_KLDM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_KSLBDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_KSLBDM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_KSLXDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_KSLXDM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_LQFSDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_LQFSDM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_MZDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_MZDM.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_PCDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_PCDM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_QBJHK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_QBJHK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_SFDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_SFDM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_WYYZDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_WYYZDM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_XSFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_XSFS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_ZCDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_ZCDM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/TD_ZZMMDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/TD_ZZMMDM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pojo/T_TDD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pojo/T_TDD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/DataImportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/DataImportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/CheckDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/BasicConfigservice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/impl/CheckDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/BasicConfigserviceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/service/impl/DataImportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/DataImportServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/spring-dao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/spring-dao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-    </list>
-=======
-<<<<<<< Updated upstream
-    <list default="true" id="60febff7-6d61-4e1d-a814-67464c42bd0f" name="Default Changelist" comment="" />
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-=======
-    <list default="true" id="60febff7-6d61-4e1d-a814-67464c42bd0f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CheckDataMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CheckDataMapper.xml" afterDir="false" />
     </list>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,32 +30,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
-        <option value="Kotlin Interface" />
-        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <favorite-branches>
-      <branch-storage>
-        <map>
-          <entry type="LOCAL">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="lvzhiwei" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </favorite-branches>
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
@@ -141,40 +51,22 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectId" id="1SNJ9y8HjKNj5oSdCW4ZxZWwWgu" />
+  <component name="ProjectId" id="1TJZzYoFq2MVOpyJBIV6CU64QWu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571198099377" />
-    <property name="findjar.last.used.dir" value="$PROJECT_DIR$/src/test" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.47471264" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.utils.datautils" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\java空间\eclipse的工作空间\FreshmanInfomationAnalysSystem\src\main\java\com\pojo" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\java空间\eclipse的工作空间\FreshmanInfomationAnalysSystem\src\main\resources\mapper" />
-      <recent name="D:\Git Library\FreshmanInfomationAnalysSystem\src\main\webapp\resources\excelModel" />
-      <recent name="D:\Git Library\FreshmanInfomationAnalysSystem\src\main\webapp\resources\cacheDbf" />
-      <recent name="D:\Git Library\FreshmanInfomationAnalysSystem\src\test\html" />
+      <recent name="E:\java空间\eclipse的工作空间\FreshmanInfomationAnalysSystem\lib" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -189,33 +81,19 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.41">
-    <configuration name="Student" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.pojo.Student" />
-      <module name="FreshmanInfomationAnalysSystem" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.test" />
-      <module name="FreshmanInfomationAnalysSystem" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Tomcat 8.5.41" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.41" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+  <component name="RunManager">
+    <configuration name="Tomcat8" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.41" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/FreshmanInfomationAnalysSystem_war/" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="FreshmanInfomationAnalysSystem">
+        <artifact name="FreshmanInfomationAnalysSystem:war">
           <settings>
-            <option name="CONTEXT_PATH" value="/FreshmanInfomationAnalysSystem" />
+            <option name="CONTEXT_PATH" value="/FreshmanInfomationAnalysSystem_war" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Unnamed_FreshmanInfomationAnalysSystem_8" />
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_FreshmanInfomationAnalysSystem" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -223,23 +101,8 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="58736" />
+        <option name="DEBUG_PORT" value="53644" />
       </RunnerSettings>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
@@ -272,34 +135,14 @@
       </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="FreshmanInfomationAnalysSystem:war" />
+        </option>
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.test" />
-        <item itemvalue="Application.Student" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
-  </component>
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="60febff7-6d61-4e1d-a814-67464c42bd0f" name="Default Changelist" comment="" />
-      <created>1569140268596</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1569140268596</updated>
-      <workItem from="1569140269849" duration="3352000" />
-      <workItem from="1569205836598" duration="1476000" />
-      <workItem from="1571196543808" duration="1594000" />
-    </task>
-    <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6422000" />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -321,29 +164,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://D:/maven/repository/net/sf/json-lib/json-lib/0.9/json-lib-0.9.jar!/net/sf/json/JSONObject.class</url>
-          <line>358</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/service/impl/CheckDataServiceImpl.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/service/impl/CheckDataServiceImpl.java</url>
-          <line>107</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/controller/CheckDataController.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/utils/datautils/DataFrameUtils.java</url>
-          <line>91</line>
-          <option name="timeStamp" value="30" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/controller/BasicConfigController.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

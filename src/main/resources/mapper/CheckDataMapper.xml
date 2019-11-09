@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dao.CheckDataDao">
+<mapper namespace="com.dao.BasicConfigDao">
     <select id="selectKDD" resultType="int" parameterType="String">
         select count(YEAR) from KDD where YEAR=#{YEAR}
     </select>

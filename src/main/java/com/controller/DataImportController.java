@@ -1,23 +1,24 @@
 package com.controller;
-        /**
-        * @title: dataImport
-        * @projectName FreshmanInfomationAnalysSystem
-        * @description: TODO
-        * @author msi
-        * @date 2019/10/2321:28
-        */
-        import com.fasterxml.jackson.core.*;
-        import com.fasterxml.jackson.databind.ObjectMapper;
-        import com.pojo.TD_SFDM;
-        import com.service.DataImportService;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.stereotype.Controller;
-        import org.springframework.web.bind.annotation.RequestMapping;
-        import org.springframework.web.bind.annotation.ResponseBody;
-        import org.springframework.web.multipart.MultipartFile;
-        import java.io.IOException;
-        import java.io.InputStream;
-        import java.util.*;
+/**
+ * @title: dataImport
+ * @projectName FreshmanInfomationAnalysSystem
+ * @description: TODO
+ * @author msi
+ * @date 2019/10/2321:28
+ */
+import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pojo.TD_SFDM;
+import com.service.DataImportService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
 
 /**
  * @ClassName dataImport
@@ -29,6 +30,7 @@ package com.controller;
  * Modification Date： 2019.10.24
  */
 @Controller
+@CrossOrigin
 @RequestMapping("/dataImport")
 public class DataImportController {
 
@@ -70,7 +72,7 @@ public class DataImportController {
      */
     @ResponseBody
     @RequestMapping("/read")
-    public String dataImport(String year,String province, MultipartFile [] dbfs) throws Exception{
+    public String dataImport(String year,String province, MultipartFile [] dbfs) {
         //1，年份检测、省份安全检查，省份代码是要查询数据库吗？
         //新的省份处理方式,是否这里要请数据库检测省份代码存不存在？
         if(year==null || Integer.parseInt(year)<minYear || Integer.parseInt(year)> maxYear ||
@@ -102,15 +104,18 @@ public class DataImportController {
             }
         }
         //3调用service函数，写入数据
-        int importResoult = dataImportService.importData(dbfMap,Integer.parseInt(year),Integer.parseInt(province));
+        int importResoult = 0;
+        try {
+            importResoult = dataImportService.importData(dbfMap,Integer.parseInt(year),Integer.parseInt(province));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if(importResoult==1){
             return "{\"status\":\"1\"}";
         }
         else {
             return "{\"status\":\"0\"}";
         }
-
-
     }
     /**
      * Modification User: 邓聪
@@ -126,20 +131,19 @@ public class DataImportController {
     @RequestMapping("/queryInfo")
     public String getTableStatus(String year, String province) throws JsonProcessingException {
         int beginYear = 2002;
-        int endYeat = 2059;
+        int endYear = 2059;
         String haveMessage = "1";
         String noMessage = "0";
         ObjectMapper mapper = new ObjectMapper();
         HashMap map = new HashMap();
         String result = "";
-        if (Integer.parseInt(year) >= beginYear && Integer.parseInt(year) <= endYeat){
+        if (year != null && year != null && Integer.parseInt(year) >= beginYear && Integer.parseInt(year) <= endYear){
             String status = dataImportService.getTableStatus(year, province);
             return status;
         }
-        map.put("T_TDD", 0);
+        map.put("tableStatus", 0);
         result = mapper.writeValueAsString(map);
         return  result;
-//        return "{\"T_TDD\":\"0\"}";
     }
     /**
      * Modification User: 邓聪
