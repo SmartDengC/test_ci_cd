@@ -207,6 +207,12 @@
       <artifactId>cors-filter</artifactId>
       <version>2.5</version>
     </dependency>
+    <!-- 处理DBF文件库：https://mvnrepository.com/artifact/com.linuxense/javadbf -->
+    <dependency>
+      <groupId>com.linuxense</groupId>
+      <artifactId>javadbf</artifactId>
+      <version>0.4.0</version>
+    </dependency>
 
 
   </dependencies>
