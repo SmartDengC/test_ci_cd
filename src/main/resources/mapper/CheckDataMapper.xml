@@ -106,6 +106,6 @@
     </select>
     <!--	根据快递单号查询KDD表中数据-->
     <select id="requestKDD" resultType="com.pojo.KDD" parameterType="String">
-        select * from KDD where (EMS=#{EMS})
+        select * from KDD where (YEAR=#{YEAR})
     </select>
 </mapper>
