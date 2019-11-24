@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ZdgfMapperDao">
+    <insert id="insertZDGFYSDM" parameterType="java.util.List">
+    insert into ZDGFYSDM
+    (NF,SFDM,ZD,ZDBGFDM,ZDGFZDM)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+        (#{item.NF,jdbcType=VARCHAR},
+        #{item.SFDM,jdbcType=INTEGER},
+        #{item.ZD,jdbcType=VARCHAR},
+        #{item.ZDBGFDM,jdbcType=VARCHAR},
+        #{item.ZDGFZDM,jdbcType=INTEGER}
+        )
+    </foreach>
+    </insert>
+
+    <delete id="deleteZDGFYSDM" parameterType="String">
+        delete from ZDGFYSDM where ZD=#{ZD}
+    </delete>
+
+    <update id="updateZDGFYSDM" parameterType="String">
+        update ZDGFYSDM set ZD=#{NZD} where ZD=#{OZD}
+    </update>
+
+    <select id="selectZDGFYSDM"  resultType="com.pojo.ZDGFYSDM">
+        select * from ZDGFYSDM where NF=#{NF} and SFDM=#{SFDM}
+    </select>
+
+
+
+
+
+    <insert id="insertZDGFZDM" parameterType="java.util.List">
+        insert into ZDGFZDM
+        (ZD,GFZ)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.ZD,jdbcType=VARCHAR},
+            #{item.GFZ,jdbcType=INTEGER}
+            )
+        </foreach>
+    </insert>
+
+    <delete id="deleteZDGFZDM" parameterType="String">
+        delete from ZDGFZDM where ZD=#{ZD}
+    </delete>
+
+
+    <update id="updateZDGFZDMByZd" parameterType="String">
+        update ZDGFZDM set GFZ=#{GFZ} where ZD=#{ZD}
+    </update>
+
+    <update id="updateZDGFZDMByGfz" parameterType="String">
+        update ZDGFZDM set ZD=#{ZD} where GFZ=#{GFZ}
+    </update>
+
+    <select id="selectZDGFZDM" parameterType="String" resultType="com.pojo.ZDGFZDM">
+        select * from ZDGFZDM where ZD=#{ZD}
+    </select>
+</mapper>

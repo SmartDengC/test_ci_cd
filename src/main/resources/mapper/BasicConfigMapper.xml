@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.BasicConfigDao">
+    <select id="selectKDD" resultType="int" parameterType="String">
+		select count(YEAR) from KDD where YEAR=#{YEAR}
+	</select>
+
+	<select id="selectTD_YTFSX" resultType="int" parameterType="String">
+		select count(NF) from TD_YTFSX where (NF=#{NF})
+	</select>
+
+	<select id="selectTD_PTFSX" resultType="int" parameterType="String">
+		select count(NF) from TD_PTFSX where (NF=#{NF})
+	</select>
+
+	<insert id="insertKDD" parameterType="java.util.List" >
+			insert into KDD
+			(EMS,AVAI,YEAR,SRJ,LXDH,JTDZ,XM,KSH)
+			values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.EMS,jdbcType=VARCHAR},
+			#{item.AVAI,jdbcType=INTEGER},
+			#{item.SRJ,jdbcType=VARCHAR},
+			#{item.YEAR,jdbcType=VARCHAR},
+        	#{item.LXDH,jdbcType=VARCHAR},
+			#{item.JTDZ,jdbcType=VARCHAR},
+			#{item.XM,jdbcType=VARCHAR},
+			#{item.KSH,jdbcType=VARCHAR}
+			)
+		</foreach>
+	</insert>
+
+	<insert id="insertTD_PTFSX" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+			insert into TD_PTFSX
+			(ID,NF,SFDM,YBWS,YBLG,EBWS,EBLG)
+			values
+		<foreach collection="list" item="item" index="index" separator=",">
+        	(#{item.NF,jdbcType=VARCHAR},
+			#{item.SFDM,jdbcType=INTEGER},
+        	#{item.YBWS,jdbcType=VARCHAR},
+			#{item.YBLG,jdbcType=VARCHAR},
+			#{item.EBWS,jdbcType=VARCHAR},
+			#{item.EBLG,jdbcType=VARCHAR})
+		</foreach>
+	</insert>
+
+	<insert id="insertTD_YTFSX" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+			insert into TD_YTFSX
+			(ID,NF,SFDM,KLDM,KLMC,PCDM,PCMC,ZYX_NS,ZYX_VS,ZYX_ZS,ZYX_BL,WHX_W,WHX_L,WHX_ZS,WHX_BL,ZF)
+			values
+		<foreach collection="list" item="item" index="index" separator=",">
+        	(#{item.NF,jdbcType=VARCHAR},
+			#{item.SFDM,jdbcType=INTEGER},
+			#{item.KLDM,jdbcType=CHAR},
+			#{item.KLMC,jdbcType=VARCHAR},
+			#{item.PCDM,jdbcType=CHAR},
+        	#{item.PCMC,jdbcType=VARCHAR},
+			#{item.ZYX_NS,jdbcType=INTEGER},
+			#{item.ZYX_VS,jdbcType=INTEGER},
+			#{item.ZYX_ZS,jdbcType=FLOAT},
+			#{item.ZYX_BL,jdbcType=FLOAT},
+			#{item.WHX_W,jdbcType=INTEGER},
+			#{item.WHX_L,jdbcType=INTEGER},
+			#{item.WHX_ZS,jdbcType=FLOAT},
+			#{item.WHX_BL,jdbcType=FLOAT},
+			#{item.ZF,jdbcType=INTEGER}
+			)
+		</foreach>
+	</insert>
+
+	<!--根据快递单号删除KDD表中数据-->
+    <delete id="deleteKDD" parameterType="String">
+		delete from KDD where (YEAR=#{YEAR})
+	</delete>
+
+    <!--	根据快递年份删除TD_YTFSX表中数据-->
+	<delete id="deleteTD_YTFSX" parameterType="String">
+		delete from TD_YTFSX  where (NF=#{NF})
+	</delete>
+    <!--	根据快递年份删除TD_PTFSX表中数据-->
+	<delete id="deleteTD_PTFSX" parameterType="String">
+		delete from TD_PTFSX  where (NF=#{NF})
+	</delete>
+
+
+    <!--	根据年号查询TD_PTFSX表中数据注意传参的名字-->
+	<select id="requestTD_PTFSX" resultType="com.pojo.TD_PTFSX" parameterType="String" >
+		select * from TD_PTFSX where (NF=#{NF})
+	</select>
+    <!--	根据年号查询TD_YTFSX表中数据-->
+	<select id="requestTD_YTFSX" resultType="com.pojo.TD_YTFSX" parameterType="String">
+		select * from TD_YTFSX where (NF=#{NF})
+	</select>
+    <!--	根据快递单号查询KDD表中数据-->
+	<select id="requestKDD" resultType="com.pojo.KDD" parameterType="String">
+        select * from KDD where (YEAR=#{YEAR})
+	</select>
+
+</mapper>
