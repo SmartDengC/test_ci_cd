@@ -1,13 +1,16 @@
 package com.pojo;
 
+/**
+ * 对应 TD_PCDM表
+ */
 public class TD_PCDM {
-    private int ID;
+    private int ID;     //编号:主键
     private String NF;
-    private int SFDM;
+    private int SFDM;   //年份:外键<==>TD_SFDM的主键
     private String PCDM;
     private String PCMC;
-    private String GBPCDM;
-    private String GBCCDM;
+    private String GBPCDM; //未知
+    private String GBCCDM; //未知
 
     public int getID() {
         return ID;

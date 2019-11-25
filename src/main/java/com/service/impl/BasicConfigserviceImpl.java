@@ -170,6 +170,7 @@ public class BasicConfigserviceImpl implements BasicConfigservice {
         FileUtils.copyInputStreamToFile(file.getInputStream(), newFile);
         ReadExcelUtils excelReader = new ReadExcelUtils(path + fileName);
         List<List> paramList = excelReader.readExcelContent_1();
+
         ObjectMapper mapper = new ObjectMapper();
         HashMap map = new HashMap();
         String result = "";

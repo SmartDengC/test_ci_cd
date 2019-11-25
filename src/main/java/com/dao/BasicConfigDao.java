@@ -27,7 +27,6 @@ public interface BasicConfigDao {
      */
     public int selectTD_PTFSX(String year);
 
-
     /**
      * 向数据库中插入KDD表要保存的内容
      * @param KDDList 保存内容
@@ -103,7 +102,5 @@ public interface BasicConfigDao {
 
     public String saveTable(List<T_TDD> list);
     public List<T_TDD> readT_TDD();
-
-
 
 }

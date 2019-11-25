@@ -1,13 +1,16 @@
 package com.pojo;
 
+/**
+ * 对应 TD_KLDM 表
+ */
 public class TD_KLDM {
-    private int ID;
+    private int ID;        //编号:主键
     private String NF;
-    private int SFDM;
+    private int SFDM;      //年份:外键<==>TD_SFDM的主键
     private String KLDM;
     private String KLMC;
-    private String JBKL;
-    private String KSCJBJXH;
+    private String JBKL;    //未知
+    private String KSCJBJXH;//未知
 
     public int getID() {
         return ID;

@@ -2,10 +2,13 @@ package com.pojo;
 
 import java.time.Year;
 
+/**
+ * 对应 ZDBFYSDM 字段规范映射表
+ */
 public class ZDGFYSDM {
-    private int ZDGFYSDM;
+    private int ZDGFYSDM; //(字段规范值)主键
     private Year NF;
-    private int SFDM;
+    private int SFDM; //(省份代码)外键<==>TD_SFDM表的SFDM主键
     private String ZD;
     private String ZDBGFDM;
     private int ZDGFZDM;

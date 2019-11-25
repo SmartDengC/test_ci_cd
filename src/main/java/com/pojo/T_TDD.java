@@ -3,6 +3,7 @@ package com.pojo;
 import java.sql.Date;
 
 public class T_TDD {
+
     private int ID;
     private String NF;
     private int SFDM;

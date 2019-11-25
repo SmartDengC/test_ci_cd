@@ -81,7 +81,6 @@ public class DataImportServiceImpl implements DataImportService {
                     if(TD_CJXDMdataFrame.get(i,"CJXDM")!=null && TD_CJXDMdataFrame.get(i,"CJXMC")!=null){
                         CJXDM="GKCJX"+TD_CJXDMdataFrame.get(i,"CJXDM").toString().replaceAll(" ","");
                         CJXMC=TD_CJXDMdataFrame.get(i,"CJXMC").toString().replaceAll(" ","");
-
                     }
                     switch (CJXMC){
                         case "语文":
@@ -102,7 +101,8 @@ public class DataImportServiceImpl implements DataImportService {
                         break;
                     }
                 }
-                }
+            }
+
             if(colmnMap.size() != 4){
                 System.out.println("提取成绩对照表：TD_CJXDMFile，出错！配置多了或少了字段映射！");
                 return 0;

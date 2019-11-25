@@ -1,7 +1,10 @@
 package com.pojo;
 
+/**
+ * 对应 TD_SFDM表
+ */
 public class TD_SFDM {
-    private int SFDM;
+    private int SFDM;   //省份代码:主键
     private String SF;
 
     public int getSFDM() {

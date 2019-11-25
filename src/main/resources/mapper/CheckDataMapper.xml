@@ -19,8 +19,6 @@
         select count(*) from T_TDD where (NF=#{NF,jdbcType=VARCHAR} and SFDM=#{SFDM,jdbcType=INTEGER})
     </select>
 
-
-
     <insert id="insertKDD" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
         insert into KDD
         (EMS,AVAI,YEAR,SRJ,LXDH,JTDZ,XM,KSH)
