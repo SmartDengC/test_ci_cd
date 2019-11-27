@@ -68,7 +68,7 @@ public interface DataStandardService {
      * @param newFormatFieldData 指定不规范值代码
      * @return 返回一个json给前台  value为0 为请求失败 value为1 为请求成功
      */
-    public String modifyFormField(String formatFieldCode, String newFormatFieldData) throws JsonProcessingException;
+    public String modifyFormField(int formatFieldCode, String newFormatFieldData) throws JsonProcessingException;
 
     /**
      * Modification User: 马雪冬
@@ -106,6 +106,6 @@ public interface DataStandardService {
      * @return 返回一个json对象 value为0-->失败 1-->成功
      * @throws JsonProcessingException
      */
-    public String deleteFieldRelation(String year,int provinceCode,String field, String unFormatFieldCode,String formatFieldCode) throws JsonProcessingException;
+    public String deleteFieldRelation(String year,int provinceCode,String field, String unFormatFieldCode,int formatFieldCode) throws JsonProcessingException;
 
 }

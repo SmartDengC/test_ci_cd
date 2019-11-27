@@ -5,10 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.service.DataStandardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -29,11 +26,9 @@ public class DataStandardController {
     @Autowired
     private DataStandardService dataStandardService;
 
-
     /**
     * Modification User: 马雪冬
     * Modification Date: 2019/11/25
-    *
     *
     * @author 马雪冬
     * @param year 指定年份
@@ -42,7 +37,7 @@ public class DataStandardController {
     * @return 返回一个json给前台  json中包含四个对象 每个对象都是一个json数组 1.status 请求状态 2.规范值与代码 3.不规范值与代码 4.规范与不规范代码关系
     */
 
-    @RequestMapping("/fetchUnFormatData")
+    @RequestMapping(value = "/fetchUnFormatData",method = RequestMethod.POST)
     @ResponseBody
     public String fetchUnFormatData(String year,int provinceCode,String field) throws JsonProcessingException {
         String result="";
@@ -52,7 +47,7 @@ public class DataStandardController {
         List<Map<String,Object>> unFomatList=null;
         List<Map<String,Object>> relationList=null;
 
-        if(year!=null&&field!=null&&provinceCode>=2002&&provinceCode<=2059){
+        if(year!=null&&field!=null&&provinceCode>=0){
             //获取规范
             fomatList=dataStandardService.fetchFormatData(field);
             //获取不规范
@@ -66,7 +61,6 @@ public class DataStandardController {
             String formatStr=mapper.writeValueAsString(fomatList);
             String unFormatStr=mapper.writeValueAsString(unFomatList);
             String relationStr=mapper.writeValueAsString(relationList);
-
             result="{\"status\":+\"1\""+","+"\"unFormat\":"+unFormatStr+","+"\"format\":"+formatStr+","+"\"relation\":"+relationStr+"}";
         }else {
             result="{\"status\":\"0\"}";
@@ -84,11 +78,11 @@ public class DataStandardController {
      * @return 返回一个json给前台  value为0 为请求失败 value为1 为请求成功
      * @throws JsonProcessingException
      */
-    @RequestMapping("/modifyFormatField")
+    @RequestMapping(value = "/modifyFormatField",method = RequestMethod.POST)
     @ResponseBody
-    public String modifyFormField(String formatFieldCode, String newFormatFieldData) throws JsonProcessingException {
+    public String modifyFormField(int formatFieldCode, String newFormatFieldData) throws JsonProcessingException {
         String result="";
-        if(formatFieldCode!=null&&newFormatFieldData!=null){
+        if(formatFieldCode>=0&&newFormatFieldData!=null){
             result=dataStandardService.modifyFormField(formatFieldCode, newFormatFieldData);
             return result;
         }
@@ -105,7 +99,7 @@ public class DataStandardController {
      * @return 返回一个json给前台  value为0 为请求失败 value为1 为请求成功
      * @throws JsonProcessingException
      */
-    @RequestMapping("/writeFormatField")
+    @RequestMapping(value = "/writeFormatField",method = RequestMethod.POST)
     @ResponseBody
     public String writeFormField(String field, String newFormatFieldData) throws JsonProcessingException {
         String result="";
@@ -129,11 +123,12 @@ public class DataStandardController {
      * @return 返回一个json给前台  value为0 为请求失败 value为1 为请求成功
      * @throws JsonProcessingException
      */
-    @RequestMapping("/deleteFieldRelation")
+    @RequestMapping(value = "/deleteFieldRelation",method = RequestMethod.POST)
     @ResponseBody
-    public String deleteFieldRelation(String year,int provinceCode,String field, String unFormatFieldCode,String formatFieldCode) throws JsonProcessingException {
+    public String deleteFieldRelation(String year,int provinceCode,String field, String unFormatFieldCode,int formatFieldCode) throws JsonProcessingException {
         String result="";
-        if(year!=null&&field!=null&&unFormatFieldCode!=null&&formatFieldCode!=null){
+//        if(year!=null&&field!=null&&unFormatFieldCode!=null&&formatFieldCode!=null){
+        if(field!=null&&unFormatFieldCode!=null&&formatFieldCode>=0){
             result=dataStandardService.deleteFieldRelation(year, provinceCode, field, unFormatFieldCode, formatFieldCode);
             return result;
         }
@@ -148,7 +143,7 @@ public class DataStandardController {
      * @return 返回一个json给前台  value为0 为请求失败 value为1 为请求成功
      * @throws JsonProcessingException
      */
-    @RequestMapping("/biuldRelationship")
+    @RequestMapping(value = "/biuldRelationship",method = RequestMethod.POST)
     @ResponseBody
     public String biuldRelationship(@RequestBody List<Map<String,Object>> list) throws JsonProcessingException {
         String result="";

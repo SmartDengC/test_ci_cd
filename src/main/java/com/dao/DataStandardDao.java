@@ -59,7 +59,7 @@ public interface DataStandardDao {
      * @param newFormatFieldData 新的规范值
      * @return 0:修改失败 1:修改成功
      */
-    public int modifyFormatData(@Param("ZDGFZDM")String formatFieldCode,@Param("GFZ") String newFormatFieldData);
+    public int modifyFormatData(@Param("ZDGFZDM")int formatFieldCode,@Param("GFZ") String newFormatFieldData);
 
     /**
      * 在ZDGFZDM中添加新的规范值
@@ -85,6 +85,6 @@ public interface DataStandardDao {
      * @param formatFieldCode 指定规范值代码
      * @return 0:删除失败 1:删除成功
      */
-    public int deleteFieldRelation(@Param("NF") String year, @Param("SFDM") int provinceCode, @Param("ZD") String field, @Param("ZDBGFZDM") String unFormatFieldCode, @Param("ZDGFZDM") String formatFieldCode);
+    public int deleteFieldRelation(@Param("NF") String year, @Param("SFDM") int provinceCode, @Param("ZD") String field, @Param("ZDBGFDM") String unFormatFieldCode, @Param("ZDGFDM") int formatFieldCode);
 
 }

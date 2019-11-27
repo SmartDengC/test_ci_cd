@@ -3,8 +3,6 @@ package com.service.impl;
 import com.dao.DataStandardDao;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pojo.ZDGFYSDM;
-import com.pojo.ZDGFZDM;
 import com.service.DataStandardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -95,7 +93,7 @@ public class DataStandardServiceImpl implements DataStandardService {
      * @return 返回一个json给前台  value为0 为请求失败 value为1 为请求成功
      */
     @Override
-    public String modifyFormField(String formatFieldCode, String newFormatFieldData) throws JsonProcessingException {
+    public String modifyFormField(int formatFieldCode, String newFormatFieldData) throws JsonProcessingException {
         ObjectMapper mapper=new ObjectMapper();
         HashMap map=new HashMap<>();
         String status="";
@@ -151,9 +149,8 @@ public class DataStandardServiceImpl implements DataStandardService {
         ObjectMapper mapper=new ObjectMapper();
         HashMap map=new HashMap<>();
         String status="";
-
         int returnValue=dataStandardDao.biuldRelationship(list);
-        if(returnValue==1){
+        if(returnValue>0){
             map.put("status","1");
         }else {
             map.put("status","0");
@@ -177,11 +174,10 @@ public class DataStandardServiceImpl implements DataStandardService {
      * @throws JsonProcessingException
      */
     @Override
-    public String deleteFieldRelation(String year, int provinceCode, String field, String unFormatFieldCode, String formatFieldCode) throws JsonProcessingException {
+    public String deleteFieldRelation(String year, int provinceCode, String field, String unFormatFieldCode, int formatFieldCode) throws JsonProcessingException {
         ObjectMapper mapper=new ObjectMapper();
         HashMap map=new HashMap<>();
         String status="";
-
         int returnValue=dataStandardDao.deleteFieldRelation(year, provinceCode, field, unFormatFieldCode, formatFieldCode);
         if(returnValue==1){
             map.put("status","1");
