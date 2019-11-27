@@ -57,9 +57,9 @@ public class DataStandardServiceImpl implements DataStandardService {
     public List<Map<String, Object>> fetchUnFormatData(String year, int provinceCode, String field) {
         List<Map<String,Object>> list=null;
         if(field.equals("PCMC")){
-            list=dataStandardDao.fecthUnFormatData_PC(year, provinceCode);
+            list=dataStandardDao.fecthUnFormatDataPC(year, provinceCode);
         }else if(field.equals("KLMC")){
-            list=dataStandardDao.fecthUnFormatData_KL(year, provinceCode);
+            list=dataStandardDao.fecthUnFormatDataKL(year, provinceCode);
         }
         return list;
     }

@@ -28,14 +28,14 @@ public interface DataStandardDao {
      * @param provinceCode 指定省份
      * @return 返回一个List存储的Map集合 Map存储了不规范值与不规范值代码
      */
-    public List<Map<String,Object>> fecthUnFormatData_PC(@Param("NF") String year, @Param("SFDM") int provinceCode);
+    public List<Map<String,Object>> fecthUnFormatDataPC(@Param("NF") String year, @Param("SFDM") int provinceCode);
     /**
      * TD_KLDM中获取不规范值与代码
      * @param year 指定年份
      * @param provinceCode 指定省份
      * @return 返回一个List存储的Map集合 Map存储了不规范值与不规范值代码
      */
-    public List<Map<String,Object>> fecthUnFormatData_KL(@Param("NF") String year, @Param("SFDM") int provinceCode);
+    public List<Map<String,Object>> fecthUnFormatDataKL(@Param("NF") String year, @Param("SFDM") int provinceCode);
 
     /**
      * ZDGFZDM中获取规范值与代码

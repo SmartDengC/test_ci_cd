@@ -8,12 +8,12 @@
         insert into zdgfzdm (ZD,GFZ) values (#{ZD},#{GFZ})
     </insert>
     <!--PCDM-->
-    <select id="fecthUnFormatData_PC" resultType="java.util.HashMap">
+    <select id="fecthUnFormatDataPC" resultType="java.util.HashMap">
         select PCDM,PCMC from td_pcdm where NF=#{param1} and SFDM=#{param2} and PCDM
         in (select PCDM from t_tdd where NF=#{param1} and SFDM=#{param2})
     </select>
     <!--KLDM-->
-    <select id="fecthUnFormatData_KL" resultType="java.util.HashMap">
+    <select id="fecthUnFormatDataKL" resultType="java.util.HashMap">
         select KLDM,KLMC from td_kldm where NF=#{param1} and SFDM=#{param2} and KLDM
         in (select KLDM from t_tdd where NF=#{param1} and SFDM=#{param2})
     </select>

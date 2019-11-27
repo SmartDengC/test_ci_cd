@@ -9,7 +9,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a999be16-2aab-468e-82d0-66aead19e5de" name="Default Changelist" comment="">
+    <list default="true" id="a999be16-2aab-468e-82d0-66aead19e5de" name="Default Changelist" comment="数据清洗页面测试完成2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -368,7 +368,7 @@
       <workItem from="1574648757532" duration="5701000" />
       <workItem from="1574682789259" duration="7783000" />
       <workItem from="1574693936614" duration="7733000" />
-      <workItem from="1574736936927" duration="12311000" />
+      <workItem from="1574736936927" duration="12805000" />
     </task>
     <task id="LOCAL-00001" summary="数据清洗页面测试完成">
       <created>1574832527554</created>
