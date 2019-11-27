@@ -9,19 +9,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a999be16-2aab-468e-82d0-66aead19e5de" name="Default Changelist" comment="数据清洗页面测试完成">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="a999be16-2aab-468e-82d0-66aead19e5de" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Test/test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Test/test2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Test/testMain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/DataStandardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/DataStandardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dao/DataStandardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dao/DataStandardDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/DataStandardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/DataStandardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/impl/DataStandardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/DataStandardServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/spring-mvc.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -379,8 +368,23 @@
       <workItem from="1574648757532" duration="5701000" />
       <workItem from="1574682789259" duration="7783000" />
       <workItem from="1574693936614" duration="7733000" />
-      <workItem from="1574736936927" duration="11489000" />
+      <workItem from="1574736936927" duration="12311000" />
     </task>
+    <task id="LOCAL-00001" summary="数据清洗页面测试完成">
+      <created>1574832527554</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574832527555</updated>
+    </task>
+    <task id="LOCAL-00002" summary="数据清洗页面测试完成2">
+      <created>1574833193623</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1574833193624</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,6 +419,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="数据清洗页面测试完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="数据清洗页面测试完成" />
+    <MESSAGE value="数据清洗页面测试完成2" />
+    <option name="LAST_COMMIT_MESSAGE" value="数据清洗页面测试完成2" />
   </component>
 </project>
