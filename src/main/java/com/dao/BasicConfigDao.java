@@ -95,15 +95,4 @@ public interface BasicConfigDao {
      */
     public int selectT_TDD(@Param("NF") String year, @Param("SFDM") int province);
 
-    /**
-     * 邓聪测试代码
-     * @return
-     */
-    public List<TD_SFDM> requestTD_SFDM();
-
-    public String saveTable(List<T_TDD> list);
-    public List<T_TDD> readT_TDD();
-
-
-
 }

@@ -1,15 +1,18 @@
 package com.service.impl;
 
 import com.dao.BasicConfigDao;
+import com.dao.DataImportDao;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pojo.KDD;
 import com.pojo.TD_PTFSX;
+import com.pojo.TD_SFDM;
 import com.pojo.TD_YTFSX;
 import com.service.BasicConfigservice;
 
 import com.utils.GetDefaultInfo;
-import com.utils.ReadExcelUtils;
+import com.utils.basicConfig.ReadExcelUtils;
+import com.utils.basicConfig.SearchMapByLike;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +39,10 @@ import java.util.List;
 public class BasicConfigserviceImpl implements BasicConfigservice {
     @Autowired
     private BasicConfigDao basicConfigDao;
+    @Autowired
+    private DataImportDao dataImportDao;
+    @Autowired
+    private BasicConfigserviceImpl basicConfigServiceImpl;
 
     /**
      * Modification User： 吕志伟
@@ -142,14 +149,13 @@ public class BasicConfigserviceImpl implements BasicConfigservice {
 
     /**
      * Modification User: 邓聪
-     * Modification Date: 2019/11/8
-     * <p>
-     * 上传dbf文件到服务器
+     * Modification Date: 2019/11/29
+     * 上传excel文件到服务器
      *
      * @param year     年份，默认是本年
      * @param file     文件对象
      * @param fileType 文件类型
-     * @return 文件上传的状态, 00表示其他情况，01表示文件上传失败，02表示数据库添加失败，03表示数据库删除失败
+     * @return 文件上传的状态,0 表示上传失败，1表示成功
      * @throws Exception exception
      * @author 邓聪
      */
@@ -172,20 +178,23 @@ public class BasicConfigserviceImpl implements BasicConfigservice {
         List<List> paramList = excelReader.readExcelContent_1();
         ObjectMapper mapper = new ObjectMapper();
         HashMap map = new HashMap();
+        HashMap<String,Integer> provinceMap = basicConfigServiceImpl.provinceMap();
         String result = "";
+        SearchMapByLike searchMapByLike = new SearchMapByLike();
         // 普通分数线
         if (PTFSX.equals(fileType)) {
             List<TD_PTFSX> PT_List = new ArrayList<TD_PTFSX>();
             for (List lists : paramList) {
-                String NF = "";
-                int SFDM = Integer.parseInt(null);
-                int YBWS = Integer.parseInt(lists.get(1).toString());
-                int YBLG = Integer.parseInt(lists.get(2).toString());
-                int EBWS = Integer.parseInt(lists.get(3).toString());
-                int EBLG = Integer.parseInt(lists.get(4).toString());
-
+                String NF = year;
+                int SFDM = searchMapByLike.getLikeByMap(provinceMap, lists.get(0).toString()).get(0);
+                int YBWS = Integer.parseInt("".equals(lists.get(1).toString())?"0":lists.get(1).toString());
+                int YBLG = Integer.parseInt("".equals(lists.get(2).toString())?"0":lists.get(2).toString());
+                int EBWS = Integer.parseInt("".equals(lists.get(3).toString())?"0":lists.get(3).toString());
+                int EBLG = Integer.parseInt("".equals(lists.get(4).toString())?"0":lists.get(4).toString());
                 TD_PTFSX td_ptfsx = new TD_PTFSX();
-                td_ptfsx.setYBWS(SFDM);
+                td_ptfsx.setNF(NF);
+                td_ptfsx.setSFDM(SFDM);
+                td_ptfsx.setYBWS(YBWS);
                 td_ptfsx.setYBLG(YBLG);
                 td_ptfsx.setEBWS(EBWS);
                 td_ptfsx.setEBLG(EBLG);
@@ -206,21 +215,21 @@ public class BasicConfigserviceImpl implements BasicConfigservice {
         else if (YTFSX.equals(fileType)) {
             List<TD_YTFSX> YT_List = new ArrayList<TD_YTFSX>();
             for (List lists : paramList) {
-                String NF = "";
-                int SFDM = Integer.parseInt(null);
+                String NF = year;
+                int SFDM = searchMapByLike.getLikeByMap(provinceMap, lists.get(0).toString()).get(0);
                 String KLMC = (String) lists.get(1);
                 String KLDM = "";
                 String PCMC = (String) lists.get(2);
                 String PCDM = "";
-                int ZYX_NS = Integer.parseInt(lists.get(3).toString());
-                int ZYX_VS = Integer.parseInt(lists.get(4).toString());
-                float ZYX_ZS = Float.parseFloat(lists.get(5).toString());
-                float ZYX_BL = Float.parseFloat(lists.get(6).toString());
-                int WHX_W = Integer.parseInt(lists.get(7).toString());
-                int WHX_L = Integer.parseInt(lists.get(8).toString());
-                float WHX_ZS = Float.parseFloat(lists.get(9).toString());
-                float WHX_BL = Float.parseFloat(lists.get(10).toString());
-                int ZF = Integer.parseInt(lists.get(11).toString());
+                int ZYX_NS = Integer.parseInt("".equals(lists.get(3).toString())?"0":lists.get(3).toString());
+                int ZYX_VS = Integer.parseInt("".equals(lists.get(4).toString())?"0":lists.get(4).toString());
+                float ZYX_ZS = Float.parseFloat("".equals(lists.get(5).toString())?"0.00":lists.get(5).toString());
+                float ZYX_BL = Float.parseFloat("".equals(lists.get(6).toString())?"0.00":lists.get(6).toString());
+                int WHX_W = Integer.parseInt("".equals(lists.get(7).toString())?"0":lists.get(7).toString());
+                int WHX_L = Integer.parseInt("".equals(lists.get(8).toString())?"0":lists.get(8).toString());
+                float WHX_ZS = Float.parseFloat("".equals(lists.get(9).toString())?"0.00":lists.get(9).toString());
+                float WHX_BL = Float.parseFloat("".equals(lists.get(10).toString())?"0.00":lists.get(10).toString());
+                int ZF = Integer.parseInt("".equals(lists.get(11).toString())?"0":lists.get(11).toString());
                 TD_YTFSX td_ytfsx = new TD_YTFSX();
                 td_ytfsx.setNF(NF);
                 td_ytfsx.setSFDM(SFDM);
@@ -292,15 +301,15 @@ public class BasicConfigserviceImpl implements BasicConfigservice {
     }
 
     /**
-     * Modification User: 程序修改时由修改人员编写
-     * Modification Date: 程序修改的时间
+     * Modification User: 邓聪
+     * Modification Date: 2019/11/29
      *
      * 重新上传文件
      * @author 邓聪
      * @param year 年份，默认是当年
      * @param file 文件对象
      * @param fileType 文件类型
-     * @return 文件上传的状态, 00表示其他情况，01表示文件上传失败，02表示数据库添加失败，03表示数据库删除失败
+     * @return 文件上传的状态,0表示失败，1表示成功
      * @throws Exception
      */
     @Override
@@ -336,7 +345,7 @@ public class BasicConfigserviceImpl implements BasicConfigservice {
             }
         }
         else if (fileType.equals(KDD)){
-            selectCount = basicConfigDao.selectTD_YTFSX(year);
+            selectCount = basicConfigDao.selectKDD(year);
             if (selectCount>0){
                 int delStatus = basicConfigDao.deleteKDD(year);
                 if (delStatus>0){
@@ -352,5 +361,22 @@ public class BasicConfigserviceImpl implements BasicConfigservice {
 
     }
 
-
+    /**
+     * Modification User: 邓聪
+     * Modification Date: 2019/11/29
+     * 返回省份map{"四川":1}
+     *
+     * @return map
+     * @author 邓聪
+     */
+    @Override
+    public HashMap<String, Integer> provinceMap() {
+        // 数据库返回的数据类似：[TD_SFDM@68{"SFDM":1,"SF":"北京市"}]
+        List<TD_SFDM> returnList = dataImportDao.requestTD_SFDM();
+        HashMap<String,Integer> provinceMap = new HashMap<String, Integer>();
+        for (TD_SFDM list:returnList){
+            provinceMap.put(list.getSF(), list.getSFDM());
+        }
+        return provinceMap;
+    }
 }

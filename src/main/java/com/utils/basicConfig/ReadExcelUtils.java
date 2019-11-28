@@ -1,4 +1,4 @@
-package com.utils;
+package com.utils.basicConfig;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;

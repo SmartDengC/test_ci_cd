@@ -28,8 +28,8 @@
         <foreach collection="list" item="item" index="index" separator=",">
             (#{item.EMS,jdbcType=VARCHAR},
             #{item.AVAI,jdbcType=INTEGER},
-            #{item.SRJ,jdbcType=VARCHAR},
             #{item.YEAR,jdbcType=VARCHAR},
+            #{item.SRJ,jdbcType=VARCHAR},
             #{item.LXDH,jdbcType=VARCHAR},
             #{item.JTDZ,jdbcType=VARCHAR},
             #{item.XM,jdbcType=VARCHAR},
@@ -38,7 +38,7 @@
         </foreach>
     </insert>
 
-    <insert id="insertTD_PTFSX" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+    <insert id="insertTD_PTFSX" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
         insert into TD_PTFSX
         (ID,NF,SFDM,YBWS,YBLG,EBWS,EBLG)
         values
@@ -53,7 +53,7 @@
         </foreach>
     </insert>
 
-    <insert id="insertTD_YTFSX" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+    <insert id="insertTD_YTFSX" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
         insert into TD_YTFSX
         (ID,NF,SFDM,KLDM,KLMC,PCDM,PCMC,ZYX_NS,ZYX_VS,ZYX_ZS,ZYX_BL,WHX_W,WHX_L,WHX_ZS,WHX_BL,ZF)
         values
