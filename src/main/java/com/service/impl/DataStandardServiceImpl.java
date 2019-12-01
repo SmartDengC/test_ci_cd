@@ -94,12 +94,19 @@ public class DataStandardServiceImpl implements DataStandardService {
      * @return 返回一个json给前台  value为0 为请求失败 value为1 为请求成功
      */
     @Override
-    public String modifyFormField(int formatFieldCode, String newFormatFieldData) throws JsonProcessingException {
+    public String modifyFormatField(int formatFieldCode, String newFormatFieldData) throws JsonProcessingException {
         ObjectMapper mapper=new ObjectMapper();
         HashMap map=new HashMap<>();
         String status="";
 
-        int returnValue=dataStandardDao.modifyFormatData(formatFieldCode, newFormatFieldData);
+        //判断对应字段代码下的 规范值是否已经存在 0不存在 1存在（新值是否与旧值重复）
+        int isExist=dataStandardDao.formatDataIsExistByCode(formatFieldCode, newFormatFieldData);
+        System.out.println("***isExist:"+isExist);
+        //0默认失败
+        int returnValue=0;
+        if(isExist==0){
+            returnValue=dataStandardDao.modifyFormatData(formatFieldCode, newFormatFieldData);
+        }
         if(returnValue==1){
             map.put("status","1");
         }else {
@@ -121,17 +128,24 @@ public class DataStandardServiceImpl implements DataStandardService {
      * @return 返回一个json给前台  value为0 为请求失败 value为1 为请求成功
      */
     @Override
-    public String writeFormField(String field, String newFormatFieldData) throws JsonProcessingException {
+    public String writeFormatField(String field, String newFormatFieldData) throws JsonProcessingException {
         ObjectMapper mapper=new ObjectMapper();
         HashMap map=new HashMap<>();
         String status="";
-
-        int returnValue=dataStandardDao.insertFormatData(field, newFormatFieldData);
+        //判断对应字段名称下的 规范值是否已经存在 0不存在 1存在(该新值是否已经存在)
+        int isExist=dataStandardDao.formatDataIsExistByField(field, newFormatFieldData);
+        System.out.println("***isExist:"+isExist);
+        //0默认失败
+        int returnValue=0;
+        if(isExist==0){
+            returnValue=dataStandardDao.insertFormatData(field, newFormatFieldData);
+        }
         if(returnValue==1){
             map.put("status","1");
         }else {
             map.put("status","0");
         }
+
         status=mapper.writeValueAsString(map);
         return status;
     }

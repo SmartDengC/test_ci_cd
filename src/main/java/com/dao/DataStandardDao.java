@@ -87,4 +87,19 @@ public interface DataStandardDao {
      */
     public int deleteFieldRelation(@Param("NF") String year, @Param("SFDM") int provinceCode, @Param("ZD") String field, @Param("ZDBGFDM") String unFormatFieldCode, @Param("ZDGFDM") int formatFieldCode);
 
+    /**
+     *
+     * @param formatFieldCode
+     * @param formatFieldData
+     * @return
+     */
+    public int formatDataIsExistByCode(@Param("ZDGFZDM") int formatFieldCode,@Param("GFZ") String formatFieldData);
+
+    /**
+     *
+     * @param field
+     * @param formatFieldData
+     * @return
+     */
+    public int formatDataIsExistByField(@Param("ZD") String field,@Param("GFZ") String formatFieldData);
 }

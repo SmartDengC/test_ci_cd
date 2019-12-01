@@ -25,7 +25,10 @@ import java.util.Map;
 public class DataStandardController {
     @Autowired
     private DataStandardService dataStandardService;
-
+    //最大年份2059
+    private static int maxYear=2059;
+    //最小年份2002
+    private static int minYear=2002;
     /**
     * Modification User: 马雪冬
     * Modification Date: 2019/11/25
@@ -47,7 +50,7 @@ public class DataStandardController {
         List<Map<String,Object>> unFomatList=null;
         List<Map<String,Object>> relationList=null;
 
-        if(year!=null&&field!=null&&provinceCode>=0){
+        if(Integer.parseInt(year)>=minYear&&Integer.parseInt(year)<=maxYear&&(field.equals("PCMC")||field.equals("KLMC"))&&provinceCode>=0){
             //获取规范
             fomatList=dataStandardService.fetchFormatData(field);
             //获取不规范
@@ -80,10 +83,10 @@ public class DataStandardController {
      */
     @RequestMapping(value = "/modifyFormatField",method = RequestMethod.POST)
     @ResponseBody
-    public String modifyFormField(int formatFieldCode, String newFormatFieldData) throws JsonProcessingException {
+    public String modifyFormatField(int formatFieldCode, String newFormatFieldData) throws JsonProcessingException {
         String result="";
         if(formatFieldCode>=0&&newFormatFieldData!=null){
-            result=dataStandardService.modifyFormField(formatFieldCode, newFormatFieldData);
+            result=dataStandardService.modifyFormatField(formatFieldCode, newFormatFieldData);
             return result;
         }
         return "{\"status\":\"0\"}";
@@ -101,10 +104,10 @@ public class DataStandardController {
      */
     @RequestMapping(value = "/writeFormatField",method = RequestMethod.POST)
     @ResponseBody
-    public String writeFormField(String field, String newFormatFieldData) throws JsonProcessingException {
+    public String writeFormatField(String field, String newFormatFieldData) throws JsonProcessingException {
         String result="";
-        if(field!=null&&newFormatFieldData!=null){
-            result=dataStandardService.writeFormField(field, newFormatFieldData);
+        if((field.equals("PCMC")||field.equals("KLMC"))&&newFormatFieldData!=null){
+            result=dataStandardService.writeFormatField(field, newFormatFieldData);
             return result;
         }
         return "{\"status\":\"0\"}";
@@ -127,8 +130,7 @@ public class DataStandardController {
     @ResponseBody
     public String deleteFieldRelation(String year,int provinceCode,String field, String unFormatFieldCode,int formatFieldCode) throws JsonProcessingException {
         String result="";
-//        if(year!=null&&field!=null&&unFormatFieldCode!=null&&formatFieldCode!=null){
-        if(field!=null&&unFormatFieldCode!=null&&formatFieldCode>=0){
+        if(Integer.parseInt(year)>=minYear&&Integer.parseInt(year)<=maxYear&&(field.equals("PCMC")||field.equals("KLMC"))&&unFormatFieldCode!=null&&formatFieldCode>=0){
             result=dataStandardService.deleteFieldRelation(year, provinceCode, field, unFormatFieldCode, formatFieldCode);
             return result;
         }

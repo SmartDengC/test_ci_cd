@@ -48,4 +48,11 @@
         </foreach>
     </insert>
 
+    <select id="formatDataIsExistByField" resultType="Integer">
+        select count(*) from zdgfzdm where ZD=#{param1} and GFZ=#{param2}
+    </select>
+
+    <select id="formatDataIsExistByCode" resultType="Integer" >
+        select count(*) from zdgfzdm where ZDGFZDM=#{param1} and GFZ=#{param2}
+    </select>
 </mapper>
