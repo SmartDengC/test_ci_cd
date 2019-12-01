@@ -1,10 +1,9 @@
 package com.pojo;
 
-import java.time.Year;
 
 public class ZDGFYSDM {
     private int ZDGFYSDM;
-    private Year NF;
+    private String NF;
     private int SFDM;
     private String ZD;
     private String ZDBGFDM;
@@ -18,11 +17,11 @@ public class ZDGFYSDM {
         this.ZDGFYSDM = ZDGFYSDM;
     }
 
-    public Year getNF() {
+    public String getNF() {
         return NF;
     }
 
-    public void setNF(Year NF) {
+    public void setNF(String NF) {
         this.NF = NF;
     }
 
@@ -58,5 +57,15 @@ public class ZDGFYSDM {
         this.ZDGFZDM = ZDGFZDM;
     }
 
-
+    @Override
+    public String toString() {
+        return "ZDGFYSDM{" +
+                "ZDGFYSDM=" + ZDGFYSDM +
+                ", NF='" + NF + '\'' +
+                ", SFDM=" + SFDM +
+                ", ZD='" + ZD + '\'' +
+                ", ZDBGFDM='" + ZDBGFDM + '\'' +
+                ", ZDGFZDM=" + ZDGFZDM +
+                '}';
+    }
 }

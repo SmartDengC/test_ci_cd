@@ -100,9 +100,9 @@ public class BasicConfigController {
      */
     @ResponseBody
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-    public String uploadFile(String year, MultipartFile file, String fileType) throws Exception {
-        int beginYear = 2010;
-        int endYear = 2019;
+    public String uploadFile(String year, @RequestParam("file")MultipartFile file, String fileType) throws Exception {
+        int beginYear = 2009;
+        int endYear = 2029;
         String status = "";
         if(Integer.parseInt(year) >= beginYear && Integer.parseInt(year) <= endYear && !file.isEmpty() && fileType != null){
             status = basicConfigservice.uploadFile(year, file, fileType);
@@ -128,8 +128,8 @@ public class BasicConfigController {
     @ResponseBody
     @RequestMapping("/reUploadFile")
     public String reUploadFile(String year, MultipartFile file, String fileType) throws Exception {
-        int beginYear = 2010;
-        int endYear = 2019;
+        int beginYear = 2009;
+        int endYear = 2029;
         String status = "";
         if (Integer.parseInt(year) >= beginYear && Integer.parseInt(year) <= endYear && !file.isEmpty() && fileType!=null) {
             status = basicConfigservice.reUploadFile(year, file, fileType);

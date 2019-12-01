@@ -8,17 +8,17 @@ package com.pojo;
 public class Permission {
 
     //id
-    private Integer id;
+    private int id;
     //请求的名字 如添加商品
     private String permName;
     //请求的角色 如 ROLE_ADD
     private String permTag;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -38,4 +38,12 @@ public class Permission {
         this.permTag = permTag;
     }
 
+    @Override
+    public String toString() {
+        return "Permission{" +
+                "id=" + id +
+                ", permName='" + permName + '\'' +
+                ", permTag='" + permTag + '\'' +
+                '}';
+    }
 }

@@ -92,4 +92,7 @@ public interface BasicConfigservice {
     */
 
    public HashMap<String, Integer> provinceMap();
+
+
+   public Boolean judgeFilePairFileType(MultipartFile file, String fileType) throws Exception;
 }

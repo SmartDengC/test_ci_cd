@@ -9,7 +9,7 @@ public class TD_XSFS {
     private int CJ;
     private int ZYCJ;
     private int TZCJ;
-    private int ZGF;
+    private double ZGF;
     private int TDCJ;
     private int ZSCJ;
 
@@ -77,11 +77,11 @@ public class TD_XSFS {
         this.TZCJ = TZCJ;
     }
 
-    public int getZGF() {
+    public double getZGF() {
         return ZGF;
     }
 
-    public void setZGF(int ZGF) {
+    public void setZGF(double ZGF) {
         this.ZGF = ZGF;
     }
 

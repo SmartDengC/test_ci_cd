@@ -32,11 +32,11 @@
             #{item.ZXMC,jdbcType=VARCHAR},
             #{item.WYYZDM,jdbcType=INTEGER},
             #{item.HKDJ,jdbcType=VARCHAR},
-            #{item.BMDW,jdbcType=VARCHAR},
-            #{item.KSTZ,jdbcType=VARCHAR},
-            #{item.XTDW,jdbcType=VARCHAR},
-            #{item.DQDM,jdbcType=INTEGER},
-            #{item.SFZH,jdbcType=VARCHAR},
+            #{item.BMDW,jdbcType=INTEGER},
+            #{item.KSTZ,jdbcType=INTEGER},
+            #{item.XTDW,jdbcType=INTEGER},
+            #{item.DQDM,jdbcType=VARCHAR},
+            #{item.SFZH,jdbcType=INTEGER},
             #{item.JTDZ,jdbcType=VARCHAR},
             #{item.YZBM,jdbcType=INTEGER},
             #{item.LXDH,jdbcType=INTEGER},
@@ -63,7 +63,7 @@
             #{item.TDZY,jdbcType=VARCHAR},
             #{item.DQTDDW,jdbcType=VARCHAR},
             #{item.YTZY,jdbcType=VARCHAR},
-            #{item.LQZY,jdbcType=INTEGER},
+            #{item.LQZY,jdbcType=VARCHAR},
             #{item.TDYYDM,jdbcType=VARCHAR},
             #{item.BZ,jdbcType=VARCHAR},
             #{item.ZYHG,jdbcType=VARCHAR},
@@ -157,7 +157,7 @@
             (
             #{item.NF,jdbcType=VARCHAR},
             #{item.SFDM,jdbcType=INTEGER},
-            #{item.DQDM,jdbcType=INTEGER},
+            #{item.DQDM,jdbcType=VARCHAR},
             #{item.DQMC,jdbcType=VARCHAR}
             )
         </foreach>
@@ -258,7 +258,7 @@
             (
             #{item.NF,jdbcType=VARCHAR},
             #{item.SFDM,jdbcType=INTEGER},
-            #{item.PCDM,jdbcType=INTEGER},
+            #{item.PCDM,jdbcType=VARCHAR},
             #{item.PCMC,jdbcType=VARCHAR},
             #{item.GBPCDM,jdbcType=VARCHAR},
             #{item.GBCCDM,jdbcType=VARCHAR}
@@ -340,12 +340,13 @@
         </foreach>
     </insert>
 
-    <insert id="insertTD_ZYTZDM" parameterType="java.util.List" keyProperty="ZYTZDM" useGeneratedKeys="true">
+    <insert id="insertTD_ZYTZDM" parameterType="java.util.List" >
         insert into TD_ZYTZDM
         (ZYTZDM,ZYTZMC)
         values
         <foreach collection="list" index="index" item="item" separator=",">
-            (#{item.ZYTZDM,jdbcType=INTEGER},
+            (
+            #{item.ZYTZDM,jdbcType=VARCHAR},
             #{item.ZYTZMC,jdbcType=VARCHAR}
             )
         </foreach>
@@ -354,8 +355,8 @@
     <select id="requestT_TDD" resultType="com.pojo.T_TDD">
         select * from T_TDD
     </select>
+
     <select id="requestTD_SFDM" resultType="com.pojo.TD_SFDM">
         select * from TD_SFDM
     </select>
-
 </mapper>

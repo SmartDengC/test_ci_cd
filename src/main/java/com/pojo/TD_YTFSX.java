@@ -1,9 +1,5 @@
 package com.pojo;
 
-import com.sun.org.apache.bcel.internal.generic.FLOAD;
-
-import java.time.Year;
-
 public class TD_YTFSX {
     private int ID;
     private String NF;
@@ -149,6 +145,4 @@ public class TD_YTFSX {
     public void setZF(int ZF) {
         this.ZF = ZF;
     }
-
-
 }

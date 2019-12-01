@@ -163,9 +163,19 @@ public class BasicConfigserviceImpl implements BasicConfigservice {
     @Override
     public String uploadFile(String year, MultipartFile file, String fileType) throws Exception {
         year = GetDefaultInfo.getCurYear(year);
+        ObjectMapper mapper = new ObjectMapper();
+        HashMap map = new HashMap();
+        String result = "";
+        // 处理bug：上传的fileType在选项中，file不是想要的
+        Boolean judge = basicConfigServiceImpl.judgeFilePairFileType(file, fileType);
+        if (judge == false){
+            map.put("status", "File does not match file type!");
+            result = mapper.writeValueAsString(map);
+            return result;
+        }
         String fileName = file.getOriginalFilename();
-        String PTFSX = "STR_U";
-        String YTFSX = "STR_ASS";
+        String PTFSX = "SRT_U";
+        String YTFSX = "SRT_ASS";
         String KDD = "CN";
         String path = "./";
         if (file.isEmpty()) {
@@ -176,10 +186,7 @@ public class BasicConfigserviceImpl implements BasicConfigservice {
         FileUtils.copyInputStreamToFile(file.getInputStream(), newFile);
         ReadExcelUtils excelReader = new ReadExcelUtils(path + fileName);
         List<List> paramList = excelReader.readExcelContent_1();
-        ObjectMapper mapper = new ObjectMapper();
-        HashMap map = new HashMap();
         HashMap<String,Integer> provinceMap = basicConfigServiceImpl.provinceMap();
-        String result = "";
         SearchMapByLike searchMapByLike = new SearchMapByLike();
         // 普通分数线
         if (PTFSX.equals(fileType)) {
@@ -264,7 +271,8 @@ public class BasicConfigserviceImpl implements BasicConfigservice {
             for (List list : paramList) {
                 String EMS = (String) list.get(0);
                 int AVAI = Integer.parseInt(list.get(1).toString());
-                String YEAR = (String) list.get(2);
+                // 这里kdd.excel中有年份，有传入了一个年份
+                String YEAR = year;
                 String SRJ = (String) list.get(3);
                 String LXDH = (String) list.get(4);
                 String JTDZ = (String) list.get(5);
@@ -294,7 +302,7 @@ public class BasicConfigserviceImpl implements BasicConfigservice {
         }
         // 其他情况
         else {
-            map.put("status", -1);
+            map.put("status", "fileType not in [SRT_U, SRT_ASS, CN]");
             result = mapper.writeValueAsString(map);
             return result;
         }
@@ -314,16 +322,20 @@ public class BasicConfigserviceImpl implements BasicConfigservice {
      */
     @Override
     public String reUploadFile(String year, MultipartFile file, String fileType) throws Exception {
-        year = GetDefaultInfo.getCurYear(year);
-        String TD_PTFSX = "STR_U";
-        String TD_YTFSX = "STR_ASS";
-        String KDD = "CN";
-        int dbSucceed = 1;
-        int dbFault = 0;
         ObjectMapper mapper = new ObjectMapper();
         HashMap map = new HashMap();
-        String result = "";
         String status = "";
+        // 处理bug：上传的fileType在选项中，file不是想要的
+        Boolean judge = basicConfigServiceImpl.judgeFilePairFileType(file, fileType);
+        if (judge == false){
+            map.put("status", "File does not match file type!");
+            status = mapper.writeValueAsString(map);
+            return status;
+        }
+        year = GetDefaultInfo.getCurYear(year);
+        String TD_PTFSX = "SRT_U";
+        String TD_YTFSX = "SRT_ASS";
+        String KDD = "CN";
         int selectCount = 0;
         if(fileType.equals(TD_PTFSX)){
             // 普通
@@ -354,7 +366,12 @@ public class BasicConfigserviceImpl implements BasicConfigservice {
             }
         }
         else{
-            map.put("status" , 0);
+            map.put("status" ,"fileType not in [SRT_U, SRT_ASS, CN]");
+            status = mapper.writeValueAsString(map);
+        }
+        // 处理所有异常的if
+        if (status == ""){
+            map.put("status", 0);
             status = mapper.writeValueAsString(map);
         }
         return status;
@@ -379,4 +396,39 @@ public class BasicConfigserviceImpl implements BasicConfigservice {
         }
         return provinceMap;
     }
+
+    @Override
+    public Boolean judgeFilePairFileType(MultipartFile file, String fileType) throws Exception {
+        Boolean result = false;
+        String path = "./";
+        if (file.isEmpty()) {
+            System.out.println("打印日志操作");
+            return result;
+        }
+        String fileName = file.getOriginalFilename();
+        File newFile = new File(path + fileName);
+        FileUtils.copyInputStreamToFile(file.getInputStream(), newFile);
+        ReadExcelUtils excelReader = new ReadExcelUtils(path + fileName);
+        List excelTitle = new ArrayList();
+        excelTitle = excelReader.readExcelTitle();
+        int field = excelTitle.size();
+        String srt_u = "SRT_U";
+        String srt_ass = "SRT_ASS";
+        String cn = "CN";
+        if (field == 5 && fileType.equals(srt_u)){
+            result = true;
+        }
+        else if (field == 12 && fileType.equals(srt_ass)){
+            result = true;
+        }
+        else if (field == 8 && fileType.equals(cn)){
+            result = true;
+        }
+        else {
+            result = false;
+        }
+        return result;
+    }
+
 }
+
