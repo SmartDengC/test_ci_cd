@@ -11,6 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a999be16-2aab-468e-82d0-66aead19e5de" name="Default Changelist" comment="数据清洗页面测试完成2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/DataStandardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/DataStandardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/DataStandardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/DataStandardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/impl/DataStandardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/DataStandardServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DataStandardMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DataStandardMapper.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -369,6 +373,9 @@
       <workItem from="1574682789259" duration="7783000" />
       <workItem from="1574693936614" duration="7733000" />
       <workItem from="1574736936927" duration="12805000" />
+      <workItem from="1574856270950" duration="424000" />
+      <workItem from="1574909925708" duration="2892000" />
+      <workItem from="1575198865053" duration="6168000" />
     </task>
     <task id="LOCAL-00001" summary="数据清洗页面测试完成">
       <created>1574832527554</created>

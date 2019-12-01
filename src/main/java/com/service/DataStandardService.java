@@ -15,8 +15,8 @@ import java.util.Map;
 * @Author 马雪冬
 * @Date 2019/11/22
 * @Description TODO
-* Modification User:
-* Modification Date:
+* Modification User: 马雪冬
+* Modification Date:2019/12/1
 */
 
 public interface DataStandardService {
@@ -84,14 +84,17 @@ public interface DataStandardService {
 
     /**
      * Modification User: 马雪冬
-     * Modification Date: 2019/11/25
+     * Modification Date: 2019/12/1
      *将前端传来的所有规范与不规范对应关系 在映射表中 进行建立关联
      *
      * @author 马雪冬
-     * @param list 所有规范值与不规范值的对应关系 集合
+     * @param year 指定年份
+     * @param provinceCode 指定省份代码
+     * @param field 指定字段名称
+     * @param mapList 指定的规范代码与不规范代码的对象数组
      * @return 返回一个json对象 value为0-->失败 1-->成功
      */
-    public String biuldRelationship(List<Map<String,Object>> list) throws JsonProcessingException;
+    public String biuldRelationship(String year,int provinceCode,String field,List<Map<String,Object>> mapList) throws JsonProcessingException;
 
     /**
      * Modification User:马雪冬

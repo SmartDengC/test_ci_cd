@@ -17,7 +17,7 @@ import java.util.Map;
 * @Date 2019/11/23
 * @Description 处理数据清洗页面请求的Controller
 * Modification User: 马雪冬
-* Modification Date: 2019/11/25
+* Modification Date: 2019/12/1
 */
 @Controller
 @CrossOrigin
@@ -136,19 +136,24 @@ public class DataStandardController {
     }
     /**
      * Modification User: 马雪冬
-     * Modification Date: 2019/11/25
+     * Modification Date: 2019/12/1
      *
      * 在数据清洗页面中 当所有不规范值都建立对应关系式 点击确定后请求后台在映射表中建立所有的对应关系
-     * @param list 指定年份、省份、字段、字段规范值代码、字段不规范值代码的json对象数组
+     * @param map Map中有指定年份、省份、字段和(字段规范值代码、字段不规范值代码的json对象数组)
      * @return 返回一个json给前台  value为0 为请求失败 value为1 为请求成功
      * @throws JsonProcessingException
      */
     @RequestMapping(value = "/biuldRelationship",method = RequestMethod.POST)
     @ResponseBody
-    public String biuldRelationship(@RequestBody List<Map<String,Object>> list) throws JsonProcessingException {
+    public String biuldRelationship(@RequestBody Map<String,Object> map) throws JsonProcessingException {
         String result="";
-        if(list!=null){
-            result=dataStandardService.biuldRelationship(list);
+        if(map!=null){
+            String year= (String) map.get("year");
+            int provinceCode= (int) map.get("provinceCode");
+            String field= (String) map.get("field");
+            List<Map<String,Object>> mapList= (List<java.util.Map<String, Object>>) map.get("relation");
+
+            result=dataStandardService.biuldRelationship(year,provinceCode,field,mapList);
             return result;
         }
         return "{\"status\":\"0\"}";

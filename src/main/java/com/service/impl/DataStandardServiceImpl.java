@@ -7,6 +7,7 @@ import com.service.DataStandardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,7 @@ import java.util.Map;
 * @Date 2019/11/22
 * @Description TODO
 * Modification User: 马雪冬
-* Modification Date: 2019/11/25
+* Modification Date: 2019/12/1
 */
 
 @Service
@@ -137,19 +138,37 @@ public class DataStandardServiceImpl implements DataStandardService {
 
     /**
      * Modification User: 马雪冬
-     * Modification Date: 2019/11/25
+     * Modification Date: 2019/12/1
      *将前端传来的所有规范与不规范对应关系 在映射表中 进行建立关联
      *
      * @author 马雪冬
-     * @param list 所有规范值与不规范值的对应关系 集合
+     * @param year 指定年份
+     * @param provinceCode 指定省份代码
+     * @param field 指定字段名称
+     * @param mapList 指定的规范代码与不规范代码的对象数组
      * @return 返回一个json对象 value为0-->失败 1-->成功
      */
+
     @Override
-    public String biuldRelationship(List<Map<String,Object>> list) throws JsonProcessingException {
+    public String biuldRelationship(String year,int provinceCode,String field,List<Map<String,Object>> mapList) throws JsonProcessingException {
         ObjectMapper mapper=new ObjectMapper();
         HashMap map=new HashMap<>();
         String status="";
+
+        List<Map<String ,Object>> list=new ArrayList<>();
+        for(Map<String,Object> item:mapList){
+            Map<String,Object> a=new HashMap<String,Object>();
+            a.put("year",year);
+            a.put("provinceCode",provinceCode);
+            a.put("field",field);
+            a.put("unFormatFieldCode",item.get("unFormatFieldCode"));
+            //formatFieldCode在zdysdm表中是外键
+            a.put("formatFieldCode",item.get("formatFieldCode"));
+            list.add(a);
+        }
+
         int returnValue=dataStandardDao.biuldRelationship(list);
+        System.out.println("***SERVICE:returnValue:"+returnValue);
         if(returnValue>0){
             map.put("status","1");
         }else {
