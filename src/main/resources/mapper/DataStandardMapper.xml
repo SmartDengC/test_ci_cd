@@ -48,18 +48,4 @@
         </foreach>
     </insert>
 
-<!--    <insert id="biuldRelationship" >-->
-<!--        insert into ZDGFYSDM-->
-<!--        (NF,SFDM,ZD,ZDBGFDM,ZDGFDM)-->
-<!--        values-->
-<!--        <foreach collection="param4" item="item" index="index" separator=",">-->
-<!--            (-->
-<!--            #{param1},-->
-<!--            #{param2},-->
-<!--            #{param3},-->
-<!--            #{param4.unFormatFieldCode,jdbcType=VARCHAR},-->
-<!--            #{param4.formatFieldCode,jdbcType=INTEGER}-->
-<!--            )-->
-<!--        </foreach>-->
-<!--    </insert>-->
 </mapper>
