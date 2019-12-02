@@ -90,9 +90,20 @@
 		select * from TD_PTFSX where (NF=#{NF})
 	</select>
     <!--	根据年号查询TD_YTFSX表中数据-->
-	<select id="requestTD_YTFSX" resultType="com.pojo.TD_YTFSX" parameterType="String">
+	<select id="requestTD_YTFSX" resultMap="TD_YTFSX" parameterType="String">
 		select * from TD_YTFSX where (NF=#{NF})
 	</select>
+
+	<resultMap id="TD_YTFSX" type="com.pojo.TD_YTFSX">
+		<result column="ZYX_NS" jdbcType="INTEGER" property="ZYX_NS"/>
+		<result column="ZYX_VS" jdbcType="INTEGER" property="ZYX_VS"/>
+		<result column="ZYX_ZS" jdbcType="FLOAT" property="ZYX_ZS"/>
+		<result column="ZYX_BL" jdbcType="FLOAT" property="ZYX_BL"/>
+		<result column="WHX_W" jdbcType="INTEGER" property="WHX_W"/>
+		<result column="WHX_L" jdbcType="INTEGER" property="WHX_L"/>
+		<result column="WHX_ZS" jdbcType="FLOAT" property="WHX_ZS"/>
+		<result column="WHX_BL" jdbcType="FLOAT" property="WHX_BL"/>
+	</resultMap>
     <!--	根据快递单号查询KDD表中数据-->
 	<select id="requestKDD" resultType="com.pojo.KDD" parameterType="String">
         select * from KDD where (YEAR=#{YEAR})
