@@ -16,7 +16,7 @@ import java.util.HashMap;
  *
  * @create: 2019-10-20 20:30
  **/
-public interface BasicConfigservice {
+public interface BasicConfigService {
    /**
     * Modification User： 吕志伟
     * Modification Date: 2019/11/4

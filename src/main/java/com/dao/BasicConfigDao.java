@@ -108,5 +108,9 @@ public interface BasicConfigDao {
      */
     public int selectT_TDD(@Param("NF") String year, @Param("SFDM") int province);
 
-
+    /**
+     * 查询TD_SFDM中的所有数据
+     * @return list
+     */
+    public List<TD_SFDM> requestTD_SFDM();
 }

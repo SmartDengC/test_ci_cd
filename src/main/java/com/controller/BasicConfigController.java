@@ -1,30 +1,27 @@
 package com.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.service.BasicConfigservice;
+import com.service.BasicConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 
-
 /**
- * @program: ssm
- *
- * @description: 根据年份检查数据的springmvc层接口
- *
- * @author: 吕志伟
- *
- * @create: 2019-10-20 20:30
- **/
+ * @ClassName basicConfigController
+ * @Version 1.0
+ * @Author 吕志伟
+ * @Date 2019/10/20 16:36
+ * @Description 根据年份检查数据的springmvc层口
+ * Modification User： 邓聪
+ * Modification Date： 2019/11/12
+ */
 @RestController
 @CrossOrigin
 @RequestMapping("/basicConfig")
 public class BasicConfigController {
     @Autowired
-    private BasicConfigservice basicConfigservice;
+    private BasicConfigService basicConfigservice;
 
     /**
      * Modification User： 吕志伟
@@ -95,7 +92,7 @@ public class BasicConfigController {
      * @param year 年份
      * @param file 文件对象
      * @param fileType 文件类型
-     * @return 上传文件是否成功 1表示都成功,00表示其他失败情况，01表示文件上传失败，02表示数据库添加失败，03表示数据库删除失败
+     * @return 上传文件是否成功 1表示都成功,0表示失败
      * @throws Exception
      */
     @ResponseBody
@@ -122,7 +119,7 @@ public class BasicConfigController {
      * @param year 年份
      * @param file 文件对象
      * @param fileType 文件类型，普通分数线STR_U，艺体分数线STR_ASS，快递单CN
-     * @return 重新上传文件是否成功 1表示都成功,00表示其他失败情况，01表示文件上传失败，02表示数据库添加失败，03表示数据库删除失败
+     * @return 重新上传文件是否成功 1表示都成功,0表示失败
      * @throws Exception
      */
     @ResponseBody

@@ -1,15 +1,13 @@
 package com.service.impl;
 
 import com.dao.BasicConfigDao;
-import com.dao.DataImportDao;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pojo.KDD;
 import com.pojo.TD_PTFSX;
 import com.pojo.TD_SFDM;
 import com.pojo.TD_YTFSX;
-import com.service.BasicConfigservice;
-
+import com.service.BasicConfigService;
 import com.utils.GetDefaultInfo;
 import com.utils.basicConfig.ReadExcelUtils;
 import com.utils.basicConfig.SearchMapByLike;
@@ -17,7 +15,6 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,23 +23,21 @@ import java.util.List;
 
 
 /**
- * @program: ssm
- *
- * @description: 根据相关表检查数据的service层接口的实现类
- *
- * @author: 吕志伟
- *
- * @create: 2019-10-20 20:30
- **/
+ * @ClassName basicConfig
+ * @Version 1.0
+ * @Author 吕志伟
+ * @Date 2019/10/20 16:36
+ * @Description 根据相关表检查数据的service层接口的实现类
+ * Modification User： 邓聪
+ * Modification Date： 2019/11/12
+ */
 
 @Service
-public class BasicConfigserviceImpl implements BasicConfigservice {
+public class BasicConfigServiceImpl implements BasicConfigService {
     @Autowired
     private BasicConfigDao basicConfigDao;
     @Autowired
-    private DataImportDao dataImportDao;
-    @Autowired
-    private BasicConfigserviceImpl basicConfigServiceImpl;
+    private BasicConfigServiceImpl basicConfigServiceImpl;
 
     /**
      * Modification User： 吕志伟
@@ -389,7 +384,7 @@ public class BasicConfigserviceImpl implements BasicConfigservice {
     @Override
     public HashMap<String, Integer> provinceMap() {
         // 数据库返回的数据类似：[TD_SFDM@68{"SFDM":1,"SF":"北京市"}]
-        List<TD_SFDM> returnList = dataImportDao.requestTD_SFDM();
+        List<TD_SFDM> returnList = basicConfigDao.requestTD_SFDM();
         HashMap<String,Integer> provinceMap = new HashMap<String, Integer>();
         for (TD_SFDM list:returnList){
             provinceMap.put(list.getSF(), list.getSFDM());

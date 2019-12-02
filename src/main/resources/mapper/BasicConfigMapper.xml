@@ -109,4 +109,7 @@
         select * from KDD where (YEAR=#{YEAR})
 	</select>
 
+	<select id="requestTD_SFDM" resultType="com.pojo.TD_SFDM">
+		select * from TD_SFDM
+	</select>
 </mapper>
