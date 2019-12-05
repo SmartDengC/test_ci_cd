@@ -169,21 +169,47 @@ public class DataStandardServiceImpl implements DataStandardService {
         HashMap map=new HashMap<>();
         String status="";
 
-        List<Map<String ,Object>> list=new ArrayList<>();
+        List<Map<String ,Object>> newList=new ArrayList<>();
+        List<Map<String ,Object>> updateList=new ArrayList<>();
         for(Map<String,Object> item:mapList){
-            Map<String,Object> a=new HashMap<String,Object>();
-            a.put("year",year);
-            a.put("provinceCode",provinceCode);
-            a.put("field",field);
-            a.put("unFormatFieldCode",item.get("unFormatFieldCode"));
-            //formatFieldCode在zdysdm表中是外键
-            a.put("formatFieldCode",item.get("formatFieldCode"));
-            list.add(a);
+            //如果是新的
+            System.out.println("*****mappingID:"+item.get("mappingID"));
+            if(item.get("mappingID").equals("")) {
+                Map<String, Object> a = new HashMap<String, Object>();
+                a.put("year", year);
+                a.put("provinceCode", provinceCode);
+                a.put("field", field);
+                a.put("unFormatFieldCode", item.get("unFormatFieldCode"));
+                //formatFieldCode在zdysdm表中是外键
+                a.put("formatFieldCode", item.get("formatFieldCode"));
+                updateList.add(a);
+            }else {
+                //不是新的
+                Map<String, Object> b = new HashMap<String, Object>();
+//                b.put("year", year);
+//                b.put("provinceCode", provinceCode);
+//                b.put("field", field);
+                b.put("mappingID",item.get("mappingID"));
+//                b.put("unFormatFieldCode", item.get("unFormatFieldCode"));
+                //formatFieldCode在zdysdm表中是外键
+                b.put("formatFieldCode", item.get("formatFieldCode"));
+                updateList.add(b);
+            }
         }
-
-        int returnValue=dataStandardDao.biuldRelationship(list);
-        System.out.println("***SERVICE:returnValue:"+returnValue);
-        if(returnValue>0){
+        //新的
+        int returnValue1=0;
+        if(newList.size()>0) {
+            returnValue1 = dataStandardDao.biuldNewRelationship(newList);
+        }
+        System.out.println("******updateList:"+updateList);
+        //存在的
+        int returnValue2=0;
+        if(updateList.size()>0) {
+            returnValue2 = dataStandardDao.updateExistRelationship(updateList);
+        }
+        System.out.println("***SERVICE:returnValue1:"+returnValue1);
+        System.out.println("***SERVICE:returnValue2:"+returnValue2);
+        if(returnValue2>0||returnValue1>0){
             map.put("status","1");
         }else {
             map.put("status","0");

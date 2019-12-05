@@ -71,10 +71,17 @@ public interface DataStandardDao {
 
     /**
      *在ZDGFZYSDM中添加所有与不规范对应关系
-     * @param list 所有规范值与不规范值的对应关系 集合
+     * @param newList 所有规范值与不规范值的对应关系 集合
      * @return 0:添加失败 1:添加成功
      */
-    public int biuldRelationship(List<Map<String,Object>> list);
+    public int biuldNewRelationship(List<Map<String,Object>> newList);
+
+    /**
+     *
+     * @param updateList
+     * @return
+     */
+    public int updateExistRelationship(List<Map<String,Object>> updateList);
 
     /**
      * 在ZDGFZYSDM中删除指定的规范与不规范对应关系

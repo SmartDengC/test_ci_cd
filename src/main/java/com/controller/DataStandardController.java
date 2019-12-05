@@ -34,29 +34,33 @@ public class DataStandardController {
     * Modification Date: 2019/11/25
     *
     * @author 马雪冬
-    * @param year 指定年份
-    * @param provinceCode 指定省份代码
-    * @param field 指定字段名称
+     * @param map
     * @return 返回一个json给前台  json中包含四个对象 每个对象都是一个json数组 1.status 请求状态 2.规范值与代码 3.不规范值与代码 4.规范与不规范代码关系
     */
 
     @RequestMapping(value = "/fetchUnFormatData",method = RequestMethod.POST)
     @ResponseBody
-    public String fetchUnFormatData(String year,int provinceCode,String field) throws JsonProcessingException {
+    public String fetchUnFormatData(@RequestBody Map<String,Object> map) throws JsonProcessingException {
+//        ,String year,int provinceCode,String field
         String result="";
         ObjectMapper mapper=new ObjectMapper();
-
         List<Map<String,Object>> fomatList=null;
         List<Map<String,Object>> unFomatList=null;
         List<Map<String,Object>> relationList=null;
+        if(map!=null) {
+            String year = (String) map.get("year");
+            int provinceCode = (int) map.get("provinceCode");
+            String field = (String) map.get("field");
 
-        if(Integer.parseInt(year)>=minYear&&Integer.parseInt(year)<=maxYear&&(field.equals("PCMC")||field.equals("KLMC"))&&provinceCode>=0){
-            //获取规范
-            fomatList=dataStandardService.fetchFormatData(field);
-            //获取不规范
-            unFomatList=dataStandardService.fetchUnFormatData(year, provinceCode, field);
-            //获取对应关系
-            relationList=dataStandardService.fetchRelationship(year, provinceCode, field);
+
+            if (Integer.parseInt(year) >= minYear && Integer.parseInt(year) <= maxYear && (field.equals("PCMC") || field.equals("KLMC")) && provinceCode >= 0) {
+                //获取规范
+                fomatList = dataStandardService.fetchFormatData(field);
+                //获取不规范
+                unFomatList = dataStandardService.fetchUnFormatData(year, provinceCode, field);
+                //获取对应关系
+                relationList = dataStandardService.fetchRelationship(year, provinceCode, field);
+            }
         }
 
         //当前年对应关系可能没有 不做硬性要求
@@ -64,11 +68,11 @@ public class DataStandardController {
             String formatStr=mapper.writeValueAsString(fomatList);
             String unFormatStr=mapper.writeValueAsString(unFomatList);
             String relationStr=mapper.writeValueAsString(relationList);
-            result="{\"status\":+\"1\""+","+"\"unFormat\":"+unFormatStr+","+"\"format\":"+formatStr+","+"\"relation\":"+relationStr+"}";
-        }else {
-            result="{\"status\":\"0\"}";
+            result="{\"status\":\"1\""+","+"\"unFormat\":"+unFormatStr+","+"\"format\":"+formatStr+","+"\"relation\":"+relationStr+"}";
+            return result;
         }
-        return result;
+
+        return "{\"status\":\"0\"}";
     }
 
     /**
@@ -76,18 +80,23 @@ public class DataStandardController {
      * Modification Date: 2019/11/25
      *
      * 在数据清洗页面中 右侧规范值栏中 点击进行规范值修改时,请求后台对指定的规范值进行修改
-     * @param formatFieldCode 指定的字段代码
-     * @param newFormatFieldData 新的字段规范值
+     * @param map
      * @return 返回一个json给前台  value为0 为请求失败 value为1 为请求成功
      * @throws JsonProcessingException
      */
     @RequestMapping(value = "/modifyFormatField",method = RequestMethod.POST)
     @ResponseBody
-    public String modifyFormatField(int formatFieldCode, String newFormatFieldData) throws JsonProcessingException {
+    public String modifyFormatField(@RequestBody Map<String,Object> map) throws JsonProcessingException {
         String result="";
-        if(formatFieldCode>=0&&newFormatFieldData!=null){
-            result=dataStandardService.modifyFormatField(formatFieldCode, newFormatFieldData);
-            return result;
+//        int formatFieldCode, String newFormatFieldData
+        if(map!=null) {
+            int formatFieldCode= (int) map.get("formatFieldCode");
+            String newFormatFieldData= (String) map.get("newFormatFieldData");
+
+            if (formatFieldCode >= 0 && newFormatFieldData != null) {
+                result = dataStandardService.modifyFormatField(formatFieldCode, newFormatFieldData);
+                return result;
+            }
         }
         return "{\"status\":\"0\"}";
     }
@@ -97,18 +106,23 @@ public class DataStandardController {
      * Modification Date: 2019/11/25
      *
      * 在数据清洗页面中 最右侧添加字段规范值时 请求后台在字段规范值表中添加新的规范值
-     * @param field 指定字段名称
-     * @param newFormatFieldData 新的字段规范值
+     * @param map
      * @return 返回一个json给前台  value为0 为请求失败 value为1 为请求成功
      * @throws JsonProcessingException
      */
     @RequestMapping(value = "/writeFormatField",method = RequestMethod.POST)
     @ResponseBody
-    public String writeFormatField(String field, String newFormatFieldData) throws JsonProcessingException {
+    public String writeFormatField(@RequestBody Map<String,Object> map) throws JsonProcessingException {
         String result="";
-        if((field.equals("PCMC")||field.equals("KLMC"))&&newFormatFieldData!=null){
-            result=dataStandardService.writeFormatField(field, newFormatFieldData);
-            return result;
+//        String field, String newFormatFieldData
+        if(map!=null) {
+            String field= (String) map.get("field");
+            String newFormatFieldData= (String) map.get("newFormatFieldData");
+
+            if ((field.equals("PCMC") || field.equals("KLMC")) && newFormatFieldData != null) {
+                result = dataStandardService.writeFormatField(field, newFormatFieldData);
+                return result;
+            }
         }
         return "{\"status\":\"0\"}";
     }
@@ -118,21 +132,26 @@ public class DataStandardController {
      * Modification Date:2019/11/25
      *
      * 在数据清洗页面的锁定面板取消关联时，请求后台取消映射表中对应的关联
-     * @param year 指定年份
-     * @param provinceCode 指定省份代码
-     * @param field 指定字段
-     * @param unFormatFieldCode 不规范值代码
-     * @param formatFieldCode 规范值代码
+     * @param map
      * @return 返回一个json给前台  value为0 为请求失败 value为1 为请求成功
      * @throws JsonProcessingException
      */
     @RequestMapping(value = "/deleteFieldRelation",method = RequestMethod.POST)
     @ResponseBody
-    public String deleteFieldRelation(String year,int provinceCode,String field, String unFormatFieldCode,int formatFieldCode) throws JsonProcessingException {
+    public String deleteFieldRelation(@RequestBody Map<String,Object> map) throws JsonProcessingException {
         String result="";
+//        String year,int provinceCode,String field, String unFormatFieldCode,int formatFieldCode
+        if(map!=null){
+            String year= (String) map.get("year"); //指定年份
+            int provinceCode= (int) map.get("provinceCode"); //指定省份代码
+            String field= (String) map.get("field"); //指定字段
+            String unFormatFieldCode= (String) map.get("unFormatFieldCode"); //不规范值代码
+            int formatFieldCode= (int) map.get("formatFieldCode"); //规范值代码
+
         if(Integer.parseInt(year)>=minYear&&Integer.parseInt(year)<=maxYear&&(field.equals("PCMC")||field.equals("KLMC"))&&unFormatFieldCode!=null&&formatFieldCode>=0){
             result=dataStandardService.deleteFieldRelation(year, provinceCode, field, unFormatFieldCode, formatFieldCode);
             return result;
+        }
         }
         return "{\"status\":\"0\"}";
     }

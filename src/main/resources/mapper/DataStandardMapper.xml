@@ -23,7 +23,7 @@
     </select>
     <!--zdgfysdm-->
     <select id="fecthRelation" resultType="java.util.HashMap">
-        select ZDBGFDM,ZDGFDM from zdgfysdm where NF=#{param1} and SFDM=#{param2} and ZD=#{param3}
+        select ZDGFYSDM,ZDBGFDM,ZDGFDM from zdgfysdm where NF=#{param1} and SFDM=#{param2} and ZD=#{param3}
     </select>
     <!--表中列名ZGGFZDM不规范   对应Dao中param2:GFZ param1:ZDGFZDM-->
     <update id="modifyFormatData">
@@ -34,7 +34,7 @@
         delete from zdgfysdm where NF=#{param1} and SFDM=#{param2} and ZD=#{param3} and ZDBGFDM=#{param4} and ZDGFDM=#{param5}
     </delete>
 
-    <insert id="biuldRelationship" parameterType="java.util.List">
+    <insert id="biuldNewRelationship" parameterType="java.util.List">
         insert into ZDGFYSDM
         (NF,SFDM,ZD,ZDBGFDM,ZDGFDM)
         values
@@ -47,6 +47,20 @@
             )
         </foreach>
     </insert>
+
+<!-- #{item.formatFieldCode,jdbcType=INTEGER} where ZDGFYSDM=#{item.mappingID,jdbcType=INTEGER} -->
+    <update id="updateExistRelationship" parameterType="java.util.List">
+        update zdgfysdm set
+        ZDGFDM=
+        <foreach collection="list" item="item" index="index" separator=" " open="case ZDGFYSDM" close="end">
+             when #{item.mappingID} then
+            #{item.formatFieldCode}
+        </foreach>
+        where ZDGFYSDM in
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{item.mappingID}
+        </foreach>
+    </update>
 
     <select id="formatDataIsExistByField" resultType="Integer">
         select count(*) from zdgfzdm where ZD=#{param1} and GFZ=#{param2}
