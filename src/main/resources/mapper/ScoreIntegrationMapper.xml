@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ScoreIntegrationDao">
+    <!-- param1   param2  判断指定省份和年份下tdd是否存在学生-->
+    <select id="studentIsExist" resultType="Integer">
+        select count(*) from t_tdd where NF=#{param1} and SFDM=#{param2}
+    </select>
+    <!--每个student就是一个map map中有 编号ID 文化成绩CJ 专业成绩ZYCJ 投档成绩TDCJ 折算成绩ZSCJ-->
+    <select id="getStudents" resultType="java.util.HashMap">
+<!--        select ID,CJ,ZYCJ,TDCJ,ZSCJ from td_xsfs where NF=#{param1} and SFDM=#{param2}-->
+        select ID,CJ,ZYCJ,TDCJ,ZSCJ from td_xsfs where ID in (select FS_ID from t_tdd where NF=#{param1} and SFDM=#{param2})
+    </select>
+
+    <select id="getFourData" resultType="java.util.HashMap">
+        select WHX_ZS,WHX_BL,ZYX_ZS,ZYX_BL from td_ytfsx
+        where NF=#{param1} and SFDM=#{param2}
+        and KLDM=(select KLDM from t_tdd where FS_ID=#{param3})
+        and PCDM=(select PCDM from t_tdd where FS_ID=#{param3})
+    </select>
+
+    <update id="setStudents" parameterType="java.util.List">
+        update td_xsfs set
+        ZYCJ=
+        <foreach collection="list" item="item" index="index" separator=" " open="case ID" close="end">
+            when #{item.ID} then
+            #{item.ZYCJ}
+        </foreach>
+        ,ZSCJ=
+        <foreach collection="list" item="item" index="index" separator=" " open="case ID" close="end">
+            when #{item.ID} then
+            #{item.ZSCJ}
+        </foreach>
+        where ID in
+        <foreach collection="list" item="item" index="index" separator="," open="(" close=")">
+            #{item.ID}
+        </foreach>
+    </update>
+
+    <select id="getThreeScore" resultType="java.util.HashMap">
+<!--        select max(TDCJ) as maxScore, min(TDCJ) as minScore, cast(avg(TDCJ) as signed) as avgScore from td_xsfs-->
+<!--        where ID in (select FS_ID from t_tdd where NF=#{param1} and SFDM=#{param2})-->
+        select max(TDCJ) as maxScore, min(TDCJ) as minScore, avg(TDCJ) as avgScore from td_xsfs
+        where ID in (select FS_ID from t_tdd where NF=#{param1} and SFDM=#{param2})
+    </select>
+
+</mapper>
