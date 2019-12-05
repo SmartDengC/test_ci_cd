@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.DataExportDao">
+    <select id="requestExpressSingle" resultType="com.pojo.KDD" parameterType="String">
+        select SRJ,XM,JTDZ,LXDH,KSH,EMS from kdd where (YEAR=#{YEAR})
+    </select>
+
+    <select id="requestNotice" resultType="com.pojo.Notice" parameterType="String">
+        select XM,ZYMC,CCCC,XUEZHI,KSH,SFZH from notice_from where (NF=#{NF})
+    </select>
+
+    <select id="requestBankCard" resultType="com.pojo.BankCard" parameterType="String">
+        select XM,JTDZ,LXDH,SFZH from bank_car_list where (NF=#{NF})
+    </select>
+</mapper>

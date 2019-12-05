@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.DataImportDao">
+    <select id="selectT_TDD" resultType="int">
+        select count(*) from T_TDD where (NF=#{NF,jdbcType=VARCHAR} and SFDM=#{SFDM,jdbcType=INTEGER})
+    </select>
+
+    <insert id="insertT_TDD" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into T_TDD
+        (NF,SFDM,KSH,ZKZH,XM,XB,CSNY,ZZMMDM,MZDM,KSLBDM,BYLBDM,ZXDM,ZXMC,WYYZDM,HKDJ,BMDW,KSTZ,XTDW,DQDM
+        ,SFZH,JTDZ,YZBM,LXDH,HKKH,KSTC,KSJLHCF,WYKS,ZSYJ,KSLXDM,SJR,YSJZDM,WYTL,PCDM,KLDM,TDDW,JHXZ,CJ,TZCJ
+        ,TDCJ,ZGF,YXDRCJ,ZYYTJZCJ,ZYYTFJCJ,TDZY,DQTDDW,YTZY,LQZY,TDYYDM,BZ,ZYHG,TJHG,LQFS,KSZT,SDBZ,TDDWDM1
+        ,ZYDH1,TDDWDM2,ZYDH2,TDDWDM3,ZYDH3,TDDWDM4,ZYDH4,TDDWDM5,ZYDH5,TDDWDM6,ZYDH6,ZYTZ,ZYZYTJ,DXTJ,ZYTJFC
+        ,ZYSXDM1,ZYSXDM2,ZYSXDM3,ZYSXDM4,ZYSXDM5,ZYSXDM6,TJJLDM,BH,KSLSCZBZ,TASK_TAG,FS_ID
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.NF,jdbcType=VARCHAR},
+            #{item.SFDM,jdbcType=INTEGER},
+            #{item.KSH,jdbcType=VARCHAR},
+            #{item.ZKZH,jdbcType=INTEGER},
+            #{item.XM,jdbcType=VARCHAR},
+            #{item.XB,jdbcType=VARCHAR},
+            #{item.CSNY,jdbcType=TIMESTAMP},
+            #{item.ZZMMDM,jdbcType=INTEGER},
+            #{item.MZDM,jdbcType=INTEGER},
+            #{item.KSLBDM,jdbcType=INTEGER},
+            #{item.BYLBDM,jdbcType=INTEGER},
+            #{item.ZXDM,jdbcType=VARCHAR},
+            #{item.ZXMC,jdbcType=VARCHAR},
+            #{item.WYYZDM,jdbcType=INTEGER},
+            #{item.HKDJ,jdbcType=VARCHAR},
+            #{item.BMDW,jdbcType=VARCHAR},
+            #{item.KSTZ,jdbcType=VARCHAR},
+            #{item.XTDW,jdbcType=VARCHAR},
+            #{item.DQDM,jdbcType=INTEGER},
+            #{item.SFZH,jdbcType=VARCHAR},
+            #{item.JTDZ,jdbcType=VARCHAR},
+            #{item.YZBM,jdbcType=INTEGER},
+            #{item.LXDH,jdbcType=INTEGER},
+            #{item.HKKH,jdbcType=VARCHAR},
+            #{item.KSTC,jdbcType=VARCHAR},
+            #{item.KSJLHCF,jdbcType=VARCHAR},
+            #{item.WYKS,jdbcType=INTEGER},
+            #{item.ZSYJ,jdbcType=VARCHAR},
+            #{item.KSLXDM,jdbcType=INTEGER},
+            #{item.SJR,jdbcType=VARCHAR},
+            #{item.YSJZDM,jdbcType=VARCHAR},
+            #{item.WYTL,jdbcType=VARCHAR},
+            #{item.PCDM,jdbcType=VARCHAR},
+            #{item.KLDM,jdbcType=VARCHAR},
+            #{item.TDDW,jdbcType=VARCHAR},
+            #{item.JHXZ,jdbcType=VARCHAR},
+            #{item.CJ,jdbcType=INTEGER},
+            #{item.TZCJ,jdbcType=INTEGER},
+            #{item.TDCJ,jdbcType=INTEGER},
+            #{item.ZGF,jdbcType=INTEGER},
+            #{item.YXDRCJ,jdbcType=VARCHAR},
+            #{item.ZYYTJZCJ,jdbcType=VARCHAR},
+            #{item.ZYYTFJCJ,jdbcType=VARCHAR},
+            #{item.TDZY,jdbcType=VARCHAR},
+            #{item.DQTDDW,jdbcType=VARCHAR},
+            #{item.YTZY,jdbcType=VARCHAR},
+            #{item.LQZY,jdbcType=INTEGER},
+            #{item.TDYYDM,jdbcType=VARCHAR},
+            #{item.BZ,jdbcType=VARCHAR},
+            #{item.ZYHG,jdbcType=VARCHAR},
+            #{item.TJHG,jdbcType=VARCHAR},
+            #{item.LQFS,jdbcType=INTEGER},
+            #{item.KSZT,jdbcType=VARCHAR},
+            #{item.SDBZ,jdbcType=VARCHAR},
+            #{item.TDDWDM1,jdbcType=VARCHAR},
+            #{item.ZYDH1,jdbcType=VARCHAR},
+            #{item.TDDWDM2,jdbcType=VARCHAR},
+            #{item.ZYDH2,jdbcType=VARCHAR},
+            #{item.TDDWDM3,jdbcType=VARCHAR},
+            #{item.ZYDH3,jdbcType=VARCHAR},
+            #{item.TDDWDM4,jdbcType=VARCHAR},
+            #{item.ZYDH4,jdbcType=VARCHAR},
+            #{item.TDDWDM5,jdbcType=VARCHAR},
+            #{item.ZYDH5,jdbcType=VARCHAR},
+            #{item.TDDWDM6,jdbcType=VARCHAR},
+            #{item.ZYDH6,jdbcType=VARCHAR},
+            #{item.ZYTZ,jdbcType=VARCHAR},
+            #{item.ZYZYTJ,jdbcType=VARCHAR},
+            #{item.DXTJ,jdbcType=VARCHAR},
+            #{item.ZYTJFC,jdbcType=VARCHAR},
+            #{item.ZYSXDM1,jdbcType=VARCHAR},
+            #{item.ZYSXDM2,jdbcType=VARCHAR},
+            #{item.ZYSXDM3,jdbcType=VARCHAR},
+            #{item.ZYSXDM4,jdbcType=VARCHAR},
+            #{item.ZYSXDM5,jdbcType=VARCHAR},
+            #{item.ZYSXDM6,jdbcType=VARCHAR},
+            #{item.TJJLDM,jdbcType=VARCHAR},
+            #{item.BH,jdbcType=VARCHAR},
+            #{item.KSLSCZBZ,jdbcType=VARCHAR},
+            #{item.TASK_TAG,jdbcType=VARCHAR},
+            #{item.FS_ID,jdbcType=INTEGER})
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_CJXDM" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into TD_CJXDM
+        (NF,SFDM,CJXDM,CJXMC,CJXLXDM)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.NF,jdbcType=VARCHAR},
+            #{item.SFDM,jdbcType=INTEGER},
+            #{item.CJXDM,jdbcType=INTEGER},
+            #{item.CJXMC,jdbcType=VARCHAR},
+            #{item.CJXLXDM,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_XSFS" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into TD_XSFS
+        (YWCJ,SXCJ,WYCJ,ZHCJ,CJ,ZYCJ,TZCJ,ZGF,TDCJ,ZSCJ)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.YWCJ,jdbcType=INTEGER},
+            #{item.WYCJ,jdbcType=INTEGER},
+            #{item.SXCJ,jdbcType=INTEGER},
+            #{item.ZHCJ,jdbcType=INTEGER},
+            #{item.CJ,jdbcType=INTEGER},
+            #{item.ZYCJ,jdbcType=INTEGER},
+            #{item.TZCJ,jdbcType=INTEGER},
+            #{item.ZGF,jdbcType=DOUBLE},
+            #{item.TDCJ,jdbcType=INTEGER},
+            #{item.ZSCJ,jdbcType=INTEGER}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_BYLBDM" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into TD_BYLBDM
+        (NF,SFDM,BYLBDM,BYLBMC)
+        values
+        <foreach collection="list" index="index" item="item" separator=",">
+            ( #{item.NF,jdbcType=VARCHAR},
+            #{item.SFDM,jdbcType=INTEGER},
+            #{item.BYLBDM,jdbcType=INTEGER},
+            #{item.BYLBMC,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_DQDM" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into TD_DQDM
+        (NF,SFDM,DQDM,DQMC)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.NF,jdbcType=VARCHAR},
+            #{item.SFDM,jdbcType=INTEGER},
+            #{item.DQDM,jdbcType=INTEGER},
+            #{item.DQMC,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_JHXZDM" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into TD_JHXZDM
+        (NF,SFDM,JHXZDM,JHXZMC)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.NF,jdbcType=VARCHAR},
+            #{item.SFDM,jdbcType=INTEGER},
+            #{item.JHXZDM,jdbcType=VARCHAR},
+            #{item.JHXZMC,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_KLDM" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into TD_KLDM
+        (NF,SFDM,KLDM,KLMC,JBKL,KSCJBJXH)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.NF,jdbcType=VARCHAR},
+            #{item.SFDM,jdbcType=INTEGER},
+            #{item.KLDM,jdbcType=VARCHAR},
+            #{item.KLMC,jdbcType=VARCHAR},
+            #{item.JBKL,jdbcType=VARCHAR},
+            #{item.KSCJBJXH,jdbcType=VARCHAR}
+            )
+
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_KSLBDM" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into TD_KSLBDM
+        (NF,SFDM,KSLBDM,KSLBMC)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.NF,jdbcType=VARCHAR},
+            #{item.SFDM,jdbcType=INTEGER},
+            #{item.KSLBDM,jdbcType=INTEGER},
+            #{item.KSLBMC,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_KSLXDM" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into TD_KSLXDM
+        (NF,SFDM,KSLXDM,KSLXMC)
+        values
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+            #{item.NF,jdbcType=VARCHAR},
+            #{item.SFDM,jdbcType=INTEGER},
+            #{item.KSLXDM,jdbcType=INTEGER},
+            #{item.KSLXMC,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_LQFSDM" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into TD_LQFSDM
+        (NF,SFDM,LQFSDM,LQFSMC)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.NF,jdbcType=VARCHAR},
+            #{item.SFDM,jdbcType=INTEGER},
+            #{item.LQFSDM,jdbcType=INTEGER},
+            #{item.LQFSMC,jdbcType=INTEGER}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_MZDM" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into TD_MZDM
+        (NF,SFDM,MZDM,MZMC)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.NF,jdbcType=VARCHAR},
+            #{item.SFDM,jdbcType=INTEGER},
+            #{item.MZDM,jdbcType=INTEGER},
+            #{item.MZMC,jdbcType=INTEGER}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_PCDM" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into TD_PCDM
+        (NF,SFDM,PCDM,PCMC,GBPCDM,GBCCDM)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.NF,jdbcType=VARCHAR},
+            #{item.SFDM,jdbcType=INTEGER},
+            #{item.PCDM,jdbcType=INTEGER},
+            #{item.PCMC,jdbcType=VARCHAR},
+            #{item.GBPCDM,jdbcType=VARCHAR},
+            #{item.GBCCDM,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_WYYZDM" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into TD_WYYZDM
+        (NF,SFDM,WYYZDM,WYYZMC)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.NF,jdbcType=VARCHAR},
+            #{item.SFDM,jdbcType=INTEGER},
+            #{item.WYYZDM,jdbcType=INTEGER},
+            #{item.WYYZMC,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_ZCDM" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into TD_ZCDM
+        (NF,SFDM,ZCDM,ZCMC,ZGF,XDX)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.NF,jdbcType=VARCHAR},
+            #{item.SFDM,jdbcType=INTEGER},
+            #{item.ZCDM,jdbcType=VARCHAR},
+            #{item.ZCMC,jdbcType=VARCHAR},
+            #{item.ZGF,jdbcType=FLOAT},
+            #{item.XDX,jdbcType=INTEGER}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_ZZMMDM" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into TD_ZZMMDM
+        (NF,SFDM,ZZMMDM,ZZMMMC)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.NF,jdbcType=VARCHAR},
+            #{item.SFDM,jdbcType=INTEGER},
+            #{item.ZZMMDM,jdbcType=INTEGER},
+            #{item.ZZMMMC,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_QBJHK" parameterType="java.util.List" keyProperty="ID" useGeneratedKeys="true">
+        insert into TD_QBJHK
+        (NF,SFDM,KLDM,PCDM,JHXZ,TDDW,ZYDH,ZYDM,ZYMC,ZYLB,TJSXBZ,XZNX,JHRS,JHZXS,SFSF,YTCES,YXXH,YXXCKM,JZXCKM,CSMBH)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.NF,jdbcType=VARCHAR},
+            #{item.SFDM,jdbcType=INTEGER},
+            #{item.KLDM,jdbcType=VARCHAR},
+            #{item.PCDM,jdbcType=VARCHAR},
+            #{item.JHXZ,jdbcType=VARCHAR},
+            #{item.TDDW,jdbcType=VARCHAR},
+            #{item.ZYDH,jdbcType=VARCHAR},
+            #{item.ZYDM,jdbcType=VARCHAR},
+            #{item.ZYMC,jdbcType=VARCHAR},
+            #{item.ZYLB,jdbcType=VARCHAR},
+            #{item.TJSXBZ,jdbcType=VARCHAR},
+            #{item.XZNX,jdbcType=VARCHAR},
+            #{item.JHRS,jdbcType=VARCHAR},
+            #{item.JHZXS,jdbcType=VARCHAR},
+            #{item.SFSF,jdbcType=VARCHAR},
+            #{item.YTCES,jdbcType=VARCHAR},
+            #{item.YXXH,jdbcType=VARCHAR},
+            #{item.YXXCKM,jdbcType=VARCHAR},
+            #{item.JZXCKM,jdbcType=VARCHAR},
+            #{item.CSMBH,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertTD_ZYTZDM" parameterType="java.util.List" keyProperty="ZYTZDM" useGeneratedKeys="true">
+        insert into TD_ZYTZDM
+        (ZYTZDM,ZYTZMC)
+        values
+        <foreach collection="list" index="index" item="item" separator=",">
+            (#{item.ZYTZDM,jdbcType=INTEGER},
+            #{item.ZYTZMC,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <select id="requestT_TDD" resultType="com.pojo.T_TDD">
+        select * from T_TDD
+    </select>
+    <select id="requestTD_SFDM" resultType="com.pojo.TD_SFDM">
+        select * from TD_SFDM
+    </select>
+
+    <select id="CheckProvince" statementType="CALLABLE" resultType="java.util.HashMap">
+        {CALL returnSf(
+        #{NF,mode=IN,jdbcType=DATE}
+        )}
+    </select>
+
+    <select id="deleteProvince" statementType="CALLABLE" resultType="int">
+        {CALL deletealltable(
+        #{NF,mode=IN,jdbcType=INTEGER},
+        #{SFDM,mode=IN,jdbcType=INTEGER}
+        )}
+    </select>
+
+    <select id="getSfs" statementType="CALLABLE" resultType="java.util.HashMap">
+        {CALL get_sfs(
+        #{NF,mode=IN,jdbcType=DATE}
+        )}
+    </select>
+
+    <select id="request1" statementType="CALLABLE" resultType="java.util.HashMap">
+        {CALL request1(
+        #{NF,mode=IN,jdbcType=DATE}
+        )}
+    </select>
+
+</mapper>
