@@ -22,7 +22,7 @@ public class toExcel {
     /***
      * 构造方法
      */
-    private toExcel() {
+    public toExcel() {
 
     }
 
@@ -64,8 +64,8 @@ public class toExcel {
      * @param sheetName sheet名称和表头值
      * @return
      */
-    public static HSSFWorkbook excelExport(List<?> dataList, Map<String, String> titleMap, String sheetName, String name) {
-        File file = new File("C:\\Users\\Lenovo\\Desktop\\" + name + ".xls");
+    public HSSFWorkbook excelExport(List<?> dataList, Map<String, String> titleMap, String sheetName) {
+//        File file = new File("C:\\Users\\Lenovo\\Desktop\\" + name + ".xls");
         // 初始化workbook
         initHSSFWorkbook(sheetName);
         // 标题行
@@ -79,15 +79,15 @@ public class toExcel {
         //设置自动伸缩
         //autoSizeColumn(titleMap.size());
         // 写入处理结果
-        try {
-            //生成UUID文件名称
-            //如果web项目，1、设置下载框的弹出（设置response相关参数)；2、通过httpservletresponse.getOutputStream()获取
-            OutputStream out = new FileOutputStream(file);
-            workbook.write(out);
-            out.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            //生成UUID文件名称
+//            //如果web项目，1、设置下载框的弹出（设置response相关参数)；2、通过httpservletresponse.getOutputStream()获取
+////            OutputStream out = new FileOutputStream(file);
+////            workbook.write(out);
+////            out.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         return workbook;
     }
 
@@ -170,4 +170,16 @@ public class toExcel {
             e.printStackTrace();
         }
     }
+
+    public String getExcelPath(String name) {
+        //String str = this.getServletContext().getRealPath("/WEB-INF");
+        List<Map<String, Object>> searchlist = null;
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String timestr = df.format(new Date()).toString().replace(" ", "-");
+        timestr = timestr.replace(":","");
+        String filename = name+ timestr+".xls";
+//        logger.info("下载:"+filename);
+        return filename;
+    }
+
 }
