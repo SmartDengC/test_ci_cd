@@ -23,7 +23,6 @@ public class DataDisplayServiceImpl implements DataDisplayService {
     @Autowired
     private DataDisplayDao dataDisplayDao;
 
-
     /**
      * Modification User:马雪冬
      * Modification Date:2019/12/6
