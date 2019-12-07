@@ -174,7 +174,7 @@ public class DataStandardServiceImpl implements DataStandardService {
         for(Map<String,Object> item:mapList){
             //如果是新的
             System.out.println("*****mappingID:"+item.get("mappingID"));
-            if(item.get("mappingID").equals("")) {
+            if(item.get("mappingID").equals("")||item.get("mappingID").equals("-1")) {
                 Map<String, Object> a = new HashMap<String, Object>();
                 a.put("year", year);
                 a.put("provinceCode", provinceCode);
@@ -182,16 +182,11 @@ public class DataStandardServiceImpl implements DataStandardService {
                 a.put("unFormatFieldCode", item.get("unFormatFieldCode"));
                 //formatFieldCode在zdysdm表中是外键
                 a.put("formatFieldCode", item.get("formatFieldCode"));
-                updateList.add(a);
+                newList.add(a);
             }else {
                 //不是新的
                 Map<String, Object> b = new HashMap<String, Object>();
-//                b.put("year", year);
-//                b.put("provinceCode", provinceCode);
-//                b.put("field", field);
                 b.put("mappingID",item.get("mappingID"));
-//                b.put("unFormatFieldCode", item.get("unFormatFieldCode"));
-                //formatFieldCode在zdysdm表中是外键
                 b.put("formatFieldCode", item.get("formatFieldCode"));
                 updateList.add(b);
             }
