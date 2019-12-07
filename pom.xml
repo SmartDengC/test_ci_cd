@@ -134,13 +134,7 @@
       <artifactId>mybatis-spring</artifactId>
       <version>1.3.1</version>
     </dependency>
-    <!-- 第四部分：日志 -->
-    <!-- 实现slf4j接口并整合 -->
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <version>1.1.1</version>
-    </dependency>
+    <!--唐世杰删除了logback的日志依赖-->
 
     <!--处理excel 邓聪-->
     <dependency>
