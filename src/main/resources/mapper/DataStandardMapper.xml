@@ -9,21 +9,21 @@
     </insert>
     <!--PCDM-->
     <select id="fecthUnFormatDataPC" resultType="java.util.HashMap">
-        select PCDM,PCMC from td_pcdm where NF=#{param1} and SFDM=#{param2} and PCDM
+        select PCDM as unFormatFieldCode, PCMC as unFormatFieldData from td_pcdm where NF=#{param1} and SFDM=#{param2} and PCDM
         in (select PCDM from t_tdd where NF=#{param1} and SFDM=#{param2})
     </select>
     <!--KLDM-->
     <select id="fecthUnFormatDataKL" resultType="java.util.HashMap">
-        select KLDM,KLMC from td_kldm where NF=#{param1} and SFDM=#{param2} and KLDM
+        select KLDM as unFormatFieldCode ,KLMC as unFormatFieldData from td_kldm where NF=#{param1} and SFDM=#{param2} and KLDM
         in (select KLDM from t_tdd where NF=#{param1} and SFDM=#{param2})
     </select>
     <!--zdgfzdm-->
     <select id="fecthFormatData" parameterType="String" resultType="java.util.HashMap">
-        select ZDGFZDM,GFZ from zdgfzdm where ZD=#{ZD}
+        select ZDGFZDM as formatFieldCode, GFZ as formatFieldData from zdgfzdm where ZD=#{ZD}
     </select>
     <!--zdgfysdm-->
     <select id="fecthRelation" resultType="java.util.HashMap">
-        select ZDGFYSDM,ZDBGFDM,ZDGFDM from zdgfysdm where NF=#{param1} and SFDM=#{param2} and ZD=#{param3}
+        select ZDGFYSDM as mappingID, ZDBGFDM as unFormatFieldCode, ZDGFDM as formatFieldCode from zdgfysdm where NF=#{param1} and SFDM=#{param2} and ZD=#{param3}
     </select>
     <!--表中列名ZGGFZDM不规范   对应Dao中param2:GFZ param1:ZDGFZDM-->
     <update id="modifyFormatData">
