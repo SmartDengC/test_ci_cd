@@ -2,7 +2,6 @@ package com.pojo;
 
 public class TD_XSFS {
     private int ID;
-    private String KSH;
     private int YWCJ;
     private int SXCJ;
     private int WYCJ;
@@ -100,14 +99,6 @@ public class TD_XSFS {
 
     public void setZSCJ(int ZSCJ) {
         this.ZSCJ = ZSCJ;
-    }
-
-    public String getKSH() {
-        return KSH;
-    }
-
-    public void setKSH(String KSH) {
-        this.KSH = KSH;
     }
 
     @Override

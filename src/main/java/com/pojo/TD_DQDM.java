@@ -4,7 +4,7 @@ public class TD_DQDM {
     private int ID;
     private String NF;
     private int SFDM;
-    private String DQDM;
+    private int DQDM;
     private String DQMC;
 
     public int getID() {
@@ -31,11 +31,11 @@ public class TD_DQDM {
         this.SFDM = SFDM;
     }
 
-    public String getDQDM() {
+    public int getDQDM() {
         return DQDM;
     }
 
-    public void setDQDM(String DQDM) {
+    public void setDQDM(int DQDM) {
         this.DQDM = DQDM;
     }
 

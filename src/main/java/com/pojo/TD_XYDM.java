@@ -1,23 +1,14 @@
 package com.pojo;
 
 public class TD_XYDM {
-    private int ID;
-    private String XYDM;
+    private int XYDM;
     private String XYMC;
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public String getXYDM() {
+    public int getXYDM() {
         return XYDM;
     }
 
-    public void setXYDM(String XYDM) {
+    public void setXYDM(int XYDM) {
         this.XYDM = XYDM;
     }
 

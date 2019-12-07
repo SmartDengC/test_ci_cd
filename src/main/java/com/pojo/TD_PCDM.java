@@ -4,18 +4,10 @@ public class TD_PCDM {
     private int ID;
     private String NF;
     private int SFDM;
-    private String PCDM;
+    private int PCDM;
     private String PCMC;
     private String GBPCDM;
     private String GBCCDM;
-
-    public String getNF() {
-        return NF;
-    }
-
-    public void setNF(String NF) {
-        this.NF = NF;
-    }
 
     public int getID() {
         return ID;
@@ -23,6 +15,14 @@ public class TD_PCDM {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public String getNF() {
+        return NF;
+    }
+
+    public void setNF(String NF) {
+        this.NF = NF;
     }
 
     public int getSFDM() {
@@ -33,11 +33,11 @@ public class TD_PCDM {
         this.SFDM = SFDM;
     }
 
-    public String getPCDM() {
+    public int getPCDM() {
         return PCDM;
     }
 
-    public void setPCDM(String PCDM) {
+    public void setPCDM(int PCDM) {
         this.PCDM = PCDM;
     }
 
@@ -69,8 +69,9 @@ public class TD_PCDM {
     public String toString() {
         return "TD_PCDM{" +
                 "ID=" + ID +
+                ", NF='" + NF + '\'' +
                 ", SFDM=" + SFDM +
-                ", PCDM='" + PCDM + '\'' +
+                ", PCDM=" + PCDM +
                 ", PCMC='" + PCMC + '\'' +
                 ", GBPCDM='" + GBPCDM + '\'' +
                 ", GBCCDM='" + GBCCDM + '\'' +

@@ -1,5 +1,4 @@
 package com.pojo;
-
 /**
  * @ClassName TD_ZYTZDM
  * @Version 1.0
@@ -10,23 +9,14 @@ package com.pojo;
  * Modification Date： 程序修改时间
  */
 public class TD_ZYTZDM {
-    private int ID;
-    private String ZYTZDM;
+    private int ZYTZDM;
     private String ZYTZMC;
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public String getZYTZDM() {
+    public int getZYTZDM() {
         return ZYTZDM;
     }
 
-    public void setZYTZDM(String ZYTZDM) {
+    public void setZYTZDM(int ZYTZDM) {
         this.ZYTZDM = ZYTZDM;
     }
 
@@ -41,8 +31,7 @@ public class TD_ZYTZDM {
     @Override
     public String toString() {
         return "TD_ZYTZDM{" +
-                "ID=" + ID +
-                ", ZYTZDM='" + ZYTZDM + '\'' +
+                "ZYTZDM=" + ZYTZDM +
                 ", ZYTZMC='" + ZYTZMC + '\'' +
                 '}';
     }

@@ -1,5 +1,7 @@
 package com.pojo;
 
+import java.time.Year;
+
 public class TD_PTFSX {
     private int ID;
     private String NF;
@@ -63,18 +65,5 @@ public class TD_PTFSX {
 
     public void setEBLG(int EBLG) {
         this.EBLG = EBLG;
-    }
-
-    @Override
-    public String toString() {
-        return "TD_PTFSX{" +
-                "ID=" + ID +
-                ", NF='" + NF + '\'' +
-                ", SFDM=" + SFDM +
-                ", YBWS=" + YBWS +
-                ", YBLG=" + YBLG +
-                ", EBWS=" + EBWS +
-                ", EBLG=" + EBLG +
-                '}';
     }
 }

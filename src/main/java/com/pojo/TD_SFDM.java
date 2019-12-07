@@ -19,12 +19,4 @@ public class TD_SFDM {
     public void setSF(String SF) {
         this.SF = SF;
     }
-
-    @Override
-    public String toString() {
-        return "TD_SFDM{" +
-                "SFDM=" + SFDM +
-                ", SF='" + SF + '\'' +
-                '}';
-    }
 }

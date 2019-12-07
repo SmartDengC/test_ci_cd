@@ -1,25 +1,16 @@
 package com.pojo;
 
 public class TD_ZYDM {
-    private int ID;
-    private String ZYDM;
+    private int ZYDM;
     private String ZYMC;
     private String XUEZHI;
     private int XYDM;
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public String getZYDM() {
+    public int getZYDM() {
         return ZYDM;
     }
 
-    public void setZYDM(String ZYDM) {
+    public void setZYDM(int ZYDM) {
         this.ZYDM = ZYDM;
     }
 

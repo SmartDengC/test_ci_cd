@@ -1,12 +1,13 @@
 package com.pojo;
 
-public class TD_ZCDM {
+public class
+TD_ZCDM {
     private int ID;
     private String NF;
     private int SFDM;
     private String ZCDM;
     private String ZCMC;
-    private float ZGF;
+    private int ZGF;
     private String XDX;
 
     public int getID() {
@@ -49,11 +50,11 @@ public class TD_ZCDM {
         this.ZCMC = ZCMC;
     }
 
-    public float getZGF() {
+    public int getZGF() {
         return ZGF;
     }
 
-    public void setZGF(float ZGF) {
+    public void setZGF(int ZGF) {
         this.ZGF = ZGF;
     }
 

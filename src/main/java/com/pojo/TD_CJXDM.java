@@ -1,11 +1,13 @@
 package com.pojo;
 
 
+import java.time.Year;
+
 public class    TD_CJXDM {
     private int ID;
     private String NF;
     private int SFDM;
-    private int CJXDM;
+    private String CJXDM;
     private String CJXMC;
     private String CJXLXDM;
 
@@ -33,11 +35,11 @@ public class    TD_CJXDM {
         this.SFDM = SFDM;
     }
 
-    public int getCJXDM() {
+    public String getCJXDM() {
         return CJXDM;
     }
 
-    public void setCJXDM(int CJXDM) {
+    public void setCJXDM(String CJXDM) {
         this.CJXDM = CJXDM;
     }
 
@@ -57,15 +59,5 @@ public class    TD_CJXDM {
         this.CJXLXDM = CJXLXDM;
     }
 
-    @Override
-    public String toString() {
-        return "TD_CJXDM{" +
-                "ID=" + ID +
-                ", NF='" + NF + '\'' +
-                ", SFDM=" + SFDM +
-                ", CJXDM=" + CJXDM +
-                ", CJXMC='" + CJXMC + '\'' +
-                ", CJXLXDM='" + CJXLXDM + '\'' +
-                '}';
-    }
+
 }

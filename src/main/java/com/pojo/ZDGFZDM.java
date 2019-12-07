@@ -28,13 +28,4 @@ public class ZDGFZDM {
     public void setGFZ(String GFZ) {
         this.GFZ = GFZ;
     }
-
-    @Override
-    public String toString() {
-        return "ZDGFZDM{" +
-                "ZDGFZDM=" + ZDGFZDM +
-                ", ZD='" + ZD + '\'' +
-                ", GFZ='" + GFZ + '\'' +
-                '}';
-    }
 }
