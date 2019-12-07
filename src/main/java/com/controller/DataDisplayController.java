@@ -1,5 +1,7 @@
 package com.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.service.DataDisplayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -96,14 +98,17 @@ public class DataDisplayController {
      */
     @RequestMapping("/studentByProvinceDisplay")
     @ResponseBody
-    public String getStudentByProvince() {
+    public String getStudentByProvince() throws JsonProcessingException {
         String result="";
+        ObjectMapper mapper=new ObjectMapper();
+        String listMapJson="";
         List<Map<String,Integer>> listMap=null;
 
         listMap=dataDisplayService.getStudentsByProvince();
+        listMapJson=mapper.writeValueAsString(listMap);
         System.out.println("***1listMap:"+listMap);
         if(listMap!=null) {
-            result = "{\"status\":\"1\""+ ",\"listMap\":" + listMap + "}";
+            result = "{\"status\":\"1\""+ ",\"listMap\":" + listMapJson + "}";
         }else {
             result="{\"status\":\"0\"}";
         }
