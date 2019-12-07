@@ -86,7 +86,6 @@ public interface UserDao {
 	 *
 	 * 用来在超级管理员处,给指定邮件发送邀请码
 	 * @Author 唐世杰
-	 * @param email 接收邀请码的邮箱
 	 * @param inviteCode 邀请码
 	 * @return int
 	 */
@@ -131,5 +130,5 @@ public interface UserDao {
      */
     public int savePwd(@Param("email") String email , @Param("password") String password);
 
-
+	public String login(@Param("username") String username);
 }

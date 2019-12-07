@@ -36,6 +36,8 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
         //返回登录成功的信息,必要时在前端显示
         Map map = new HashMap<>();
         map.put("success", true);
+        //页面与可用的关系!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         String jsonStr = objectMapper.writeValueAsString(map);
         response.setContentType("text/json;charset=utf-8");
         response.getWriter().write(jsonStr);

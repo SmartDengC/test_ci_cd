@@ -63,5 +63,7 @@
         update sys_user set password=#{password} where email=#{email}
 </update>
 
-
+<select id="login" resultType="java.lang.String">
+        SELECT password from sys_user WHERE username=#{username}
+</select>
 </mapper>
