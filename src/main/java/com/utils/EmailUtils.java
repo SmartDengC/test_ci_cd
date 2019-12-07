@@ -40,7 +40,7 @@ public class EmailUtils {
 	     //创建邮件对象
 	     Message mailMessage = new MimeMessage(session);  
 	     try {  
-	         System.out.println("I'm sending...");  
+//	         System.out.println("I'm sending...");
 	         
 	         Address from = new InternetAddress("1399314573@qq.com");
 	         //设置发出方  
@@ -48,13 +48,36 @@ public class EmailUtils {
 	         Address to = new InternetAddress(emailTo);
 	         //设置接收人员  
 	         mailMessage.setRecipient(Message.RecipientType.TO, to); 
-	         System.out.println(emailTo);
-	         mailMessage.setSubject("唐世杰爸爸的邮件来了");//设置邮件标题
+//	         System.out.println(emailTo);
+	         mailMessage.setSubject("生源分析团队");//设置邮件标题
+
 	         if(type==1)//如果是验证码
-		        mailMessage.setContent("您的验证码是"+content+"，请确认是本人操作","text/html;charset=utf-8"); //设置邮件内容
+//		        mailMessage.setContent("您的验证码是"+content+"，请确认是本人操作","text/html;charset=utf-8"); //设置邮件内容
+		         mailMessage.setContent("<!DOCTYPE HTML>\n" +
+				         "<html lang=\"en\">" +
+				         "<head>\n" +
+				         "<title>生源分析团队</title>\n" +
+				         "<meta charset=\"utf-8\">\n" +
+				         "<link href=\"//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext\" rel=\"stylesheet\">\n" +
+				         "</head>\n" +
+				         "<body>\n"+
+				         "您的验证码是"+content+"，请确认是本人操作" +
+				         "</body>\n" +
+				         "</html>","text/html;charset=utf-8");
 	         if(type==2)//邀请码类型
-	         	mailMessage.setContent("您好,您的邀请码是"+content+"，欢迎使用生源系统","text/html;charset=utf-8"); //设置邮件内容
-		     // 发送邮件
+//	         	mailMessage.setContent("您好,您的邀请码是"+content+"，欢迎使用生源系统","text/html;charset=utf-8"); //设置邮件内容
+		         mailMessage.setContent("<!DOCTYPE HTML>" +
+				         "<html lang=en>" +
+				         "<head>" +
+				         "<title>生源分析团队</title>" +
+				         "<meta charset=utf-8>" +
+				         "<link href=//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext rel=stylesheet>" +
+				         "</head>" +
+				         "<body>"+
+				         "<h2>您的验证码是"+content+"，请确认是本人操作</h2>" +
+				         "</body>" +
+				         "</html>","text/html;charset=utf-8");
+	         // 发送邮件
 	         Transport.send(mailMessage);  
 	         return true;  
 	     } catch (Exception e) {  
