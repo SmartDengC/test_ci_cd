@@ -131,10 +131,10 @@ public class DataImportServiceImpl implements DataImportService {
                                 break;
                         }
                         //广西
-                        if(province == 20 || colmnMap.size() == 2){
+                        if(province == 20 && colmnMap.size() == 2){
                             break;
                         }
-                        else if(province == 27 || colmnMap.size() == 3){
+                        else if(province == 27 && colmnMap.size() == 3){
                             break;
                         }
                         else if (colmnMap.size() == 4) {
@@ -143,7 +143,7 @@ public class DataImportServiceImpl implements DataImportService {
                     }
                 }
                 }
-            if(colmnMap.size() != 4 || province!= 20 || province != 27){
+            if(colmnMap.size() != 4 && province!= 20 && province != 27){
                 System.out.println("提取成绩对照表：TD_CJXDMFile，出错！配置多了或少了字段映射！");
                 return 0;
             }
