@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.service.DataShowService;
+import com.service.DataDisplayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,7 +24,7 @@ import java.util.Map;
 @RequestMapping("/dataDisplay")
 public class DataDisplayController {
     @Autowired
-    private DataShowService dataShowService;
+    private DataDisplayService dataDisplayService;
 
 
     /**
@@ -42,7 +42,7 @@ public class DataDisplayController {
         String result="";
         Map<String, Object> totalMap=null;
         int total=0;
-        totalMap=dataShowService.getStudentsTotal();
+        totalMap=dataDisplayService.getStudentsTotal();
 
         total= (int) totalMap.get("total");
         System.out.println("***1total:"+totalMap);
@@ -70,8 +70,8 @@ public class DataDisplayController {
         Map<String, Object> ratioMap=null;
         List<Map<String,Integer>> listMap=null;
 
-        ratioMap=dataShowService.getStudentRatio();
-        listMap=dataShowService.getStudentsByProvince();
+        ratioMap=dataDisplayService.getStudentRatio();
+        listMap=dataDisplayService.getStudentsByProvince();
 
         boy= (int) ratioMap.get("boy");
         girl= (int) ratioMap.get("girl");
@@ -100,7 +100,7 @@ public class DataDisplayController {
         String result="";
         List<Map<String,Integer>> listMap=null;
 
-        listMap=dataShowService.getStudentsByProvince();
+        listMap=dataDisplayService.getStudentsByProvince();
         System.out.println("***1listMap:"+listMap);
         if(listMap!=null) {
             result = "{\"status\":\"1\""+ ",\"listMap\":" + listMap + "}";

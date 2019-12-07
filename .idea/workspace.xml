@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="FreshmanInfomationAnalysSystem" />
-      <artifact name="FreshmanInfomationAnalysSystem" />
+      <artifact name="freshManAnalysSystem:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d63cb85-c9a3-4ee3-a603-8ca04efbccff" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/impl/DataStandardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/DataStandardServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/DataDisplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/DataDisplayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dao/DataShowDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dao/DataDisplayDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/DataShowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/DataDisplayService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/impl/DataShowServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/DataDisplayServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DataShowMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DataDisplayMapper.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

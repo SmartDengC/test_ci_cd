@@ -3,7 +3,7 @@ package com.service;
 import java.util.List;
 import java.util.Map;
 
-public interface DataShowService {
+public interface DataDisplayService {
 
     public Map<String,Object> getStudentsTotal();
 

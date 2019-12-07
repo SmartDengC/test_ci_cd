@@ -1,7 +1,7 @@
 package com.service.impl;
 
-import com.dao.DataShowDao;
-import com.service.DataShowService;
+import com.dao.DataDisplayDao;
+import com.service.DataDisplayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +19,9 @@ import java.util.Map;
  * Modification Date:
  */
 @Service
-public class DataDisplayServiceImpl implements DataShowService {
+public class DataDisplayServiceImpl implements DataDisplayService {
     @Autowired
-    private DataShowDao dataShowDao;
+    private DataDisplayDao dataDisplayDao;
 
 
     /**
@@ -36,7 +36,7 @@ public class DataDisplayServiceImpl implements DataShowService {
     public Map<String, Object> getStudentsTotal() {
         Map<String,Object> map=new HashMap<String,Object>();
         map.put("total",null);
-        dataShowDao.getStudentsTotal(map);
+        dataDisplayDao.getStudentsTotal(map);
         return map;
     }
 
@@ -53,7 +53,7 @@ public class DataDisplayServiceImpl implements DataShowService {
         Map<String,Object> map=new HashMap<String,Object>();
         map.put("boy","0");
         map.put("girl","0");
-        dataShowDao.getStudentRatio(map);
+        dataDisplayDao.getStudentRatio(map);
         return map;
     }
 
@@ -68,7 +68,7 @@ public class DataDisplayServiceImpl implements DataShowService {
     @Override
     public List<Map<String,Integer>> getStudentsByProvince() {
         List<Map<String,Integer>> list=null;
-        list=dataShowDao.getStudentsByProvince();
+        list=dataDisplayDao.getStudentsByProvince();
         return list;
     }
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dao.DataShowDao">
+<mapper namespace="com.dao.DataDisplayDao">
 
     <parameterMap type="java.util.Map" id="getStudentsTotalMap">
         <parameter property="total" mode="OUT" jdbcType="INTEGER"/>

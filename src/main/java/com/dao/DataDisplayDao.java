@@ -3,7 +3,7 @@ package com.dao;
 import java.util.List;
 import java.util.Map;
 
-public interface DataShowDao {
+public interface DataDisplayDao {
     /**
      * 从数据库中获取所有学生人数
      * @Author 马雪冬
