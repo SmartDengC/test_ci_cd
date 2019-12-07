@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.DataShowDao">
+
+    <parameterMap type="java.util.Map" id="getStudentsTotalMap">
+        <parameter property="total" mode="OUT" jdbcType="INTEGER"/>
+    </parameterMap>
+
+    <parameterMap type="java.util.Map" id="getStudentRatioMap">
+        <parameter property="boy" mode="OUT" jdbcType="INTEGER"/>
+        <parameter property="girl" mode="OUT" jdbcType="INTEGER"/>
+    </parameterMap>
+
+    <select id="getStudentsTotal" statementType="CALLABLE" parameterMap="getStudentsTotalMap" resultType="String">
+        {CALL get_students_total(?)}
+    </select>
+
+    <select id="getStudentRatio" statementType="CALLABLE" parameterMap="getStudentRatioMap" resultType="String">
+        {CALL get_bgbl(?,?)}
+    </select>
+
+    <select id="getStudentsByProvince" statementType="CALLABLE" resultType="java.util.HashMap">
+        {CALL get_students_province()}
+    </select>
+
+</mapper>

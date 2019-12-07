@@ -1,6 +1,10 @@
 package com.pojo;
 
+import java.time.Year;
+
 public class KDD {
+    private String NF;
+    private int ID;
     private String EMS;
     private int AVAI;
     private String YEAR;
@@ -10,6 +14,22 @@ public class KDD {
     private String XM;
     private String KSH;
 
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getNF() {
+        return NF;
+    }
+
+    public void setNF(String NF) {
+        this.NF = NF;
+    }
 
     public String getEMS() {
         return EMS;
@@ -78,7 +98,8 @@ public class KDD {
     @Override
     public String toString() {
         return "KDD{" +
-                "EMS='" + EMS + '\'' +
+                "ID=" + ID +
+                ", EMS='" + EMS + '\'' +
                 ", AVAI=" + AVAI +
                 ", YEAR='" + YEAR + '\'' +
                 ", SRJ='" + SRJ + '\'' +
