@@ -19,7 +19,7 @@ import java.util.Map;
  * Modification Date:
  */
 @Service
-public class DataShowServiceImpl implements DataShowService {
+public class DataDisplayServiceImpl implements DataShowService {
     @Autowired
     private DataShowDao dataShowDao;
 
