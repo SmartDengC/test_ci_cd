@@ -4,7 +4,7 @@ public class TD_PCDM {
     private int ID;
     private String NF;
     private int SFDM;
-    private int PCDM;
+    private String PCDM;
     private String PCMC;
     private String GBPCDM;
     private String GBCCDM;
@@ -33,11 +33,11 @@ public class TD_PCDM {
         this.SFDM = SFDM;
     }
 
-    public int getPCDM() {
+    public String getPCDM() {
         return PCDM;
     }
 
-    public void setPCDM(int PCDM) {
+    public void setPCDM(String PCDM) {
         this.PCDM = PCDM;
     }
 

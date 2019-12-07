@@ -4,7 +4,7 @@ public class TD_KLDM {
     private int ID;
     private String NF;
     private int SFDM;
-    private int KLDM;
+    private String KLDM;
     private String KLMC;
     private String JBKL;
     private String KSCJBJXH;
@@ -33,11 +33,11 @@ public class TD_KLDM {
         this.SFDM = SFDM;
     }
 
-    public int getKLDM() {
+    public String getKLDM() {
         return KLDM;
     }
 
-    public void setKLDM(int KLDM) {
+    public void setKLDM(String KLDM) {
         this.KLDM = KLDM;
     }
 

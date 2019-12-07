@@ -4,7 +4,7 @@ public class TD_LQFSDM {
     private int ID;
     private String NF;
     private int SFDM;
-    private int LQFSDM;
+    private String LQFSDM;
     private String LQFSMC;
 
     public int getID() {
@@ -31,11 +31,11 @@ public class TD_LQFSDM {
         this.SFDM = SFDM;
     }
 
-    public int getLQFSDM() {
+    public String getLQFSDM() {
         return LQFSDM;
     }
 
-    public void setLQFSDM(int LQFSDM) {
+    public void setLQFSDM(String LQFSDM) {
         this.LQFSDM = LQFSDM;
     }
 

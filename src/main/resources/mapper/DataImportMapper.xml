@@ -358,4 +358,29 @@
         select * from TD_SFDM
     </select>
 
+    <select id="CheckProvince" statementType="CALLABLE" resultType="java.util.HashMap">
+        {CALL returnSf(
+        #{NF,mode=IN,jdbcType=DATE}
+        )}
+    </select>
+
+    <select id="deleteProvince" statementType="CALLABLE" resultType="int">
+        {CALL deletealltable(
+        #{NF,mode=IN,jdbcType=INTEGER},
+        #{SFDM,mode=IN,jdbcType=INTEGER}
+        )}
+    </select>
+
+    <select id="getSfs" statementType="CALLABLE" resultType="java.util.HashMap">
+        {CALL get_sfs(
+        #{NF,mode=IN,jdbcType=DATE}
+        )}
+    </select>
+
+    <select id="request1" statementType="CALLABLE" resultType="java.util.HashMap">
+        {CALL request1(
+        #{NF,mode=IN,jdbcType=DATE}
+        )}
+    </select>
+
 </mapper>

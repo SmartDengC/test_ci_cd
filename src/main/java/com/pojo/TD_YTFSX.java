@@ -149,6 +149,4 @@ public class TD_YTFSX {
     public void setZF(int ZF) {
         this.ZF = ZF;
     }
-
-
 }

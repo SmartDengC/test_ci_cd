@@ -30,17 +30,24 @@ public class shanXiScore {
             default:
                 break;
         }
+
         return colmnMap;
     }
 
     public List score(DataFrame T_TDDDataFrame, List<TD_XSFS> list){
+        int com2 = 0;
+        int com4 = 0;
         HashMap<String,Integer> comprehensive = new HashMap<>();
         for (int i =0;i<T_TDDDataFrame.length();i++) {
-            Double com1 = (Double)T_TDDDataFrame.get(i, 82);
-            int com2 = Integer.parseInt(new java.text.DecimalFormat("0").format(com1));
-            Double com3 = (Double)T_TDDDataFrame.get(i, 83);
-            int com4 = Integer.parseInt(new java.text.DecimalFormat("0").format(com3));
-            String KSH =(String) T_TDDDataFrame.get(i, 1);
+            Double com1 = (Double)T_TDDDataFrame.get(i, 81);
+            if(com1 != 0) {
+                com2 = Integer.parseInt(new java.text.DecimalFormat("0").format(com1));
+            }
+            Double com3 = (Double)T_TDDDataFrame.get(i, 82);
+            if (com3 != null) {
+                com4 = Integer.parseInt(new java.text.DecimalFormat("0").format(com3));
+            }
+            String KSH =(String) T_TDDDataFrame.get(i, 0);
             if (com1 != 0) {
                 comprehensive.put(KSH, com2);
             } else {
