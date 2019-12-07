@@ -1,7 +1,5 @@
 package com.pojo;
 
-import java.time.Year;
-
 public class T_TJXX {
     private int ID;
     private String NF;

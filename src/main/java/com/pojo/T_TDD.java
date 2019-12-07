@@ -1,7 +1,5 @@
 package com.pojo;
 
-import java.sql.Date;
-
 public class T_TDD {
 
     private int ID;
@@ -20,11 +18,11 @@ public class T_TDD {
     private String ZXMC;
     private int WYYZDM;
     private String HKDJ;
-    private String BMDW;
-    private String KSTZ;
-    private String XTDW;
-    private int DQDM;
-    private String SFZH;
+    private int BMDW;
+    private int KSTZ;
+    private int XTDW;
+    private String DQDM;
+    private int SFZH;
     private String JTDZ;
     private int YZBM;
     private String LXDH;
@@ -60,17 +58,17 @@ public class T_TDD {
     private String KSZT;
     private String SDBZ;
     private String TDDWDM1;
-    private int ZYDH1;
+    private String ZYDH1;
     private String TDDWDM2;
-    private int ZYDH2;
+    private String ZYDH2;
     private String TDDWDM3;
-    private int ZYDH3;
+    private String ZYDH3;
     private String TDDWDM4;
-    private int ZYDH4;
+    private String ZYDH4;
     private String TDDWDM5;
-    private int ZYDH5;
+    private String ZYDH5;
     private String TDDWDM6;
-    private int ZYDH6;
+    private String ZYDH6;
     private String ZYTZ;
     private String ZYZYTJ;
     private String DXTJ;
@@ -215,43 +213,43 @@ public class T_TDD {
         this.HKDJ = HKDJ;
     }
 
-    public String getBMDW() {
+    public int getBMDW() {
         return BMDW;
     }
 
-    public void setBMDW(String BMDW) {
+    public void setBMDW(int BMDW) {
         this.BMDW = BMDW;
     }
 
-    public String getKSTZ() {
+    public int getKSTZ() {
         return KSTZ;
     }
 
-    public void setKSTZ(String KSTZ) {
+    public void setKSTZ(int KSTZ) {
         this.KSTZ = KSTZ;
     }
 
-    public String getXTDW() {
+    public int getXTDW() {
         return XTDW;
     }
 
-    public void setXTDW(String XTDW) {
+    public void setXTDW(int XTDW) {
         this.XTDW = XTDW;
     }
 
-    public int getDQDM() {
+    public String getDQDM() {
         return DQDM;
     }
 
-    public void setDQDM(int DQDM) {
+    public void setDQDM(String DQDM) {
         this.DQDM = DQDM;
     }
 
-    public String getSFZH() {
+    public int getSFZH() {
         return SFZH;
     }
 
-    public void setSFZH(String SFZH) {
+    public void setSFZH(int SFZH) {
         this.SFZH = SFZH;
     }
 
@@ -535,11 +533,11 @@ public class T_TDD {
         this.TDDWDM1 = TDDWDM1;
     }
 
-    public int getZYDH1() {
+    public String getZYDH1() {
         return ZYDH1;
     }
 
-    public void setZYDH1(int ZYDH1) {
+    public void setZYDH1(String ZYDH1) {
         this.ZYDH1 = ZYDH1;
     }
 
@@ -551,11 +549,11 @@ public class T_TDD {
         this.TDDWDM2 = TDDWDM2;
     }
 
-    public int getZYDH2() {
+    public String getZYDH2() {
         return ZYDH2;
     }
 
-    public void setZYDH2(int ZYDH2) {
+    public void setZYDH2(String ZYDH2) {
         this.ZYDH2 = ZYDH2;
     }
 
@@ -567,11 +565,11 @@ public class T_TDD {
         this.TDDWDM3 = TDDWDM3;
     }
 
-    public int getZYDH3() {
+    public String getZYDH3() {
         return ZYDH3;
     }
 
-    public void setZYDH3(int ZYDH3) {
+    public void setZYDH3(String ZYDH3) {
         this.ZYDH3 = ZYDH3;
     }
 
@@ -583,11 +581,11 @@ public class T_TDD {
         this.TDDWDM4 = TDDWDM4;
     }
 
-    public int getZYDH4() {
+    public String getZYDH4() {
         return ZYDH4;
     }
 
-    public void setZYDH4(int ZYDH4) {
+    public void setZYDH4(String ZYDH4) {
         this.ZYDH4 = ZYDH4;
     }
 
@@ -599,11 +597,11 @@ public class T_TDD {
         this.TDDWDM5 = TDDWDM5;
     }
 
-    public int getZYDH5() {
+    public String getZYDH5() {
         return ZYDH5;
     }
 
-    public void setZYDH5(int ZYDH5) {
+    public void setZYDH5(String ZYDH5) {
         this.ZYDH5 = ZYDH5;
     }
 
@@ -615,11 +613,11 @@ public class T_TDD {
         this.TDDWDM6 = TDDWDM6;
     }
 
-    public int getZYDH6() {
+    public String getZYDH6() {
         return ZYDH6;
     }
 
-    public void setZYDH6(int ZYDH6) {
+    public void setZYDH6(String ZYDH6) {
         this.ZYDH6 = ZYDH6;
     }
 
@@ -749,7 +747,7 @@ public class T_TDD {
                 "ID=" + ID +
                 ", NF='" + NF + '\'' +
                 ", SFDM=" + SFDM +
-                ", KSH=" + KSH +
+                ", KSH='" + KSH + '\'' +
                 ", ZKZH=" + ZKZH +
                 ", XM='" + XM + '\'' +
                 ", XB='" + XB + '\'' +
@@ -762,14 +760,14 @@ public class T_TDD {
                 ", ZXMC='" + ZXMC + '\'' +
                 ", WYYZDM=" + WYYZDM +
                 ", HKDJ='" + HKDJ + '\'' +
-                ", BMDW='" + BMDW + '\'' +
-                ", KSTZ='" + KSTZ + '\'' +
-                ", XTDW='" + XTDW + '\'' +
-                ", DQDM=" + DQDM +
+                ", BMDW=" + BMDW +
+                ", KSTZ=" + KSTZ +
+                ", XTDW=" + XTDW +
+                ", DQDM='" + DQDM + '\'' +
                 ", SFZH=" + SFZH +
                 ", JTDZ='" + JTDZ + '\'' +
                 ", YZBM=" + YZBM +
-                ", LXDH=" + LXDH +
+                ", LXDH='" + LXDH + '\'' +
                 ", HKKH='" + HKKH + '\'' +
                 ", KSTC='" + KSTC + '\'' +
                 ", KSJLHCF='" + KSJLHCF + '\'' +
@@ -793,26 +791,26 @@ public class T_TDD {
                 ", TDZY='" + TDZY + '\'' +
                 ", DQTDDW='" + DQTDDW + '\'' +
                 ", YTZY='" + YTZY + '\'' +
-                ", LQZY=" + LQZY +
+                ", LQZY='" + LQZY + '\'' +
                 ", TDYYDM='" + TDYYDM + '\'' +
                 ", BZ='" + BZ + '\'' +
                 ", ZYHG='" + ZYHG + '\'' +
                 ", TJHG='" + TJHG + '\'' +
-                ", LQFSDM=" + LQFS +
+                ", LQFS=" + LQFS +
                 ", KSZT='" + KSZT + '\'' +
                 ", SDBZ='" + SDBZ + '\'' +
                 ", TDDWDM1='" + TDDWDM1 + '\'' +
-                ", ZYDH1=" + ZYDH1 +
+                ", ZYDH1='" + ZYDH1 + '\'' +
                 ", TDDWDM2='" + TDDWDM2 + '\'' +
-                ", ZYDH2=" + ZYDH2 +
+                ", ZYDH2='" + ZYDH2 + '\'' +
                 ", TDDWDM3='" + TDDWDM3 + '\'' +
-                ", ZYDH3=" + ZYDH3 +
+                ", ZYDH3='" + ZYDH3 + '\'' +
                 ", TDDWDM4='" + TDDWDM4 + '\'' +
-                ", ZYDH4=" + ZYDH4 +
+                ", ZYDH4='" + ZYDH4 + '\'' +
                 ", TDDWDM5='" + TDDWDM5 + '\'' +
-                ", ZYDH5=" + ZYDH5 +
+                ", ZYDH5='" + ZYDH5 + '\'' +
                 ", TDDWDM6='" + TDDWDM6 + '\'' +
-                ", ZYDH6=" + ZYDH6 +
+                ", ZYDH6='" + ZYDH6 + '\'' +
                 ", ZYTZ='" + ZYTZ + '\'' +
                 ", ZYZYTJ='" + ZYZYTJ + '\'' +
                 ", DXTJ='" + DXTJ + '\'' +

@@ -12,12 +12,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pojo.*;
 import com.service.DataImportService;
 import com.utils.GetDefaultInfo;
+import com.utils.provincescore.*;
 import joinery.DataFrame;
+import org.apache.ibatis.javassist.bytecode.ByteArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.utils.datadriverutils.DbfPip;
 import com.utils.datautils.DataFrameUtils;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.*;
 
@@ -59,12 +63,20 @@ public class DataImportServiceImpl implements DataImportService {
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public int importData (HashMap<String,InputStream> dbfMap, int year, int province) throws Exception{
+    public int importData (HashMap<String, InputStream> dbfMap, int year, int province) throws Exception{
+
+        heBeiScore hebei = new heBeiScore();
+        guangXiScore guangxi = new guangXiScore();
+        shanXiScore shanxi = new shanXiScore();
+        haiNanScore hainan = new haiNanScore();
+        yunNanScore yunnan = new yunNanScore();
+
             /**
              * 先处理特殊的T_TDD与TD_XSFS表
              */
             DataFrame T_TDDDataFrame = DbfPip.open(dbfMap.get("T_TDD"));
             //找到T_TDD表中表示特定分数的字段，并将这个字段映射到分数表的字段上
+       //Double zonhescore = (Double)T_TDDDataFrame.get(0,81);
             DataFrame TD_CJXDMdataFrame = DbfPip.open(dbfMap.get("TD_CJXDM"));
             HashMap<String ,String> colmnMap = new HashMap<String, String>();
             if(TD_CJXDMdataFrame.isEmpty()|| T_TDDDataFrame.isEmpty())
@@ -80,30 +92,58 @@ public class DataImportServiceImpl implements DataImportService {
                     String CJXMC = null;
                     if(TD_CJXDMdataFrame.get(i,"CJXDM")!=null && TD_CJXDMdataFrame.get(i,"CJXMC")!=null){
                         CJXDM="GKCJX"+TD_CJXDMdataFrame.get(i,"CJXDM").toString().replaceAll(" ","");
-                        CJXMC=TD_CJXDMdataFrame.get(i,"CJXMC").toString().replaceAll(" ","");
+                        CJXMC=TD_CJXDMdataFrame.get(i,"CJXMC").toString().replaceAll("^[　*| *| *|//s*]*", "").replaceAll("[　*| *| *|//s*]*$", ""); //去掉首尾空格
                     }
-                    switch (CJXMC){
-                        case "语文":
-                            colmnMap.put("YWCJ",CJXDM);
-                            break;
-                        case "数学":
-                            colmnMap.put("SXCJ",CJXDM);
-                            break;
-                        case "外语":
-                            colmnMap.put("WYCJ",CJXDM);
-                            break;
-                        case "综合":
-                            colmnMap.put("ZHCJ",CJXDM);
-                        default:
-                            break;
+                    //河北省
+                    if (province == 3){
+                        colmnMap = hebei.heBeiScore(colmnMap,CJXDM,CJXMC);
                     }
-                    if(colmnMap.size()==4){
-                        break;
+                    //广西
+                    else if (province == 20){
+                        colmnMap = guangxi.guangXiScore(colmnMap,CJXDM,CJXMC);
+                    }
+                    //陕西
+                    else if(province == 27){
+                        colmnMap = shanxi.shanXiScore(colmnMap,CJXDM,CJXMC);
+                    }
+                    //海南省
+                    else if(province == 21){
+                        colmnMap = hainan.haiNanScore(colmnMap,CJXDM,CJXMC);
+                    }
+                    //云南省
+                    else if(province == 24){
+                        colmnMap = yunnan.yunNanScore(colmnMap,CJXDM,CJXMC);
+                    }
+                    else {
+                        switch (CJXMC) {
+                            case "语文":
+                                colmnMap.put("YWCJ", CJXDM);
+                                break;
+                            case "数学":
+                                colmnMap.put("SXCJ", CJXDM);
+                                break;
+                            case "外语":
+                                colmnMap.put("WYCJ", CJXDM);
+                                break;
+                            case "综合":
+                                colmnMap.put("ZHCJ", CJXDM);
+                            default:
+                                break;
+                        }
+                        //广西
+                        if(province == 20 && colmnMap.size() == 2){
+                            break;
+                        }
+                        else if(province == 27 && colmnMap.size() == 3){
+                            break;
+                        }
+                        else if (colmnMap.size() == 4) {
+                            break;
+                        }
                     }
                 }
-            }
-
-            if(colmnMap.size() != 4){
+                }
+            if(colmnMap.size() != 4 && province!= 20 && province != 27){
                 System.out.println("提取成绩对照表：TD_CJXDMFile，出错！配置多了或少了字段映射！");
                 return 0;
             }
@@ -210,6 +250,12 @@ public class DataImportServiceImpl implements DataImportService {
              * 获得TD_XSFX实体集合
              */
             td_xsfsList = DataFrameUtils.fillListByMap(T_TDDDataFrame,clazz,TD_XSFSTableXxcludeSet,colmnMap);
+            if (province == 20){
+                td_xsfsList = guangxi.score(T_TDDDataFrame,td_xsfsList);
+            }
+            else if (province == 27){
+                td_xsfsList = shanxi.score(T_TDDDataFrame,td_xsfsList);
+            }
             int insertTd_xsfsDataResult =0;
             //在这执行插入数据库功能，并获得主键值
             if(td_xsfsList != null){
@@ -1085,4 +1131,150 @@ public class DataImportServiceImpl implements DataImportService {
         return returnList;
     }
 
+    /*吕志伟*/
+
+    /**
+     * Modification User: 吕志伟
+     * Modification Date: 2019/11/24
+     *
+     * 检查有无未完成导入流程的省份
+     * @author 吕志伟
+     * @param year 年份， 默认是当年
+     * @return 0//无未完成导入省份；1//未完成省份进行到数据清洗；2//未完成省份进行到分数整合
+     */
+    @Override
+    public String checkData(String year) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        HashMap map = new HashMap();
+        //第一个Integer是省份代码，String是省份名字,第二个Integer是状态码
+        List<HashMap<String,Object>> list = dataImportDao.request1(year);
+        for(HashMap m: list){
+            String name =(String) m.get("SF");
+            int dm = (int) m.get("SFDM");
+            int status =(int) m.get("STATUS");
+            if (status == 0){
+                map.put(dm,name);
+            }
+        }
+        HashMap map1 = new HashMap();
+        map1.put("unfinished",map);
+        //这儿返回值是未完成完整导入流程的省份名
+        String result = mapper.writeValueAsString(map1);
+        return  result;
+    }
+
+    /**
+     * Modification User: 吕志伟
+     * Modification Date: 2019/11/24
+     *
+     * @param province
+     * @return 0//清空失败；1//清空成功
+     * @throws JsonProcessingException
+     */
+    @Override
+    public String clearData(String year,String province) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        Map map = new HashMap();
+        int pro = Integer.parseInt(province);
+        int res = dataImportDao.deleteProvince(year,pro);
+        if(res == 1) {
+            map.put("status","1");
+        }
+        else{
+            map.put("status","0");
+        }
+        String result = mapper.writeValueAsString(map);
+        return result;
+    }
+
+    /**
+     * Modification User: 吕志伟
+     * Modification Date: 2019/11/24
+     *
+     * @param year
+     * @return json {[ "imported":list,
+     * "unimport":list]}
+     * @throws JsonProcessingException
+     */
+    @Override
+    public String checkProvince(String year) throws JsonProcessingException {
+        List<String> provinces = new ArrayList();
+        List<String> importedprovince = new ArrayList();
+        provinces.add("四川省");
+        provinces.add("北京市");
+        provinces.add("天津市");
+        provinces.add("内蒙古自治区");
+        provinces.add("吉林省");
+        provinces.add("上海市");
+        provinces.add("山东省");
+        provinces.add("广东省");
+        provinces.add("安徽省");
+        provinces.add("福建省");
+        provinces.add("甘肃省");
+        provinces.add("广西壮族自治区");
+        provinces.add("贵州省");
+        provinces.add("海南省");
+        provinces.add("河北省");
+        provinces.add("河南省");
+        provinces.add("黑龙江省");
+        provinces.add("湖北省");
+        provinces.add("湖南省");
+        provinces.add("江苏省");
+        provinces.add("江西省");
+        provinces.add("辽宁省");
+        provinces.add("山西省");
+        provinces.add("陕西省");
+        provinces.add("新疆省");
+        provinces.add("云南省");
+        provinces.add("浙江省");
+        provinces.add("西藏自治区");
+        provinces.add("青海省");
+        provinces.add("宁夏回族自治区");
+        provinces.add("新疆维吾尔自治区");
+        provinces.add("香港特别行政区");
+        provinces.add("澳门特别行政区");
+        provinces.add("台湾省");
+        provinces.add("重庆市");
+        ObjectMapper mapper = new ObjectMapper();
+        Map map = new HashMap();
+        List<HashMap> imported = (List) dataImportDao.CheckProvince(year);
+        String name = "";
+        for(HashMap m: imported){
+            name= (String) m.get("SF");
+            provinces.remove(name);
+            importedprovince.add(name);
+        }
+        map.put("unimport",provinces);
+        map.put("imported",importedprovince);
+        String result = mapper.writeValueAsString(map);
+        return result;
+    }
+
+
+//
+//    /**
+//     * Modification User: 吕志伟
+//     * Modification Date: 2019/11/24
+//     * @param dm 规范值代码
+//     * @param value 规范值
+//     * @return 0//修改失败；1//修改成功
+//     * @throws JsonProcessingException
+//     */
+//    @Override
+//    public String updateGaugeValue(String dm,String value) throws JsonProcessingException {
+//        ObjectMapper mapper = new ObjectMapper();
+//        Map map = new HashMap();
+//        map.put("status",dataImportDao.updateGaugeValue(dm,value));
+//        String result = mapper.writeValueAsString(map);
+//        return  result;
+//    }
+//
+//    @Override
+//    public String addGaugeValue(String data) throws JsonProcessingException {
+//        ObjectMapper mapper = new ObjectMapper();
+//        Map map = new HashMap();
+//        map.put("status",dataImportDao.addGaugeValue(data));
+//        String result = mapper.writeValueAsString(map);
+//        return result;
+//    }
 }

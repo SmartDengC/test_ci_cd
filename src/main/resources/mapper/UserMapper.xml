@@ -1,0 +1,67 @@
+<?xml version="1.0"  encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.UserDao">
+
+<select id="findPermissionByUsername" parameterType="string" resultType="com.pojo.Permission">
+--  通过用户名查询拥有的权限
+        SELECT permission.*
+        FROM sys_user user
+        INNER JOIN sys_user_role user_role ON `user`.id =user_role.user_id
+        INNER JOIN sys_role_permission role_permisson ON user_role.role_id = role_permisson.role_id
+        INNER JOIN sys_permission permission ON role_permisson.perm_id=permission.id
+        WHERE username=#{username}
+</select>
+<select id="findByUsername" parameterType="string" resultType="com.pojo.User">
+        SELECT * FROM  sys_user  WHERE  username=#{username}
+</select>
+
+<select id="checkUsername" parameterType="string" resultType="java.lang.Integer">
+  SELECT count(*) FROM  sys_user  WHERE  username=#{username}
+</select>
+
+<select id="checkEmail" parameterType="string" resultType="java.lang.Integer">
+  SELECT count(*) FROM  sys_user  WHERE  email=#{email}
+</select>
+
+<select id="checkInviteCode" parameterType="string" resultType="java.lang.Integer">
+  SELECT count(*) FROM  user_invitecode  WHERE  invite_code=#{inviteCode}
+</select>
+
+<insert id="addMember" statementType="CALLABLE">
+        {CALL insertUserInformation(
+        #{username,mode=IN,jdbcType=VARCHAR},
+        #{password,mode=IN,jdbcType=VARCHAR},
+        #{email,mode=IN,jdbcType=VARCHAR},
+        #{createDate,mode=IN,jdbcType=VARCHAR},
+        #{invitecode,mode=IN,jdbcType=VARCHAR}
+        )}
+</insert>
+
+<insert id="sendCode" >
+  insert into user_code (user_id,code) values ((SELECT sys_user.id FROM sys_user WHERE email=#{email}),#{code})
+</insert>
+
+<insert id="sendInviteCode" >
+        insert into user_invitecode values (#{inviteCode});
+</insert>
+
+<select id="list" resultType="com.pojo.User">
+  select * from sys_user
+</select>
+
+
+<select id="checkCode" resultType="java.lang.Integer">
+        select count(*) from user_code
+        INNER JOIN sys_user ON  `sys_user`.id =user_code.user_id
+        WHERE email = #{email} and code = #{code}
+</select>
+
+<update id="savePwd" >
+        update sys_user set password=#{password} where email=#{email}
+</update>
+
+
+</mapper>

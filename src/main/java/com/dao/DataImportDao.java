@@ -3,6 +3,7 @@ package com.dao;
 import com.pojo.*;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -149,4 +150,66 @@ public interface DataImportDao {
      * @return list
      */
     public List<TD_SFDM> requestTD_SFDM();
+
+    /*吕志伟*/
+
+    /**
+     * 检查有无未完成导入流程的省份
+     * @param year
+     * @return 0//无未完成导入省份；1//未完成省份进行到数据清洗；2//未完成省份进行到分数整合
+     */
+    public HashMap checkData(String year);
+
+    /**
+     * 清空该省数据库中的数据
+     * @param province
+     * @return 0//清空失败；1//清空成功
+     */
+    public String clearData(String province);
+
+    /**
+     * 检测已导入省份和未导入省份
+     * @param year
+     * @return json {[ "imported":list,"unimport":list]}
+     */
+    public List<String> checkProvince(String year);
+
+    /**
+     * 修改规范值
+     * @param dm 规范值代码
+     * @param value 规范值
+     * @return json 0//修改失败；1//修改成功
+     */
+    public String updateGaugeValue(String dm,String value);
+
+    public String addGaugeValue(String data);
+
+    /**
+     *检测已导入和未导入省份
+     * @param year
+     * @return
+     */
+    public List<HashMap<Integer,String>> CheckProvince(@Param("NF") String year);
+
+    /**
+     * 根据年份和省份代码删除表中数据
+     * @param year
+     * @param sfdm
+     * @return
+     */
+    public int deleteProvince(@Param("NF")String year,@Param("SFDM")int sfdm);
+
+    /**
+     * 返回未完成数据导入的省份
+     * @param year
+     * @return 一个Map类型数据，key是省份代码，value是省份
+     */
+    List<HashMap<Integer,String>> getSfs(@Param("NF")String year);
+
+    /**
+     *  返回没有完成完整导入过程的省份
+     * @param year 年份
+     * @return 省份代码，省份，状态码
+     */
+    List<HashMap<String,Object>> request1(@Param("NF") String year);
 }

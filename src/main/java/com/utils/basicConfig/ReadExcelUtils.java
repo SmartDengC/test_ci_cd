@@ -1,4 +1,4 @@
-package com.utils;
+package com.utils.basicConfig;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -55,7 +55,7 @@ public class ReadExcelUtils {
      * @return String 表头内容的数组
      * @throws Exception
      */
-    public String[] readExcelTitle() throws Exception{
+    public List readExcelTitle() throws Exception{
         if(wb==null){
             throw new Exception("Workbook对象为空！");
         }
@@ -64,9 +64,15 @@ public class ReadExcelUtils {
         // 标题总列数
         int colNum = row.getPhysicalNumberOfCells();
         System.out.println("colNum:" + colNum);
-        String[] title = new String[colNum];
+        List title = new ArrayList();
         for (int i = 0; i < colNum; i++) {
-            title[i] = row.getCell(i).getCellFormula();
+            if (row.getCell(i)!=null){
+                row.getCell(i).setCellType(HSSFCell.ENCODING_UTF_16);
+                title.add(row.getCell(i).getStringCellValue());
+            }
+            else {
+                title.add("");
+            }
         }
         return title;
     }

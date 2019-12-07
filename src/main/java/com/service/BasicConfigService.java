@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * @program: ssm
@@ -15,7 +16,7 @@ import java.io.IOException;
  *
  * @create: 2019-10-20 20:30
  **/
-public interface BasicConfigservice {
+public interface BasicConfigService {
    /**
     * Modification User： 吕志伟
     * Modification Date: 2019/11/4
@@ -79,4 +80,19 @@ public interface BasicConfigservice {
     * @return 文件上传结果
     */
    public String reUploadFile(String year, MultipartFile file, String fileType) throws Exception;
+
+
+   /**
+    * Modification User: 邓聪
+    * Modification Date: 2019/11/29
+    *
+    * 返回省份map{"四川":1}
+    * @author 邓聪
+    * @return map
+    */
+
+   public HashMap<String, Integer> provinceMap();
+
+
+   public Boolean judgeFilePairFileType(MultipartFile file, String fileType) throws Exception;
 }

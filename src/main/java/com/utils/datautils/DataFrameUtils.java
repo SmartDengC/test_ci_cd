@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * DataFrame对象数据的工具包
  */
-public class DataFrameUtils extends AbstractDataUtils implements toList, toJson, toExcel {
+public class DataFrameUtils extends AbstractDataUtils implements toList, toJson{
 
     /**
      * Default constructor

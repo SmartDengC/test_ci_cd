@@ -1,14 +1,10 @@
 package com.pojo;
 
-import java.time.Year;
 
-/**
- * 对应 ZDBFYSDM 字段规范映射表
- */
 public class ZDGFYSDM {
-    private int ZDGFYSDM; //(字段规范值)主键
-    private Year NF;
-    private int SFDM; //(省份代码)外键<==>TD_SFDM表的SFDM主键
+    private int ZDGFYSDM;
+    private String NF;
+    private int SFDM;
     private String ZD;
     private String ZDBGFDM;
     private int ZDGFZDM;
@@ -21,11 +17,11 @@ public class ZDGFYSDM {
         this.ZDGFYSDM = ZDGFYSDM;
     }
 
-    public Year getNF() {
+    public String getNF() {
         return NF;
     }
 
-    public void setNF(Year NF) {
+    public void setNF(String NF) {
         this.NF = NF;
     }
 
@@ -61,5 +57,15 @@ public class ZDGFYSDM {
         this.ZDGFZDM = ZDGFZDM;
     }
 
-
+    @Override
+    public String toString() {
+        return "ZDGFYSDM{" +
+                "ZDGFYSDM=" + ZDGFYSDM +
+                ", NF='" + NF + '\'' +
+                ", SFDM=" + SFDM +
+                ", ZD='" + ZD + '\'' +
+                ", ZDBGFDM='" + ZDBGFDM + '\'' +
+                ", ZDGFZDM=" + ZDGFZDM +
+                '}';
+    }
 }
