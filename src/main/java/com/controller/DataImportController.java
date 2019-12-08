@@ -8,7 +8,6 @@ package com.controller;/**
 import com.dao.BasicConfigDao;
 import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pojo.Files;
 import com.pojo.TD_SFDM;
 import com.service.DataImportService;
 import com.sun.org.apache.bcel.internal.generic.NEW;
@@ -207,56 +206,56 @@ public class DataImportController {
         return returnList;
     }
 
-    @RequestMapping(value = "/test", method = RequestMethod.POST)
-    public int testJson(@RequestBody Map ob) throws Exception {
-        MakeJson m = new MakeJson();
-        int year = Integer.parseInt((String) ob.get("year"));
-//        int province = Integer.parseInt((String) ob.get("province"));
-        ArrayList<HashMap> files = (ArrayList) ob.get("files");
-        HashMap<String, InputStream> dbfMap = new HashMap<>();
-        for (HashMap dbf : files) {
-            String filename = (String) dbf.get("fileName");
-            String subName = filename.substring(0, filename.indexOf("."));
-            String filedata = (String) dbf.get("fileData");
-            byte[] datas = m.hexToByte(filedata);
-            String d1 = new String(datas);
-            InputStream dbfdata = m.getStringStream(d1);
-            dbfMap.put(subName, dbfdata);
-        }
-       int i = dataImportService.importData(dbfMap, year, 1);
-
-
-//        FileOutputStream fis = new FileOutputStream("C:\\Users\\Lenovo\\Desktop\\222.dbf");
-//
-//        //取出前端参数中的files对呀的value：是一个List
-//        ArrayList<HashMap> files = (ArrayList) ob.get("files");
-//
-//        //取出List中的对象：使用map来容纳
-//        HashMap dbf = (HashMap) files.get(15);
-//
-//        //取出第一个对象的fileData属性值
-//        String data = (String) dbf.get("fileData");
-//        byte[] src = data.getBytes();
+//    @RequestMapping(value = "/test", method = RequestMethod.POST)
+//    public int testJson(@RequestBody Map ob) throws Exception {
 //        MakeJson m = new MakeJson();
-//        byte[] datas = m.hexToByte(data);
-//        String d1 = new String(datas);
-//        ByteArrayInputStream d2 = (ByteArrayInputStream) m.getStringStream(d1);
-////        List<List<Object>> aaa = Arrays.asList(Arrays.<Object>asList("alpha", "bravo", "charlie"),
-////        Arrays.<Object>asList(1, 2, 3));
-////        DataFrame<Object> df = new DataFrame<>(aaa);
-////        df.show();
-////        DataFrame dataFrame = DbfPip.open(d2);
-////        dataFrame.show();
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        int ch = 0;
-//        while ((ch = d2.read()) != -1) {
-//            baos.write(ch);
+//        int year = Integer.parseInt((String) ob.get("year"));
+////        int province = Integer.parseInt((String) ob.get("province"));
+//        ArrayList<HashMap> files = (ArrayList) ob.get("files");
+//        HashMap<String, InputStream> dbfMap = new HashMap<>();
+//        for (HashMap dbf : files) {
+//            String filename = (String) dbf.get("fileName");
+//            String subName = filename.substring(0, filename.indexOf("."));
+//            String filedata = (String) dbf.get("fileData");
+//            byte[] datas = m.hexToByte(filedata);
+//            String d1 = new String(datas);
+//            InputStream dbfdata = m.getStringStream(d1);
+//            dbfMap.put(subName, dbfdata);
 //        }
-//        fis.write(baos.toByteArray());
-//        //dataFrame.show();
-////        System.out.print(dataFrame.s);
-        return i;
-    }
+//       int i = dataImportService.importData(dbfMap, year, 1);
+//
+//
+////        FileOutputStream fis = new FileOutputStream("C:\\Users\\Lenovo\\Desktop\\222.dbf");
+////
+////        //取出前端参数中的files对呀的value：是一个List
+////        ArrayList<HashMap> files = (ArrayList) ob.get("files");
+////
+////        //取出List中的对象：使用map来容纳
+////        HashMap dbf = (HashMap) files.get(15);
+////
+////        //取出第一个对象的fileData属性值
+////        String data = (String) dbf.get("fileData");
+////        byte[] src = data.getBytes();
+////        MakeJson m = new MakeJson();
+////        byte[] datas = m.hexToByte(data);
+////        String d1 = new String(datas);
+////        ByteArrayInputStream d2 = (ByteArrayInputStream) m.getStringStream(d1);
+//////        List<List<Object>> aaa = Arrays.asList(Arrays.<Object>asList("alpha", "bravo", "charlie"),
+//////        Arrays.<Object>asList(1, 2, 3));
+//////        DataFrame<Object> df = new DataFrame<>(aaa);
+//////        df.show();
+//////        DataFrame dataFrame = DbfPip.open(d2);
+//////        dataFrame.show();
+////        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+////        int ch = 0;
+////        while ((ch = d2.read()) != -1) {
+////            baos.write(ch);
+////        }
+////        fis.write(baos.toByteArray());
+////        //dataFrame.show();
+//////        System.out.print(dataFrame.s);
+//        return i;
+//    }
     /*吕志伟*/
 
     /**

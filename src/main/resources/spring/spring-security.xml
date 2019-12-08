@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+          http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+
+    <security:http >
+        <!--放行静态资源-->
+        <security:intercept-url pattern="/js/**" access="permitAll()"/>
+        <security:intercept-url pattern="/static/**" access="permitAll()"/>
+        <!--拦截的partern是拦截的请求,不是资源地址!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+        <security:intercept-url pattern="/login" access="permitAll()"/>
+
+        <security:intercept-url pattern="/*" access="hasAnyAuthority('ROLE_ADMIN')"/>
+        <!--使用异步处理登陆成功和失败的时候的处理-->
+        <security:form-login login-page="/login"
+                             authentication-success-handler-ref="myAuthenticationSuccessHandler"
+                             authentication-failure-handler-ref="myAuthenticationFailureHandler"/>
+        <!--开启注销 清除session-->
+        <security:logout logout-success-url="/login" invalidate-session="true" logout-url="/j_spring_security_logout"/>
+        <!--权限不足的时候放回提示页面,有待实现的错误页面-->
+        <!--<security:access-denied-handler error-page="/error" ></security:access-denied-handler>-->
+        <!--跨域配置-->
+        <security:csrf disabled="true"/>
+
+        <security:cors ></security:cors>
+        <!--remember-me功能 token-validity-seconds时间  单位秒-->
+        <security:remember-me token-repository-ref="jdbcTokenRepository" token-validity-seconds="3600"/>
+    </security:http>
+    <!--认证管理器配置 ，认证信息提供方式（用户名 密码 当前用户权限）-->
+    <security:authentication-manager>
+        <security:authentication-provider user-service-ref="myUserDetailService">
+            <!--使用加密算法对用户的密码进行加密-->
+            <security:password-encoder ref="passwordEncode"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <bean id="myUserDetailService" class="com.security.MyUserDetailService"/>
+    <bean id="passwordEncode" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
+    <bean id="myAuthenticationFailureHandler" class="com.security.MyAuthenticationFailureHandler"/>
+    <bean id="myAuthenticationSuccessHandler" class="com.security.MyAuthenticationSuccessHandler"/>
+    <!--remember-me的bean配置-->
+    <bean id="jdbcTokenRepository" class="org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="csrfFilter" class="org.springframework.security.web.csrf.CsrfFilter">
+        <constructor-arg>
+            <bean id ="httpSessionCsrfTokenRepository" class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository"/>
+        </constructor-arg>
+    </bean>
+
+    <!--&lt;!&ndash;-->
+        <!--如果用的是spring mvc 的form标签，则配置此项时自动将crsf的token放入到一个hidden的input中，而不需要开发人员显式的写入form-->
+    <!--&ndash;&gt;-->
+    <!--<bean id="requestDataValueProcessor" class="org.springframework.security.web.servlet.support.csrf.CsrfRequestDataValueProcessor"/>-->
+</beans>

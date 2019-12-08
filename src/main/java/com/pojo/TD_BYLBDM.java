@@ -1,12 +1,10 @@
 package com.pojo;
 
-import java.time.Year;
-
 public class TD_BYLBDM {
     private int ID;
     private String NF;
     private int SFDM;
-    private int BYLBDM;
+        private int BYLBDM;
     private String BYLBMC;
 
     public int getID() {
@@ -47,5 +45,16 @@ public class TD_BYLBDM {
 
     public void setBYLBMC(String BYLBMC) {
         this.BYLBMC = BYLBMC;
+    }
+
+    @Override
+    public String toString() {
+        return "TD_BYLBDM{" +
+                "ID=" + ID +
+                ", NF='" + NF + '\'' +
+                ", SFDM=" + SFDM +
+                ", BYLBDM=" + BYLBDM +
+                ", BYLBMC='" + BYLBMC + '\'' +
+                '}';
     }
 }

@@ -246,9 +246,6 @@ public class DataImportServiceImpl implements DataImportService {
             T_TDDDataFrame.add("ZYCJ",ZYCJList);
 
             Class clazz = new TD_XSFS().getClass();
-            if (province == 27){
-                colmnMap.put("ZHCJ","GKCJX04");
-            }
             /**
              * 获得TD_XSFX实体集合
              */

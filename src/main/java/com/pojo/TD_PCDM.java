@@ -9,20 +9,20 @@ public class TD_PCDM {
     private String GBPCDM;
     private String GBCCDM;
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
     public String getNF() {
         return NF;
     }
 
     public void setNF(String NF) {
         this.NF = NF;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public int getSFDM() {
@@ -69,9 +69,8 @@ public class TD_PCDM {
     public String toString() {
         return "TD_PCDM{" +
                 "ID=" + ID +
-                ", NF='" + NF + '\'' +
                 ", SFDM=" + SFDM +
-                ", PCDM=" + PCDM +
+                ", PCDM='" + PCDM + '\'' +
                 ", PCMC='" + PCMC + '\'' +
                 ", GBPCDM='" + GBPCDM + '\'' +
                 ", GBCCDM='" + GBCCDM + '\'' +
