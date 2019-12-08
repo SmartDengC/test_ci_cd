@@ -61,18 +61,20 @@ public class ScoreIntegrationServiceImpl implements ScoreIntegrationService {
                 ZSCJ=CJ;
                 //艺体生  TDCJ=CJ/ WHX_ZS* WHX_BL + ZYCJ/ ZYX_ZS* ZYX_BL 需要WHX_ZS WHX_BL ZYX_ZS ZYX_BL
                 map=scoreIntegrationDao.getFourData(year,provinceCode,ID);
+
                 System.out.println("***2map:"+map);
                 //如果遇到Td_ytfs表中的四个比列参数不完整，则直接break;返回给前台状态码0,则都不整合/完整 则全部整合
                 if(map==null){
                     isIntegrated=false;
                     break;
-                }
-                //计算    ZYCJ=((TDCJ-CJ*WHX_BJ/WHS_ZS)*ZYX_ZS)/ZYX_BL
-                ZYCJ= (int) (((TDCJ-CJ*map.get("WHX_BL")/map.get("WHX_ZS"))*map.get("ZYX_ZS"))/map.get("ZYX_BL"));
-                System.out.println("***2ZYCJ:"+ZYCJ);
+                }else {
+                    //计算    ZYCJ=((TDCJ-CJ*WHX_BJ/WHS_ZS)*ZYX_ZS)/ZYX_BL
+                    ZYCJ = (int) (((TDCJ - CJ * map.get("WHX_BL") / map.get("WHX_ZS")) * map.get("ZYX_ZS")) / map.get("ZYX_BL"));
+                    System.out.println("***2ZYCJ:" + ZYCJ);
 
-                student.put("ZYCJ",ZYCJ);
-                student.put("ZSCJ",ZSCJ);
+                    student.put("ZYCJ", ZYCJ);
+                    student.put("ZSCJ", ZSCJ);
+                }
             }
             //将计算后的student装入newStudent
             newStudents.add(student);
