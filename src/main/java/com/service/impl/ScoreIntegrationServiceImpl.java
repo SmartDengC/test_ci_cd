@@ -38,14 +38,12 @@ public class ScoreIntegrationServiceImpl implements ScoreIntegrationService {
     @Override
     public int integrationStudents(List<Map<String, Object>> students, String year, int provinceCode) {
         List<Map<String, Object>> newStudents=new ArrayList<>();
-        //整合结果状态 学生被整合的数量
-        int result=0;
+        boolean isIntegrated=true; //是否要都要整合 true默认都要整合 false都不整合 (用于后面判断四个数据是否完整)
+        int result=0;  //整合结果状态 学生被整合的数量
         int size=students.size();
         System.out.println("***2size:"+size);
         //保存获取的 WHX_ZS WHX_BL ZYX_ZS ZYX_BL
         Map<String, Float> map;
-        //用于艺体生 计算ZYCJ=(TDCJ-CJ*WHX_BJ/WHS_ZS)*ZYX_ZS
-//        float WHX_ZS,WHX_BL, ZYX_ZS, ZYX_BL;
 
         for(Map<String,Object> student :students){
             System.out.println("***2student:"+student);
@@ -63,21 +61,29 @@ public class ScoreIntegrationServiceImpl implements ScoreIntegrationService {
                 ZSCJ=CJ;
                 //艺体生  TDCJ=CJ/ WHX_ZS* WHX_BL + ZYCJ/ ZYX_ZS* ZYX_BL 需要WHX_ZS WHX_BL ZYX_ZS ZYX_BL
                 map=scoreIntegrationDao.getFourData(year,provinceCode,ID);
+
                 System.out.println("***2map:"+map);
-                //计算    ZYCJ=((TDCJ-CJ*WHX_BJ/WHS_ZS)*ZYX_ZS)/ZYX_BL
-                ZYCJ= (int) (((TDCJ-CJ*map.get("WHX_BL")/map.get("WHX_ZS"))*map.get("ZYX_ZS"))/map.get("ZYX_BL"));
-                System.out.println("***2ZYCJ:"+ZYCJ);
+                //如果遇到Td_ytfs表中的四个比列参数不完整，则直接break;返回给前台状态码0,则都不整合/完整 则全部整合
+                if(map==null){
+                    isIntegrated=false;
+                    break;
+                }else {
+                    //计算    ZYCJ=((TDCJ-CJ*WHX_BJ/WHS_ZS)*ZYX_ZS)/ZYX_BL
+                    ZYCJ = (int) (((TDCJ - CJ * map.get("WHX_BL") / map.get("WHX_ZS")) * map.get("ZYX_ZS")) / map.get("ZYX_BL"));
+                    System.out.println("***2ZYCJ:" + ZYCJ);
 
-                student.put("ZYCJ",ZYCJ);
-                student.put("ZSCJ",ZSCJ);
+                    student.put("ZYCJ", ZYCJ);
+                    student.put("ZSCJ", ZSCJ);
+                }
             }
-
             //将计算后的student装入newStudent
             newStudents.add(student);
         }
         System.out.println("***2newStudents:"+newStudents);
-        //整合完重新写入数据库
-        result=scoreIntegrationDao.setStudents(newStudents);
+        //整合完重新写入数据库 result整合的实际人数
+        if(isIntegrated) {
+            result = scoreIntegrationDao.setStudents(newStudents);
+        }
         System.out.println("***2result:"+result);
         //当全部学生整合时
         if (result==size){

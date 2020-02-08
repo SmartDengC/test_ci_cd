@@ -9,6 +9,7 @@
         <result property="paperNum" column="number"/>
         <result property="paperDetail" column="detail"/>
     </resultMap>
+
     <insert id="addPaper" parameterType="Paper">
         INSERT INTO paper(paper_id,name,number,detail) VALUE (#{paperId},#{paperName}, #{paperNum}, #{paperDetail})
     </insert>
@@ -32,4 +33,5 @@
         SELECT paper_id,name,number,detail
         FROM paper
     </select>
+
 </mapper>

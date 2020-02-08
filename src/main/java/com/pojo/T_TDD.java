@@ -1,6 +1,7 @@
 package com.pojo;
 
 public class T_TDD {
+
     private int ID;
     private String NF;
     private int SFDM;

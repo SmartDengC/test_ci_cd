@@ -1,7 +1,10 @@
 package com.pojo;
 
+/**
+ * 对应 ZDGFZDM 字段规范值表
+ */
 public class ZDGFZDM {
-    private int ZDGFZDM;
+    private int ZDGFZDM;   //(字段规范值):主键
     private String ZD;
     private String GFZ;
 
