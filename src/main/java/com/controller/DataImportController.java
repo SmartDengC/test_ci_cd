@@ -6,7 +6,8 @@ package com.controller;/**
  * @date 2019/10/2321:28
  */
 import com.dao.BasicConfigDao;
-import com.fasterxml.jackson.core.*;
+//import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pojo.TD_SFDM;
 import com.service.DataImportService;
@@ -85,6 +86,11 @@ public class DataImportController {
     public String dataImport(String year, String province,String status, MultipartFile[] dbfs) throws JsonProcessingException {
         //1，年份检测、省份安全检查，省份代码是要查询数据库吗？
         //新的省份处理方式,是否这里要请数据库检测省份代码存不存在？
+
+        ObjectMapper mapper = new ObjectMapper();
+        HashMap map = new HashMap();
+        String result = "";
+
         if (year == null || Integer.parseInt(year) < minYear || Integer.parseInt(year) > maxYear ||
                 province == null) {
             return "{\"status\":\"0\"}";
@@ -120,10 +126,14 @@ public class DataImportController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            if (importResoult == 1) {
-                return "{\"status\":\"1\"}";
+            if (importResoult >= 0) {
+                map.put("status",importResoult);
+                result=mapper.writeValueAsString(map);
+                return  result;
             } else {
-                return "{\"status\":\"0\"}";
+                map.put("status",-1);
+                result = mapper.writeValueAsString(map);
+                return result;
             }
         }
         else {
@@ -300,7 +310,7 @@ public class DataImportController {
      * @param year
      * @return json {[ "imported":list,
      * "unimport":list]}
-     * @throws JsonProcessingException
+     *
      */
     @ResponseBody
     @RequestMapping(value = "/checkProvince",produces="text/html;charset=UTF-8;")

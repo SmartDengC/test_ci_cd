@@ -77,12 +77,13 @@ public class DataImportServiceImpl implements DataImportService {
             DataFrame T_TDDDataFrame = DbfPip.open(dbfMap.get("T_TDD"));
             //找到T_TDD表中表示特定分数的字段，并将这个字段映射到分数表的字段上
        //Double zonhescore = (Double)T_TDDDataFrame.get(0,81);
+            int count = 0;
             DataFrame TD_CJXDMdataFrame = DbfPip.open(dbfMap.get("TD_CJXDM"));
             HashMap<String ,String> colmnMap = new HashMap<String, String>();
             if(TD_CJXDMdataFrame.isEmpty()|| T_TDDDataFrame.isEmpty())
             {
                 System.out.println("提取成绩对照表：TD_CJXDMFile，出错！表是空的！");
-                return 0;
+                return -1;
             }
             else
             {
@@ -145,7 +146,7 @@ public class DataImportServiceImpl implements DataImportService {
                 }
             if(colmnMap.size() != 4 && province!= 20 && province != 27){
                 System.out.println("提取成绩对照表：TD_CJXDMFile，出错！配置多了或少了字段映射！");
-                return 0;
+                return -1;
             }
             /**
              * 提取XSFS的信息并将它变成List<obj>
@@ -256,6 +257,11 @@ public class DataImportServiceImpl implements DataImportService {
             else if (province == 27){
                 td_xsfsList = shanxi.score(T_TDDDataFrame,td_xsfsList);
             }
+
+            for(count = 0;count < td_xsfsList.size();){
+                count++;
+            }
+
             int insertTd_xsfsDataResult =0;
             //在这执行插入数据库功能，并获得主键值
             if(td_xsfsList != null){
@@ -450,7 +456,7 @@ public class DataImportServiceImpl implements DataImportService {
                     }
                 }
             }
-            return 1;
+            return count;
     }
     /**陈泯全
      * 将InputStream数据类型的TD_QBJHK表变成实体List
