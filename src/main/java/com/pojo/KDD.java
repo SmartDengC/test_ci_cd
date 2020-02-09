@@ -8,7 +8,7 @@ public class KDD {
     private String EMS;
     private int AVAI;
     private String YEAR;
-    private String SRJ;
+    private String SJR;
     private String LXDH;
     private String JTDZ;
     private String XM;
@@ -55,12 +55,12 @@ public class KDD {
         this.YEAR = YEAR;
     }
 
-    public String getSRJ() {
-        return SRJ;
+    public String getSJR() {
+        return SJR;
     }
 
-    public void setSRJ(String SRJ) {
-        this.SRJ = SRJ;
+    public void setSJR(String SJR) {
+        this.SJR = SJR;
     }
 
     public String getLXDH() {
@@ -102,7 +102,7 @@ public class KDD {
                 ", EMS='" + EMS + '\'' +
                 ", AVAI=" + AVAI +
                 ", YEAR='" + YEAR + '\'' +
-                ", SRJ='" + SRJ + '\'' +
+                ", SJR='" + SJR + '\'' +
                 ", LXDH='" + LXDH + '\'' +
                 ", JTDZ='" + JTDZ + '\'' +
                 ", XM='" + XM + '\'' +

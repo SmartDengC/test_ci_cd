@@ -268,7 +268,7 @@ public class BasicConfigServiceImpl implements BasicConfigService {
                 int AVAI = Integer.parseInt(list.get(1).toString());
                 // 这里kdd.excel中有年份，有传入了一个年份
                 String YEAR = year;
-                String SRJ = (String) list.get(3);
+                String SJR = (String) list.get(3);
                 String LXDH = (String) list.get(4);
                 String JTDZ = (String) list.get(5);
                 String XM = (String) list.get(6);
@@ -277,7 +277,7 @@ public class BasicConfigServiceImpl implements BasicConfigService {
                 kdd.setEMS(EMS);
                 kdd.setAVAI(AVAI);
                 kdd.setYEAR(YEAR);
-                kdd.setSRJ(SRJ);
+                kdd.setSJR(SJR);
                 kdd.setLXDH(LXDH);
                 kdd.setJTDZ(JTDZ);
                 kdd.setXM(XM);
