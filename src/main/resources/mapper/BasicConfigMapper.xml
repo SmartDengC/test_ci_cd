@@ -17,13 +17,13 @@
 
 	<insert id="insertKDD" parameterType="java.util.List" >
 			insert into KDD
-			(EMS,AVAI,YEAR,SRJ,LXDH,JTDZ,XM,KSH)
+			(EMS,AVAI,YEAR,SJR,LXDH,JTDZ,XM,KSH)
 			values
 		<foreach collection="list" item="item" index="index" separator=",">
 			(#{item.EMS,jdbcType=VARCHAR},
 			#{item.AVAI,jdbcType=INTEGER},
 			#{item.YEAR,jdbcType=VARCHAR},
-			#{item.SRJ,jdbcType=VARCHAR},
+			#{item.SJR,jdbcType=VARCHAR},
         	#{item.LXDH,jdbcType=VARCHAR},
 			#{item.JTDZ,jdbcType=VARCHAR},
 			#{item.XM,jdbcType=VARCHAR},
