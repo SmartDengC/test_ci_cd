@@ -55,6 +55,7 @@ public class KDD {
         this.YEAR = YEAR;
     }
 
+
     public String getSJR() {
         return SJR;
     }
@@ -102,7 +103,7 @@ public class KDD {
                 ", EMS='" + EMS + '\'' +
                 ", AVAI=" + AVAI +
                 ", YEAR='" + YEAR + '\'' +
-                ", SJR='" + SJR + '\'' +
+                ", SRJ='" + SJR + '\'' +
                 ", LXDH='" + LXDH + '\'' +
                 ", JTDZ='" + JTDZ + '\'' +
                 ", XM='" + XM + '\'' +

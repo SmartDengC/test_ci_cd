@@ -93,12 +93,12 @@ public class DataImportController {
 
         if (year == null || Integer.parseInt(year) < minYear || Integer.parseInt(year) > maxYear ||
                 province == null) {
-            return "{\"status\":\"0\"}";
+            return "{\"status\":\"-1\"}";
         }
         HashMap<String, InputStream> dbfMap = new HashMap<String, InputStream>();
         //2，dbf文件数量与文件名检测  测试是关闭严格数量检测 dbfNumber
         if (dbfs == null || dbfs.length != dbfNumber) {
-            return "{\"status\":\"0\"}";
+            return "{\"status\":\"-1\"}";
         } else {
             //将dbf文件的名字与其对应的InputStream封装到dbfMap里
             for (MultipartFile dbfFile : dbfs) {
@@ -106,14 +106,14 @@ public class DataImportController {
                 String subName = originalFilename.substring(0, originalFilename.indexOf("."));
                 //判断是否为空，名字是否为指定的名字
                 if (dbfFile.isEmpty() || !DBF_NAME_SET.contains(subName)) {
-                    return "{\"status\":\"0\"}";
+                    return "{\"status\":\"-1\"}";
                 } else {
                     try {
                         //问题：目前dbfMap之中只存了一个年份和省份的数据；当存入多个省份的时候，不能区分数据的年份和省份？
                         dbfMap.put(subName, dbfFile.getInputStream());
                     } catch (IOException e) {
                         e.printStackTrace();
-                        return "{\"status\":\"0\"}";
+                        return "{\"status\":\"-1\"}";
                     }
                 }
             }
@@ -144,10 +144,14 @@ public class DataImportController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            if (importResoult == 1) {
-                return "{\"status\":\"1\"}";
+            if (importResoult >= 0) {
+                map.put("status",importResoult);
+                result=mapper.writeValueAsString(map);
+                return  result;
             } else {
-                return "{\"status\":\"0\"}";
+                map.put("status",-1);
+                result = mapper.writeValueAsString(map);
+                return result;
             }
         }
     }
