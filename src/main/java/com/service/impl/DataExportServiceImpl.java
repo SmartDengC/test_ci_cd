@@ -68,7 +68,7 @@ public class DataExportServiceImpl implements DataExportService {
         toExcel toexcel = new toExcel();
         List<KDD> list = dataExportDao.requestExpressSingle(year);
         HashMap titleMap = new HashMap();
-        titleMap.put("SRJ","收件人");
+        titleMap.put("SJR","收件人");
         titleMap.put("XM","姓名");
         titleMap.put("JTDZ","通讯地址");
         titleMap.put("LXDH","联系电话");

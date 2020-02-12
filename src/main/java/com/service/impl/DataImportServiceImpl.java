@@ -50,6 +50,8 @@ public class DataImportServiceImpl implements DataImportService {
     @Autowired
     DataImportDao dataImportDao;
 
+    int count;
+
     /**陈泯全
      * 实现以下dbf数据的导入:
      * T_TDD、TD_CJXDM(这个表只是用到了信息，不需要导入数据库)
@@ -77,7 +79,7 @@ public class DataImportServiceImpl implements DataImportService {
             DataFrame T_TDDDataFrame = DbfPip.open(dbfMap.get("T_TDD"));
             //找到T_TDD表中表示特定分数的字段，并将这个字段映射到分数表的字段上
        //Double zonhescore = (Double)T_TDDDataFrame.get(0,81);
-            int count = 0;
+
             DataFrame TD_CJXDMdataFrame = DbfPip.open(dbfMap.get("TD_CJXDM"));
             HashMap<String ,String> colmnMap = new HashMap<String, String>();
             if(TD_CJXDMdataFrame.isEmpty()|| T_TDDDataFrame.isEmpty())
@@ -153,6 +155,12 @@ public class DataImportServiceImpl implements DataImportService {
               * 将学生分数信息保存到数据库,添加年份，省份等代码
               */
             List<TD_XSFS> td_xsfsList =new ArrayList<TD_XSFS>();
+
+
+            count = 0;
+            for(;count < td_xsfsList.size();){
+                count++;
+            }
 
             //配置忽略的字段
             Set<String> TD_XSFSTableXxcludeSet =new  HashSet<String>();
@@ -258,10 +266,6 @@ public class DataImportServiceImpl implements DataImportService {
                 td_xsfsList = shanxi.score(T_TDDDataFrame,td_xsfsList);
             }
 
-            for(count = 0;count < td_xsfsList.size();){
-                count++;
-            }
-
             int insertTd_xsfsDataResult =0;
             //在这执行插入数据库功能，并获得主键值
             if(td_xsfsList != null){
@@ -269,7 +273,7 @@ public class DataImportServiceImpl implements DataImportService {
             }
             else {
                 System.out.println("将T_TDDDataFrame的数据转换到TD_XSFS实体出错！");
-                return 0;
+                return -1;
             }
             if (insertTd_xsfsDataResult==0)
             {
@@ -1152,18 +1156,19 @@ public class DataImportServiceImpl implements DataImportService {
     public String checkData(String year) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         HashMap map = new HashMap();
+        List<String> sf = new ArrayList();
         //第一个Integer是省份代码，String是省份名字,第二个Integer是状态码
         List<HashMap<String,Object>> list = dataImportDao.request1(year);
         for(HashMap m: list){
             String name =(String) m.get("SF");
-            int dm = (int) m.get("SFDM");
-            int status =(int) m.get("STATUS");
-            if (status == 0){
-                map.put(dm,name);
-            }
+//            int dm = (int) m.get("SFDM");
+//            int status =(int) m.get("STATUS");
+//            if (status == 0){
+                sf.add(name);
+//            }
         }
         HashMap map1 = new HashMap();
-        map1.put("unfinished",map);
+        map1.put("unfinished",sf);
         //这儿返回值是未完成完整导入流程的省份名
         String result = mapper.writeValueAsString(map1);
         return  result;
@@ -1230,7 +1235,6 @@ public class DataImportServiceImpl implements DataImportService {
         provinces.add("辽宁省");
         provinces.add("山西省");
         provinces.add("陕西省");
-        provinces.add("新疆省");
         provinces.add("云南省");
         provinces.add("浙江省");
         provinces.add("西藏自治区");

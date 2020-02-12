@@ -12,7 +12,7 @@ package com.pojo;
 public class BankCard {
     private String XM;
     private String JTDZ;
-    private int LXDH;
+    private String LXDH;
     private String SFZH;
 
     public String getXM() {
@@ -31,11 +31,11 @@ public class BankCard {
         this.JTDZ = JTDZ;
     }
 
-    public int getLXDH() {
+    public String getLXDH() {
         return LXDH;
     }
 
-    public void setLXDH(int LXDH) {
+    public void setLXDH(String LXDH) {
         this.LXDH = LXDH;
     }
 
