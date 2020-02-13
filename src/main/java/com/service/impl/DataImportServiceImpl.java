@@ -156,12 +156,6 @@ public class DataImportServiceImpl implements DataImportService {
               */
             List<TD_XSFS> td_xsfsList =new ArrayList<TD_XSFS>();
 
-
-            count = 0;
-            for(;count < td_xsfsList.size();){
-                count++;
-            }
-
             //配置忽略的字段
             Set<String> TD_XSFSTableXxcludeSet =new  HashSet<String>();
             TD_XSFSTableXxcludeSet.add("ID");
@@ -262,8 +256,13 @@ public class DataImportServiceImpl implements DataImportService {
             if (province == 20){
                 td_xsfsList = guangxi.score(T_TDDDataFrame,td_xsfsList);
             }
-            else if (province == 27){
+            if (province == 27){
                 td_xsfsList = shanxi.score(T_TDDDataFrame,td_xsfsList);
+            }
+
+            count = 0;
+            for(;count < td_xsfsList.size();){
+                count++;
             }
 
             int insertTd_xsfsDataResult =0;
