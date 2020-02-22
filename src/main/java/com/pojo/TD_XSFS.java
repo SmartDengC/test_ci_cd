@@ -3,10 +3,10 @@ package com.pojo;
 public class TD_XSFS {
     private int ID;
     private String KSH;
-    private int YWCJ;
-    private int SXCJ;
-    private int WYCJ;
-    private int ZHCJ;
+    private float YWCJ;
+    private float SXCJ;
+    private float WYCJ;
+    private float ZHCJ;
     private int CJ;
     private int ZYCJ;
     private int TZCJ;
@@ -22,35 +22,35 @@ public class TD_XSFS {
         this.ID = ID;
     }
 
-    public int getYWCJ() {
+    public float getYWCJ() {
         return YWCJ;
     }
 
-    public void setYWCJ(int YWCJ) {
+    public void setYWCJ(float YWCJ) {
         this.YWCJ = YWCJ;
     }
 
-    public int getSXCJ() {
+    public float getSXCJ() {
         return SXCJ;
     }
 
-    public void setSXCJ(int SXCJ) {
+    public void setSXCJ(float SXCJ) {
         this.SXCJ = SXCJ;
     }
 
-    public int getWYCJ() {
+    public float getWYCJ() {
         return WYCJ;
     }
 
-    public void setWYCJ(int WYCJ) {
+    public void setWYCJ(float WYCJ) {
         this.WYCJ = WYCJ;
     }
 
-    public int getZHCJ() {
+    public float getZHCJ() {
         return ZHCJ;
     }
 
-    public void setZHCJ(int ZHCJ) {
+    public void setZHCJ(float ZHCJ) {
         this.ZHCJ = ZHCJ;
     }
 
