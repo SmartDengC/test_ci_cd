@@ -31,24 +31,36 @@ public class guangXiScore {
     }
 
     public List score(DataFrame T_TDDDataFrame, List<TD_XSFS> list){
-        HashMap<String, Integer> math = new HashMap<String, Integer>();
-        HashMap<String, Integer> comprehensive = new HashMap<String, Integer>();
+        HashMap<String, Float> math = new HashMap<String, Float>();
+        HashMap<String, Float> comprehensive = new HashMap<String, Float>();
+        float math2=0;
+        float math4 = 0;
+        float com2 = 0;
+        float com4 = 0 ;
         for (int i =0;i<T_TDDDataFrame.length();i++) {
-            Double math1 = (Double) T_TDDDataFrame.get(i, 80);
-            int math2 = Integer.parseInt(new java.text.DecimalFormat("0").format(math1));
-            Double math3 = (Double)T_TDDDataFrame.get(i, 81);
-            int math4 = Integer.parseInt(new java.text.DecimalFormat("0").format(math3));
-            Double com1 = (Double)T_TDDDataFrame.get(i, 83);
-            int com2 = Integer.parseInt(new java.text.DecimalFormat("0").format(com1));
-            Double com3 = (Double)T_TDDDataFrame.get(i, 84);
-            int com4 = Integer.parseInt(new java.text.DecimalFormat("0").format(com3));
-            String KSH = (String)T_TDDDataFrame.get(i, 1);
-            if (math1 != 0) {
+            Object math1 = T_TDDDataFrame.get(i, 79);
+            if (math1 != null) {
+                 math2 = Float.parseFloat(math1.toString());
+            }
+            Object math3 = T_TDDDataFrame.get(i, 80);
+            if (math3 != null) {
+                math4 = Float.parseFloat(math3.toString());
+            }
+            Object com1 = T_TDDDataFrame.get(i, 82);
+            if(com1 != null) {
+                com2 = Float.parseFloat(com1.toString());
+            }
+            Object com3 = T_TDDDataFrame.get(i, 83);
+            if (com3 != null) {
+                com4 = Float.parseFloat(com3.toString());
+            }
+            String KSH = (String)T_TDDDataFrame.get(i, 0);
+            if (math1 !=  null) {
                 math.put(KSH, math2);
             } else {
                 math.put(KSH, math4);
             }
-            if (com1 != 0) {
+            if (com1 != null) {
                 comprehensive.put(KSH, com2);
             } else {
                 comprehensive.put(KSH, com4);

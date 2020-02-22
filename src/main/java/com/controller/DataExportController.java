@@ -48,14 +48,22 @@ public class DataExportController {
 
     toExcel toexcel= new toExcel();
 
+    /**
+     * 导出通知书Excel
+     *
+     * @return 通知书表的流
+     */
+
     @ResponseBody
     @RequestMapping("/exportNotice")
     public void exportNotice(HttpServletRequest request, HttpServletResponse response){
         String sheetName = "通知书";
         String year = request.getParameter("year");
-        StringBuilder jsonstr = new StringBuilder();//转化成json
+        //转化成json
+        StringBuilder jsonstr = new StringBuilder();
         jsonstr.append("{");
-        String reqstr = request.getQueryString();//获取请求参数
+        //获取请求参数
+        String reqstr = request.getQueryString();
         if(!"".equals(reqstr) &&reqstr !=null){
 
             String [] stringArr= reqstr.split("&");
@@ -71,7 +79,8 @@ public class DataExportController {
         HSSFWorkbook wb = dataExportService.exportNotice(year);
         List<Notice> list = dataExportDao.requestNotice(year);
         if(list!=null){
-            try{ //写入浏览器
+            //写入浏览器
+            try{
                 response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(filename, "UTF-8"));
                 OutputStream outputStream=response.getOutputStream();
                 wb.write(outputStream);
@@ -83,14 +92,23 @@ public class DataExportController {
         }
     }
 
+
+    /**
+     * 导出银行卡Excel
+     *
+     * @return 银行卡表的流
+     */
+
     @ResponseBody
     @RequestMapping("/exportBankCard")
     public void exportBankCard(HttpServletRequest request, HttpServletResponse response){
         String sheetName = "银行卡";
         String year = request.getParameter("year");
-        StringBuilder jsonstr = new StringBuilder();//转化成json
+        //转化成json
+        StringBuilder jsonstr = new StringBuilder();
         jsonstr.append("{");
-        String reqstr = request.getQueryString();//获取请求参数
+        //获取请求参数
+        String reqstr = request.getQueryString();
         if(!"".equals(reqstr) &&reqstr !=null){
 
             String [] stringArr= reqstr.split("&");
@@ -106,7 +124,8 @@ public class DataExportController {
         HSSFWorkbook wb = dataExportService.exportBankCard(year);
         List<BankCard> list = dataExportDao.requestBankCard(year);
         if(list!=null){
-            try{ //写入浏览器
+            //写入浏览器
+            try{
                 response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(filename, "UTF-8"));
                 OutputStream outputStream=response.getOutputStream();
                 wb.write(outputStream);
@@ -118,14 +137,23 @@ public class DataExportController {
         }
     }
 
+
+    /**
+     * 导出快递单Excel
+     *
+     * @return 快递单表的流
+     */
+
     @ResponseBody
     @RequestMapping("/exportExpressSingle")
     public void exportExpressSingle(HttpServletRequest request, HttpServletResponse response){
         String sheetName = "快递单";
         String year = request.getParameter("year");
-        StringBuilder jsonstr = new StringBuilder();//转化成json
+        //转化成json
+        StringBuilder jsonstr = new StringBuilder();
         jsonstr.append("{");
-        String reqstr = request.getQueryString();//获取请求参数
+        //获取请求参数
+        String reqstr = request.getQueryString();
         if(!"".equals(reqstr) &&reqstr !=null){
 
             String [] stringArr= reqstr.split("&");
@@ -141,7 +169,8 @@ public class DataExportController {
         HSSFWorkbook wb = dataExportService.exportExpressSingle(year);
         List<KDD> list = dataExportDao.requestExpressSingle(year);
         if(list!=null){
-            try{ //写入浏览器
+            //写入浏览器
+            try{
                 response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(filename, "UTF-8"));
                 OutputStream outputStream=response.getOutputStream();
                 wb.write(outputStream);

@@ -252,6 +252,17 @@ public class DataImportServiceImpl implements DataImportService {
             /**
              * 获得TD_XSFX实体集合
              */
+
+            if (province == 20)
+            {
+                TD_XSFSTableXxcludeSet.add("SXCJ");
+                TD_XSFSTableXxcludeSet.add("ZHCJ");
+            }
+            if (province == 27)
+            {
+                TD_XSFSTableXxcludeSet.add("ZHCJ");
+            }
+
             td_xsfsList = DataFrameUtils.fillListByMap(T_TDDDataFrame,clazz,TD_XSFSTableXxcludeSet,colmnMap);
             if (province == 20){
                 td_xsfsList = guangxi.score(T_TDDDataFrame,td_xsfsList);
