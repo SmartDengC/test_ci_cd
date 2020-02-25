@@ -3,8 +3,10 @@ package com.security;
 import com.controller.UserConfigController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pojo.User;
+import com.service.UserConfigService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
@@ -13,9 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 如果使用异步登陆，
@@ -26,6 +26,8 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
     private ObjectMapper objectMapper = new ObjectMapper();
     //日志
     private static final Logger logger = LoggerFactory.getLogger(UserConfigController.class);
+    @Autowired
+    UserConfigService userConfigService;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -33,14 +35,14 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
         User principal = (User)authentication.getPrincipal();
         logger.info(principal.getUsername()+"在"+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())+"发起了登录请求");
 
-        //返回登录成功的信息,必要时在前端显示
-        Map map = new HashMap<>();
-        map.put("success", true);
-        //页面与可用的关系!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-        String jsonStr = objectMapper.writeValueAsString(map);
+        //将身份信息赋值
+        principal.setIdentity(userConfigService.findIdentity(principal.getId()));
+        //封装用户信息
+        String s = objectMapper.writeValueAsString(principal);
+        httpServletRequest.setAttribute("message",s);
         response.setContentType("text/json;charset=utf-8");
-        response.getWriter().write(jsonStr);
+        //页面与可用的关系,现在可以根据登录情况下的getPrincipal得到用户的详细信息
+        httpServletRequest.getRequestDispatcher("/usermessage").forward(httpServletRequest,response);
     }
 }
 

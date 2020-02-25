@@ -20,6 +20,8 @@ public class User implements UserDetails {
     private String username;
     //password
     private String password;
+    //邮箱
+    private String email;
     //创建日期
     private String createDate;
     //上次登录时间
@@ -34,8 +36,12 @@ public class User implements UserDetails {
     private boolean credentialsNonExpired;
     //用户所拥有的权限
     private List<GrantedAuthority> authorities = new ArrayList<>();
+    //用户身份的信息 例如:1普通用户 2管理员 3超级管理员
+	private Integer identity;
 
-    @Override
+
+
+	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
@@ -71,23 +77,25 @@ public class User implements UserDetails {
     }
 
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", createDate=" + createDate +
-                ", lastLoginTime=" + lastLoginTime +
-                ", enabled=" + enabled +
-                ", accountNonExpired=" + accountNonExpired +
-                ", accountNonLocked=" + accountNonLocked +
-                ", credentialsNonExpired=" + credentialsNonExpired +
-                ", authorities=" + authorities +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", username='" + username + '\'' +
+				", password='" + password + '\'' +
+				", email='" + email + '\'' +
+				", createDate='" + createDate + '\'' +
+				", lastLoginTime='" + lastLoginTime + '\'' +
+				", enabled=" + enabled +
+				", accountNonExpired=" + accountNonExpired +
+				", accountNonLocked=" + accountNonLocked +
+				", credentialsNonExpired=" + credentialsNonExpired +
+				", authorities=" + authorities +
+				", identity=" + identity +
+				'}';
+	}
 
-    public Integer getId() {
+	public Integer getId() {
         return id;
     }
 
@@ -137,5 +145,39 @@ public class User implements UserDetails {
 
     public void setAuthorities(List<GrantedAuthority> authorities) {
         this.authorities = authorities;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+	public Integer getIdentity() {
+		return identity;
+	}
+
+	public void setIdentity(Integer identity) {
+		this.identity = identity;
+	}
+
+	public User(String username, String password, String email, String createDate, String lastLoginTime, boolean enabled, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, Integer identity) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.createDate = createDate;
+		this.lastLoginTime = lastLoginTime;
+		this.enabled = enabled;
+		this.accountNonExpired = accountNonExpired;
+		this.accountNonLocked = accountNonLocked;
+		this.credentialsNonExpired = credentialsNonExpired;
+		this.authorities = authorities;
+		this.identity = identity;
+	}
+
+	public User() {
     }
 }

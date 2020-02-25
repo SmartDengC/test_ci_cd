@@ -30,15 +30,20 @@
   SELECT count(*) FROM  user_invitecode  WHERE  invite_code=#{inviteCode}
 </select>
 
-<insert id="addMember" statementType="CALLABLE">
-        {CALL insertUserInformation(
-        #{username,mode=IN,jdbcType=VARCHAR},
-        #{password,mode=IN,jdbcType=VARCHAR},
-        #{email,mode=IN,jdbcType=VARCHAR},
-        #{createDate,mode=IN,jdbcType=VARCHAR},
-        #{invitecode,mode=IN,jdbcType=VARCHAR}
-        )}
+<insert id="addMember"  parameterType="com.pojo.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sys_user (username,`password`,email,createDate,enabled,accountNonExpired,accountNonLocked,credentialsNonExpired)
+         values (#{username},#{password},#{email},#{createDate},1,1,1,1);
+
 </insert>
+<!--<insert id="addMember" statementType="CALLABLE">-->
+        <!--{CALL insertUserInformation(-->
+        <!--#{username,mode=IN,jdbcType=VARCHAR},-->
+        <!--#{password,mode=IN,jdbcType=VARCHAR},-->
+        <!--#{email,mode=IN,jdbcType=VARCHAR},-->
+        <!--#{createDate,mode=IN,jdbcType=VARCHAR},-->
+        <!--#{invitecode,mode=IN,jdbcType=VARCHAR}-->
+        <!--)}-->
+<!--</insert>-->
 
 <insert id="sendCode" >
   insert into user_code (user_id,code) values ((SELECT sys_user.id FROM sys_user WHERE email=#{email}),#{code})
@@ -63,7 +68,16 @@
         update sys_user set password=#{password} where email=#{email}
 </update>
 
-<select id="login" resultType="java.lang.String">
-        SELECT password from sys_user WHERE username=#{username}
+<select id="findAllPermission" resultType="java.lang.String">
+        SELECT permTag from sys_permission
 </select>
+
+    <insert id="grantUser" >
+        INSERT INTO sys_user_role values (#{id},1)
+    </insert>
+
+<select id="findIdentity" resultType="java.lang.Integer">
+    SELECT role_id from sys_user_role WHERE user_id = #{id}
+</select>
+
 </mapper>

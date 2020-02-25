@@ -104,14 +104,10 @@ public interface UserConfigService {
 	/**
 	 * 添加注册的成员,删除注册时使用的邀请码
 	 * 在添加之前应该加上对前三个是否重复的校检,全部返回1的时候 就执行保存用户
-	 * @param username 用户名
-	 * @param password 密码
-	 * @param email 邮箱
-	 * @param inviteCode 邀请码
-	 * @param date 用户创建账号的时间
-	 * @return 状态码
+	 * @param user 新添加的用户对象
+	 * @return 新用户主键id
 	 */
-	public int addMember(String username, String password, String email, String inviteCode, String date);
+	public int addMember(User user,String inviteCode);
 
 
 	/**
@@ -130,5 +126,37 @@ public interface UserConfigService {
 	 */
 	public int savePwd(String email, String password);
 
+	/**
+	 * Modification User: 唐世杰
+	 * Modification Date: 2020/01/14
+	 * 查找所有的权限
+	 *
+	 * @Author 唐世杰
+	 * @param
+	 * @return List
+	 */
+	public List<String> findAllPermission();
 
+	/*
+	 * Modification User: 唐世杰
+	 * Modification Date: 2020/02/21
+	 *用来给用户赋于权限
+	 *
+	 * @Author 唐世杰 
+	 * @param id 用户id
+	 */
+	public int grantUser(int id);
+
+	public int delInviteCode(String invitecode);
+
+	/*
+	 * Modification User: 唐世杰
+	 * Modification Date: 2020/02/24
+	 *查找用户的身份信息
+	 *1代表普通用户 2 管理员 3超级管理员
+	 * @Author 唐世杰
+	 * @param id
+	 * @return int
+	 */
+	public int findIdentity(int id);
 }
