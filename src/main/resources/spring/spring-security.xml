@@ -9,23 +9,37 @@
 
     <security:http >
         <!--放行静态资源-->
-        <security:intercept-url pattern="/js/**" access="permitAll()"/>
         <security:intercept-url pattern="/static/**" access="permitAll()"/>
         <!--拦截的partern是拦截的请求,不是资源地址!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-        <security:intercept-url pattern="/login" access="permitAll()"/>
+        <security:intercept-url pattern="/dataDisplay/**" access="permitAll()"></security:intercept-url>
+        <security:intercept-url pattern="/userConfig/checkUsername" access="permitAll()"></security:intercept-url>
+        <security:intercept-url pattern="/userConfig/checkInviteCode" access="permitAll()"></security:intercept-url>
+        <security:intercept-url pattern="/userConfig/checkEmail" access="permitAll()"></security:intercept-url>
+        <security:intercept-url pattern="/userConfig/addMember" access="permitAll()"></security:intercept-url>
+        <security:intercept-url pattern="/userConfig/sendCode" access="permitAll()"></security:intercept-url>
+        <security:intercept-url pattern="/userConfig/checkCode" access="permitAll()"></security:intercept-url>
+        <security:intercept-url pattern="/userConfig/savePwd" access="permitAll()"></security:intercept-url>
+        <security:intercept-url pattern="/userConfig/sendInviteCode" access="hasRole('ROLE_sendInviteCode')"></security:intercept-url>
+        <security:intercept-url pattern="/userConfig/list" access="hasRole('ROLE_list')"></security:intercept-url>
+        <security:intercept-url pattern="/scoreIntegration/**" access="hasRole('ROLE_scoreIntegration')"></security:intercept-url>
+        <security:intercept-url pattern="/importFormatField/**" access="hasRole('ROLE_importFormatField')"></security:intercept-url>
+        <security:intercept-url pattern="/dataImport/**" access="hasRole('ROLE_dataImport')"></security:intercept-url>
+        <security:intercept-url pattern="/basicConfig/**" access="hasRole('ROLE_basicConfig')"></security:intercept-url>
+        <security:intercept-url pattern="/dataExport/**" access="hasRole('ROLE_dataExport')"></security:intercept-url>
 
-        <security:intercept-url pattern="/*" access="hasAnyAuthority('ROLE_ADMIN')"/>
-        <!--使用异步处理登陆成功和失败的时候的处理-->
-        <security:form-login login-page="/login"
-                             authentication-success-handler-ref="myAuthenticationSuccessHandler"
-                             authentication-failure-handler-ref="myAuthenticationFailureHandler"/>
-        <!--开启注销 清除session-->
-        <security:logout logout-success-url="/login" invalidate-session="true" logout-url="/j_spring_security_logout"/>
+
+        <!--使用异步处理登陆成功和失败的时候的处理   登录页面的地址为login-page 登录表单的提交地址为login-processing-url-->
+        <security:form-login  login-processing-url="/login"
+                              login-page="/loginpage"
+                              authentication-success-handler-ref="myAuthenticationSuccessHandler"
+                              authentication-failure-handler-ref="myAuthenticationFailureHandler"/>
+        <!--开启注销 清除session--><!-- 取消后台的页面跳转功能 logout-success-url="/index.html"-->
+        <security:logout  invalidate-session="true" logout-url="/j_spring_security_logout"/>
         <!--权限不足的时候放回提示页面,有待实现的错误页面-->
         <!--<security:access-denied-handler error-page="/error" ></security:access-denied-handler>-->
-        <!--跨域配置-->
-        <security:csrf disabled="true"/>
 
+        <security:csrf disabled="true"/>
+        <!--跨域配置-->
         <security:cors ></security:cors>
         <!--remember-me功能 token-validity-seconds时间  单位秒-->
         <security:remember-me token-repository-ref="jdbcTokenRepository" token-validity-seconds="3600"/>
@@ -48,14 +62,4 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="csrfFilter" class="org.springframework.security.web.csrf.CsrfFilter">
-        <constructor-arg>
-            <bean id ="httpSessionCsrfTokenRepository" class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository"/>
-        </constructor-arg>
-    </bean>
-
-    <!--&lt;!&ndash;-->
-        <!--如果用的是spring mvc 的form标签，则配置此项时自动将crsf的token放入到一个hidden的input中，而不需要开发人员显式的写入form-->
-    <!--&ndash;&gt;-->
-    <!--<bean id="requestDataValueProcessor" class="org.springframework.security.web.servlet.support.csrf.CsrfRequestDataValueProcessor"/>-->
 </beans>
