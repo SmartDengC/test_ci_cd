@@ -339,6 +339,24 @@
     </dependency>
     <!--log4j2end-->
 
+    <dependency>
+      <groupId>xxxx</groupId>
+      <artifactId>xxxx</artifactId>
+      <version>0.0.1</version>
+      <type>jar</type><!-- 一定要加 -->
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/joinery-dataframe-1.9(1).jar</systemPath>
+    </dependency>
+
+    <!--<dependency>-->
+      <!--<groupId>xxx</groupId>-->
+      <!--<artifactId>xxx</artifactId>-->
+      <!--<version>0.0.1</version>-->
+      <!--<type>jar</type>&lt;!&ndash; 一定要加 &ndash;&gt;-->
+      <!--<scope>system</scope>-->
+      <!--<systemPath>${project.basedir}/lib/joinery-dataframe-1.9-jar-with-dependencies.jar</systemPath>-->
+    <!--</dependency>-->
+
 
   </dependencies>
 
@@ -358,10 +376,25 @@
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
+          <configuration>
+            <source>1.8</source><!-- jdk 版本 -->
+            <target>1.8</target>
+            <encoding>UTF-8</encoding>
+            <compilerArguments>
+              <extdirs>
+                WEB-INF/lib/*.jar
+              </extdirs>
+            </compilerArguments>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
+          <configuration>
+            <includes>
+              <include>./*Test.java</include>
+            </includes>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-war-plugin</artifactId>
@@ -377,15 +410,15 @@
         </plugin>
       </plugins>
     </pluginManagement>
-      <plugins>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-compiler-plugin</artifactId>
-              <configuration>
-                  <source>8</source>
-                  <target>8</target>
-              </configuration>
-          </plugin>
-      </plugins>
+      <!--<plugins>-->
+          <!--<plugin>-->
+              <!--<groupId>org.apache.maven.plugins</groupId>-->
+              <!--<artifactId>maven-compiler-plugin</artifactId>-->
+              <!--<configuration>-->
+                  <!--<source>8</source>-->
+                  <!--<target>8</target>-->
+              <!--</configuration>-->
+          <!--</plugin>-->
+      <!--</plugins>-->
   </build>
 </project>
